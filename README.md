@@ -13,7 +13,7 @@ Yizhi Wang and Zhouhui Lian. DeepVecFont: Synthesizing High-quality Vector Fonts
 ### Requirement
 
 - **python 3.9**
-- **Pytorch 1.9** (it may work on some lower versions, but not tested)
+- **Pytorch 1.9.0** (it may work on some lower versions, but not tested)
 
 Please use [Anaconda](https://docs.anaconda.com/anaconda/install/linux/) to build the environment:
 ```shell
