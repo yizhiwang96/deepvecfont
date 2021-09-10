@@ -66,7 +66,7 @@ def train_main_model(opts):
                                          ff_dropout_p=opts.ff_dropout, rec_dropout_p=opts.rec_dropout, input_nc = 2 * opts.hidden_size, 
                                          output_nc=1, ngf=16, bottleneck_bits=opts.bottleneck_bits, norm_layer=nn.LayerNorm, n_blocks=6, mode='test')
 
-    neural_rasterizer_fpath = os.path.join("./experiments/hislstm_ln_neural_raster/checkpoints/neural_raster_350.nr.pth")
+    neural_rasterizer_fpath = os.path.join("./experiments/neural_raster/checkpoints/neural_raster_350.nr.pth")
     neural_rasterizer.load_state_dict(torch.load(neural_rasterizer_fpath))
     neural_rasterizer.eval()
 
@@ -91,7 +91,6 @@ def train_main_model(opts):
 
     all_parameters = list(img_encoder.parameters()) + list(img_decoder.parameters()) + list(modality_fusion.parameters()) +\
                      list(svg_encoder.parameters()) + list(svg_decoder.parameters()) + list(mdn_top_layer.parameters())
-    # all_parameters = list(img_encoder.parameters()) + list(img_decoder.parameters()) + list(modality_fusion.parameters())
     optimizer = Adam(all_parameters, lr=opts.lr, betas=(opts.beta1, opts.beta2), eps=opts.eps, weight_decay=opts.weight_decay)
 
     if opts.tboard:
@@ -105,18 +104,14 @@ def train_main_model(opts):
     for epoch in range(opts.init_epoch, opts.n_epochs):
         for idx, data in enumerate(train_loader):
             # network forward for a batch of data
-            
             img_decoder_out, vggpt_loss, kl_loss, svg_losses, trg_img, ref_img, trgsvg_nr_out, synsvg_nr_out =\
                 network_forward(data, mean, std, opts, network_modules)
             if opts.use_nr:
                 loss = opts.l1_loss_w * img_decoder_out['img_l1loss'] + opts.cx_loss_w * vggpt_loss['cx_loss']  + opts.kl_beta * kl_loss \
-                        + opts.mdn_loss_w * svg_losses['mdn_loss'] + opts.softmax_loss_w * svg_losses['softmax_xent_loss'] + opts.l1_loss_w * synsvg_nr_out['rec_loss']       
-                # just test
-                # loss = opts.l1_loss_w * synsvg_nr_out['rec_loss']
+                        + opts.mdn_loss_w * svg_losses['mdn_loss'] + opts.softmax_loss_w * svg_losses['softmax_xent_loss'] + opts.l1_loss_w * synsvg_nr_out['rec_loss']
             else:
                 loss = opts.l1_loss_w * img_decoder_out['img_l1loss'] + opts.cx_loss_w * vggpt_loss['cx_loss']  + opts.kl_beta * kl_loss \
-                        + opts.mdn_loss_w * svg_losses['mdn_loss'] + opts.softmax_loss_w * svg_losses['softmax_xent_loss']              
-            # loss = opts.l1_loss_w * img_decoder_out['img_l1loss'] + opts.cx_loss_w * vggpt_loss['cx_loss']  + opts.kl_beta * kl_loss
+                        + opts.mdn_loss_w * svg_losses['mdn_loss'] + opts.softmax_loss_w * svg_losses['softmax_xent_loss']
             output_img = img_decoder_out['gen_imgs']
             img_l1loss = img_decoder_out['img_l1loss']
             mdn_loss, softmax_xent_loss = svg_losses['mdn_loss'], svg_losses['softmax_xent_loss']

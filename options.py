@@ -45,17 +45,16 @@ def get_parser_main_model():
     parser.add_argument('--mdn_loss_w', type=float, default=1.0, help='the weight of mdn loss')
     parser.add_argument('--softmax_loss_w', type=float, default=1.0, help='the weight of softmax ce loss')
     # TODO: weight decay
-    parser.add_argument('--use_nr', type=bool, default=True, help='use neural rasterization')
+    parser.add_argument('--use_nr', type=bool, default=True, help='whether to use neural rasterization during training')
 
     parser.add_argument('--image_size', type=int, default=64, help='image size')
     parser.add_argument('--init_epoch', type=int, default=0, help='init epoch')
     parser.add_argument('--n_epochs', type=int, default=2000, help='number of epochs')
     parser.add_argument('--lr', type=float, default=0.0002, help='learning rate')
 
+    # LSTM related
     parser.add_argument('--hidden_size', type=int, default=512, help='lstm encoder hidden_size')
     parser.add_argument('--num_hidden_layers', type=int, default=4, help='svg decoder number of hidden layers')
-
-    # LSTM
     parser.add_argument('--rec_dropout', type=float, default=0.3, help='LSTM rec dropout')
     parser.add_argument('--ff_dropout', type=float, default=0.5, help='LSTM feed forward dropout')
 

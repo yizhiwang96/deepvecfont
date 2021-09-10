@@ -1,6 +1,6 @@
 # DeepVecFont
 
-This is the official Tensorflow implementation of the paper:
+This is the official Pytorch implementation of the paper:
 
 Yizhi Wang and Zhouhui Lian. DeepVecFont: Synthesizing High-quality Vector Fonts via Dual-modality Learning. SIGGRAPH 2021 Asia. 2021.
 
@@ -52,11 +52,12 @@ where the `expid` denotes the index of testing font.
 
 We have pretrained the neural rasterizer and image super-resolution model.
 If you want to train them yourself:
+
 To train the neural rasterizer:
 ```
 python train_nr.py --mode train --experiment_name dvf --model_name neural_raster
 ```
 To train the image super-resolution model:
 ```
-python train_sr.py --mode train --experiment_name image_ss --model_name image_sr
+python train_sr.py --mode train --experiment_name dvf --model_name image_sr
 ```
