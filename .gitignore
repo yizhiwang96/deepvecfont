@@ -1,0 +1,5 @@
+# ignored
+*.pyc
+experiments/
+data
+models/diffvg/

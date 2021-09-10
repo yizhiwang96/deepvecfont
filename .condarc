@@ -1,0 +1,9 @@
+channels:
+    - defaults
+show_channel_urls: true
+default_channels:
+    - https://mirrors.pku.edu.cn/anaconda/pkgs/main
+    - https://mirrors.pku.edu.cn/anaconda/pkgs/r
+custom_channels:
+    conda-forge: https://mirrors.pku.edu.cn/anaconda/cloud
+    pytorch: https://mirrors.pku.edu.cn/anaconda/cloud
