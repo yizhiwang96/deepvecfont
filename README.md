@@ -22,7 +22,7 @@ source activate dvf
 ```
 ### Install diffvg
 
-diffvg is utilized to refine our generated vector glyphs in the testing phase.
+We utilize diffvg to refine our generated vector glyphs in the testing phase.
 Please go to https://github.com/BachiLi/diffvg see how to install it.
 
 ## Data and Pretrained-model
@@ -35,12 +35,13 @@ To train our main model, run
 ```
 python main.py --mode train --experiment_name dvf --model_name main_model
 ```
+The configurations can be found in `options.py`.
 
 To test our main model, run
 ```
 python test_sf.py --mode test --experiment_name dvf --model_name main_model --test_epoch 625 --batch_size 1
 ```
-This will output the synthesized fonts without refinements.
+This will output the synthesized fonts without refinements. Note that `batch_size` must be set to 1.
 
 
 To refinement the vector glyphs, run
@@ -54,7 +55,8 @@ If you want to train them yourself:
 To train the neural rasterizer:
 ```
 python train_nr.py --mode train --experiment_name dvf --model_name neural_raster
-To train the nimage super-resolution model:
+```
+To train the image super-resolution model:
 ```
 python train_sr.py --mode train --experiment_name image_ss --model_name image_sr
 ```
