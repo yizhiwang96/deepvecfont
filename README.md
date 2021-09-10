@@ -5,7 +5,7 @@ This is the official Tensorflow implementation of the paper:
 Yizhi Wang and Zhouhui Lian. DeepVecFont: Synthesizing High-quality Vector Fonts via Dual-modality Learning. SIGGRAPH 2021 Asia. 2021.
 
 <div align=center>
-	<img src="imgs/teaser.svg" width="500"> 
+	<img src="imgs/teaser.svg"> 
 </div>
 
 ## Installation
@@ -31,24 +31,30 @@ will be released soon...
 
 ## Training and Testing
 
-to train our main model, run
+To train our main model, run
 ```
 python main.py --mode train --experiment_name dvf --model_name main_model
 ```
 
-to train the neural rasterizer
-python train_nr.py --mode train --experiment_name dvf --model_name neural_raster
-
+To test our main model, run
 ```
-CUDA_VISIBLE_DEVICES=0 python train_sr.py --mode train --experiment_name image_ss --model_name image_sr
-```
-
-to test our main model, run
-
 python test_sf.py --mode test --experiment_name dvf --model_name main_model --test_epoch 625 --batch_size 1
+```
+This will output the synthesized fonts without refinements.
 
-to test our main model, run
+
+To refinement the vector glyphs, run
 ```
 python refinement.mp.py --experiment_name dvf --expid 4
 ```
 where the `expid` denotes the index of testing font.
+
+We have pretrained the neural rasterizer and image super-resolution model.
+If you want to train them yourself:
+To train the neural rasterizer:
+```
+python train_nr.py --mode train --experiment_name dvf --model_name neural_raster
+To train the nimage super-resolution model:
+```
+python train_sr.py --mode train --experiment_name image_ss --model_name image_sr
+```
