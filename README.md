@@ -46,9 +46,9 @@ This will output the synthesized fonts without refinements. Note that `batch_siz
 
 To refinement the vector glyphs, run
 ```
-python refinement.mp.py --experiment_name dvf --expid 4
+python refinement.mp.py --experiment_name dvf --fontid 4
 ```
-where the `expid` denotes the index of testing font.
+where the `fontid` denotes the index of testing font.
 
 We have pretrained the neural rasterizer and image super-resolution model.
 If you want to train them yourself:

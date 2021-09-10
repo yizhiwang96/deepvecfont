@@ -249,9 +249,9 @@ def svg_bbox_align(svg_path, trgimg_path):
 
 def process_s1(process_id, chars_per_process, args):
 
-    svg_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.expid), 'svgs')
-    imghr_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.expid), 'imgs_256')
-    svg_outpath = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.expid), 'svgs_bestcand')
+    svg_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'svgs')
+    imghr_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'imgs_256')
+    svg_outpath = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'svgs_bestcand')
     if not os.path.exists(svg_outpath):
         os.mkdir(svg_outpath)
 
@@ -283,11 +283,11 @@ def process_s1(process_id, chars_per_process, args):
         shutil.copy(src_path, trg_path)
  
 def process_s2(process_id, chars_per_process, args):
-    imghr_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.expid), 'imgs_256')
-    svg_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.expid), 'svgs')
-    imghr_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.expid), 'imgs_256')
-    svg_cdt_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.expid), 'svgs_bestcand')
-    svg_outpath = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.expid), 'svgs_refined')
+    imghr_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'imgs_256')
+    svg_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'svgs')
+    imghr_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'imgs_256')
+    svg_cdt_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'svgs_bestcand')
+    svg_outpath = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'svgs_refined')
     if not os.path.exists(svg_outpath):
         os.mkdir(svg_outpath)
     
@@ -309,12 +309,12 @@ if __name__ == "__main__":
     parser.add_argument("--no_sample", type=int, default=0)
     parser.add_argument("--num_processes", type=int, default=4)
     parser.add_argument("--num_chars", type=int, default=52)
-    parser.add_argument("--expid", type=str, default='17')
+    parser.add_argument("--fontid", type=str, default='17')
     parser.add_argument("--experiment_name", type=str, default='v1.0_usenr_true_butnotgumble')
     parser.add_argument("--candidate_nums", type=str, default='20')
     args = parser.parse_args()
 
-    svg_outpath = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.expid), 'svgs_refined')
+    svg_outpath = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'svgs_refined')
     
     chars_per_process = args.num_chars // args.num_processes
     

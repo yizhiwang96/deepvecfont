@@ -40,7 +40,7 @@ def train_main_model(opts):
 
     img_decoder = ImageDecoder(input_nc = opts.bottleneck_bits + opts.char_categories, output_nc = 1, ngf = 16, norm_layer=nn.LayerNorm)
 
-    vggptlossfunc = VGGContextualLoss()
+    vggptlossfunc = VGGPerceptualLoss()
 
     modality_fusion = ModalityFusion(img_feat_dim = 16 * opts.image_size, hidden_size = opts.hidden_size, 
                                      ref_nshot = opts.ref_nshot, bottleneck_bits = opts.bottleneck_bits, mode=opts.mode)
@@ -56,8 +56,7 @@ def train_main_model(opts):
                                  hidden_size=opts.hidden_size,
                                  num_hidden_layers=opts.num_hidden_layers,
                                  feature_dim=opts.seq_feature_dim, ff_dropout=opts.ff_dropout, rec_dropout=opts.rec_dropout)
-    
-    #svg_decoder.apply(init_weights)    
+       
     mdn_top_layer = SVGMDNTop(num_mixture=opts.num_mixture, seq_len=opts.max_seq_len, hidden_size=opts.hidden_size,
                               mode=opts.mode, mix_temperature=opts.mix_temperature,
                               gauss_temperature=opts.gauss_temperature, dont_reduce=opts.dont_reduce_loss)
@@ -66,7 +65,7 @@ def train_main_model(opts):
                                          ff_dropout_p=opts.ff_dropout, rec_dropout_p=opts.rec_dropout, input_nc = 2 * opts.hidden_size, 
                                          output_nc=1, ngf=16, bottleneck_bits=opts.bottleneck_bits, norm_layer=nn.LayerNorm, n_blocks=6, mode='test')
 
-    neural_rasterizer_fpath = os.path.join("./experiments/neural_raster/checkpoints/neural_raster_350.nr.pth")
+    neural_rasterizer_fpath = os.path.join("./experiments/hislstm_ln_neural_raster/checkpoints/neural_raster_350.nr.pth")
     neural_rasterizer.load_state_dict(torch.load(neural_rasterizer_fpath))
     neural_rasterizer.eval()
 
@@ -91,6 +90,7 @@ def train_main_model(opts):
 
     all_parameters = list(img_encoder.parameters()) + list(img_decoder.parameters()) + list(modality_fusion.parameters()) +\
                      list(svg_encoder.parameters()) + list(svg_decoder.parameters()) + list(mdn_top_layer.parameters())
+    # all_parameters = list(img_encoder.parameters()) + list(img_decoder.parameters()) + list(modality_fusion.parameters())
     optimizer = Adam(all_parameters, lr=opts.lr, betas=(opts.beta1, opts.beta2), eps=opts.eps, weight_decay=opts.weight_decay)
 
     if opts.tboard:
@@ -104,13 +104,14 @@ def train_main_model(opts):
     for epoch in range(opts.init_epoch, opts.n_epochs):
         for idx, data in enumerate(train_loader):
             # network forward for a batch of data
+            
             img_decoder_out, vggpt_loss, kl_loss, svg_losses, trg_img, ref_img, trgsvg_nr_out, synsvg_nr_out =\
                 network_forward(data, mean, std, opts, network_modules)
             if opts.use_nr:
-                loss = opts.l1_loss_w * img_decoder_out['img_l1loss'] + opts.cx_loss_w * vggpt_loss['cx_loss']  + opts.kl_beta * kl_loss \
+                loss = opts.l1_loss_w * img_decoder_out['img_l1loss'] + opts.pt_c_loss_w * vggpt_loss['pt_c_loss']  + opts.kl_beta * kl_loss \
                         + opts.mdn_loss_w * svg_losses['mdn_loss'] + opts.softmax_loss_w * svg_losses['softmax_xent_loss'] + opts.l1_loss_w * synsvg_nr_out['rec_loss']
             else:
-                loss = opts.l1_loss_w * img_decoder_out['img_l1loss'] + opts.cx_loss_w * vggpt_loss['cx_loss']  + opts.kl_beta * kl_loss \
+                loss = opts.l1_loss_w * img_decoder_out['img_l1loss'] + opts.pt_c_loss_w * vggpt_loss['pt_c_loss']  + opts.kl_beta * kl_loss \
                         + opts.mdn_loss_w * svg_losses['mdn_loss'] + opts.softmax_loss_w * svg_losses['softmax_xent_loss']
             output_img = img_decoder_out['gen_imgs']
             img_l1loss = img_decoder_out['img_l1loss']
@@ -126,7 +127,7 @@ def train_main_model(opts):
                 f"Loss: {loss.item():.6f}, "
                 f"img_l1_loss: {img_l1loss.item():.6f}, "
                 f"kl_loss: {opts.kl_beta * kl_loss.item():.6f}, "
-                f"img_pt_c_loss: {opts.cx_loss_w * vggpt_loss['cx_loss']:.6f}, "
+                f"img_pt_c_loss: {opts.pt_c_loss_w * vggpt_loss['pt_c_loss']:.6f}, "
                 # f"img_pt_s_loss: {vggpt_loss['pt_s_loss']:.6f}, "
                 f"mdn_loss: {mdn_loss.item():.6f}, "
                 f"softmax_xent_loss: {softmax_xent_loss.item():.6f}, "
@@ -135,27 +136,22 @@ def train_main_model(opts):
             
             if batches_done % 50 == 0:
                 logfile.write(message + '\n')
-                '''
-                for name, parms in neural_rasterizer.named_parameters():	
-                    print('-->name:', name, '-->grad_requirs:',parms.requires_grad, \
-                    ' -->grad_value:',parms.grad)
-                '''
                 print(message)
                 if opts.tboard:
                     writer.add_scalar('Loss/loss', loss.item(), batches_done)
                     writer.add_scalar('Loss/img_l1_loss', img_l1loss.item(), batches_done)
                     writer.add_scalar('Loss/img_kl_loss', opts.kl_beta * kl_loss.item(), batches_done)
-                    writer.add_scalar('Loss/img_perceptual_loss', opts.cx_loss_w * vggpt_loss['cx_loss'], batches_done)
+                    writer.add_scalar('Loss/img_perceptual_loss', opts.pt_c_loss_w * vggpt_loss['pt_c_loss'], batches_done)
                     writer.add_scalar('Loss/cmd_softmax_loss', softmax_xent_loss.item(), batches_done)
                     writer.add_scalar('Loss/coord_mdn_loss', mdn_loss.item(), batches_done)
                     writer.add_scalar('Loss/synsvg_nr_rec_loss', synsvg_nr_out['rec_loss'].item(), batches_done)
                     writer.add_image('Images/trg_img', trg_img[0], batches_done)
                     writer.add_image('Images/trgsvg_nr_img', trgsvg_nr_out['gen_imgs'][0], batches_done)
                     writer.add_image('Images/synsvg_nr_img', synsvg_nr_out['gen_imgs'][0], batches_done)
+                    writer.add_image('Images/output_img', output_img[0], batches_done)
                     '''
                     for img_idx in range(52):
                         writer.add_image('Images/src_img_' + "%02d"%img_idx, ref_img[0,img_idx:img_idx+1,:,:], batches_done)
-                        writer.add_image('Images/output_img', output_img[0], batches_done)
                     '''
 
             if opts.sample_freq > 0 and batches_done % opts.sample_freq == 0:
@@ -165,18 +161,7 @@ def train_main_model(opts):
                 save_file = os.path.join(sample_dir, f"train_epoch_{epoch}_batch_{batches_done}.png")
                 #save_file_nr = os.path.join(sample_dir, f"train_epoch_{epoch}_batch_{batches_done}.nr.png")
                 save_image(img_sample, save_file, nrow=8, normalize=True)
-                #save_image(img_sample_nr, save_file_nr, nrow=8, normalize=True)
-                '''
-                svg_target = gt_trg_seq.clone().detach()
-                svg_target = svg_target * std  + mean
-                for i, one_gt_seq in enumerate(svg_target):
-                    cur_svg_file = os.path.join(sample_dir, f"train_epoch_{epoch}_batch_{batches_done}_no_{i}_svg.svg")
-                    if i == 0:
-                        gt_svg = render(one_gt_seq.cpu().numpy())
-                        with open(cur_svg_file, 'a') as f:
-                            f.write(gt_svg+'\n')
-                        break
-                '''         
+                #save_image(img_sample_nr, save_file_nr, nrow=8, normalize=True)        
                 
             if opts.val_freq > 0 and batches_done % opts.val_freq == 0:
                 # val_loss = 0.0
@@ -191,31 +176,11 @@ def train_main_model(opts):
                         val_img_decoder_out, val_vggpt_loss, val_kl_loss, val_svg_losses, val_trg_img, val_ref_img, val_trgsvg_nr_out, val_synsvg_nr_out = network_forward(val_data, mean, std, opts, network_modules)
                         
                         val_img_l1_loss += val_img_decoder_out['img_l1loss']
-                        val_img_pt_loss += val_vggpt_loss['cx_loss']
+                        val_img_pt_loss += val_vggpt_loss['pt_c_loss']
                         val_cmd_softmax_loss += val_svg_losses['softmax_xent_loss']
                         val_coord_mdn_loss += val_svg_losses['mdn_loss']
                         val_synsvg_nr_rec_loss += val_synsvg_nr_out['rec_loss']
 
-                    '''
-                    # sampled_output = mdn_top_layer.sample(top_output, outputs)
-                    svg_dec_out = val_final_svg.clone().detach()
-                    svg_dec_out = svg_dec_out.transpose(0,1)
-                    cur_svg_file = os.path.join(sample_dir, f"val_epoch_{epoch}_batch_{batches_done}_output_svg.svg")
-                    for i, one_seq in enumerate(svg_dec_out):
-                        if i == 0:
-                            svg = render(one_seq.cpu().numpy())
-                            with open(cur_svg_file, 'a') as f:
-                                f.write(svg+'\n')
-                     
-                    svg_target = val_gt_trg_seq.clone().detach()
-                    cur_svg_file = os.path.join(sample_dir, f"val_epoch_{epoch}_batch_{batches_done}_svg.svg")
-                    for i, one_gt_seq in enumerate(svg_target):
-                        if i == 0:
-                            gt_svg = render(one_gt_seq.cpu().numpy())
-                            with open(cur_svg_file, 'a') as f:
-                                f.write(gt_svg+'\n')
-                    '''                                                       
-                    
                     # val_loss /= len(val_loader)
                     val_img_l1_loss /= len(val_loader)
                     val_img_pt_loss /= len(val_loader)
@@ -322,7 +287,6 @@ def network_forward(data, mean, std, opts, network_moudules):
     se_hidden_ly = torch.zeros(ref_seq_cat.size(0), ref_seq_cat.size(1), opts.hidden_size).to(device)
     se_cell_ly = torch.zeros(ref_seq_cat.size(0), ref_seq_cat.size(1), opts.hidden_size).to(device)
 
-    
     ref_len = ref_seq_cat.size(0)
     for t in range(0, ref_len):
         inpt = ref_seq_cat[t]
@@ -331,7 +295,6 @@ def network_forward(data, mean, std, opts, network_moudules):
         se_hidden_ly[t] = hidden[-1,:,:]
         se_cell_ly[t] = cell[-1,:,:]
     
-    
     ref_seqlen = util_funcs.select_seqlens(input_seqlen, ref_cls, opts)
     ref_seqlen = ref_seqlen.squeeze()
     ref_seqlen = ref_seqlen.view(ref_seq_cat.size(1))
@@ -339,14 +302,7 @@ def network_forward(data, mean, std, opts, network_moudules):
     ref_seqlen = ref_seqlen.expand(1, ref_seq_cat.size(1), opts.hidden_size)
     se_hidden_last = torch.gather(se_hidden_ly,0,ref_seqlen)
     se_cell_last = torch.gather(se_cell_ly,0,ref_seqlen)
-    '''
-    #print(se_hidden_last.shape)
-    #input(se_cell_last.shape)
-    #input()
-    '''
-    #se_outputs, se_hidden, se_cell = encoder_output['output'], encoder_output['hidden'], encoder_output['cell']
-    # seq_feat = torch.cat((se_hidden[-1,:,:],se_cell[-1,:,:]),-1)
-    # seq_feat = torch.cat((se_hidden_ly[-1,:,:],se_cell_ly[-1,:,:]),-1)
+
     seq_feat = torch.cat((se_hidden_last.squeeze(),se_cell_last.squeeze()),-1)
     # modality fusion
     mf_output = modality_fusion(img_feat, seq_feat)
@@ -360,17 +316,7 @@ def network_forward(data, mean, std, opts, network_moudules):
     sd_init_state = svg_decoder.init_state_input(latent_feat, trg_char)
     hidden, cell = sd_init_state['hidden'], sd_init_state['cell']
     outputs = torch.zeros(trg_seq.size(0), trg_seq.size(1), opts.hidden_size).to(device)
-    # hidden_self, cell_self = hidden, cell
-    # outputs_self = torch.zeros(trg_seq.size(0), trg_seq.size(1), opts.hidden_size).to(device)
-    '''
-    inpt = trg_seq_shifted[0]
-    trg_len = trg_seq_shifted.size(0)
-    for t in range(1, trg_len):
-        decoder_output = svg_decoder(inpt, hidden, cell)
-        output, hidden, cell = decoder_output['output'], decoder_output['hidden'], decoder_output['cell']
-        outputs[t-1] = output
-        inpt = trg_seq_shifted[t]
-    '''
+
     trg_len = trg_seq_shifted.size(0)
     for t in range(0, trg_len):
         inpt = trg_seq_shifted[t]
@@ -378,13 +324,9 @@ def network_forward(data, mean, std, opts, network_moudules):
         output, hidden, cell = decoder_output['output'], decoder_output['hidden'], decoder_output['cell']
         outputs[t] = output
     
-    #decoder_output = svg_decoder(trg_seq_shifted, hidden, cell)
-    #outputs, hidden, cell = decoder_output['output'], decoder_output['hidden'], decoder_output['cell']
     top_output = mdn_top_layer(outputs)
     trg_seqlen = util_funcs.select_seqlens(input_seqlen, trg_cls, opts)
     trg_seqlen = trg_seqlen.squeeze()
-    # trg_seqlen_list = (trg_seqlen + 1).tolist()
-    # trg_seqlen_list = [opts.max_seq_len for i in trg_seqlen_list]
     svg_losses = mdn_top_layer.svg_loss(top_output, trg_seq, trg_seqlen+1, opts.max_seq_len)
     sampled_svg = mdn_top_layer.sample(top_output, outputs, opts.mode)
     

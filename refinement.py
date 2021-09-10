@@ -227,14 +227,14 @@ if __name__ == "__main__":
     parser.add_argument("--use_lpips_loss", dest='use_lpips_loss', action='store_true')
     parser.add_argument("--num_iter", type=int, default=40)
     parser.add_argument("--no_sample", type=int, default=0)
-    parser.add_argument("--expid", type=str, default='0')
+    parser.add_argument("--fontid", type=str, default='0')
     parser.add_argument("--experiment_name", type=str, default='v1.0_gumbletrain')
     parser.add_argument("--candidate_nums", type=str, default='20')
     args = parser.parse_args()
 
-    svg_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.expid), 'svgs')
-    imghr_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.expid), 'imgs_256')
-    svg_outpath = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.expid), 'svgs-refined')
+    svg_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'svgs')
+    imghr_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'imgs_256')
+    svg_outpath = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'svgs-refined')
     if not os.path.exists(svg_outpath):
         os.mkdir(svg_outpath)
     
