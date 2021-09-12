@@ -10,7 +10,7 @@ Yizhi Wang and Zhouhui Lian. DeepVecFont: Synthesizing High-quality Vector Fonts
 
 ## Demo
 ### Few-shot generation
-Given a few vector glyphs of a font as reference, our model generates the full vector font:
+Given a few vector glyphs of a font as reference, our model generates the full **vector** font:
 
 Input glyphs:
 <div align=center>
@@ -75,6 +75,72 @@ Synthesized glyphs by DeepVecFont:
 	<img src="imgs/font_02/syn/02_49.svg">
 	<img src="imgs/font_02/syn/02_50.svg">
 	<img src="imgs/font_02/syn/02_51.svg">	
+	<br/>
+</div>
+
+Input glyphs:
+<div align=center>
+	<img src="imgs/font_12/gt/12_00.svg"> 
+	<img src="imgs/font_12/gt/12_01.svg"> 
+	<img src="imgs/font_12/gt/12_26.svg"> 
+	<img src="imgs/font_12/gt/12_27.svg"> 
+</div>
+Synthesized glyphs by DeepVecFont:
+<div align=center>
+	<img src="imgs/font_12/syn/12_00.svg"> 
+	<img src="imgs/font_12/syn/12_01.svg"> 
+	<img src="imgs/font_12/syn/12_02.svg"> 
+	<img src="imgs/font_12/syn/12_03.svg"> 
+	<img src="imgs/font_12/syn/12_04.svg">
+	<img src="imgs/font_12/syn/12_05.svg">
+	<img src="imgs/font_12/syn/12_06.svg">
+	<img src="imgs/font_12/syn/12_07.svg"> 
+	<img src="imgs/font_12/syn/12_08.svg"> 
+	<img src="imgs/font_12/syn/12_09.svg"> 
+	<img src="imgs/font_12/syn/12_10.svg"> 
+	<img src="imgs/font_12/syn/12_11.svg">
+	<img src="imgs/font_12/syn/12_12.svg">
+	<img src="imgs/font_12/syn/12_13.svg">
+	<img src="imgs/font_12/syn/12_14.svg"> 
+	<img src="imgs/font_12/syn/12_15.svg"> 
+	<img src="imgs/font_12/syn/12_16.svg"> 
+	<img src="imgs/font_12/syn/12_17.svg"> 
+	<img src="imgs/font_12/syn/12_18.svg">
+	<img src="imgs/font_12/syn/12_19.svg">
+	<img src="imgs/font_12/syn/12_20.svg">
+	<img src="imgs/font_12/syn/12_21.svg"> 
+	<img src="imgs/font_12/syn/12_22.svg"> 
+	<img src="imgs/font_12/syn/12_23.svg"> 	
+	<img src="imgs/font_12/syn/12_24.svg">
+	<img src="imgs/font_12/syn/12_25.svg">
+	<br/>
+	<img src="imgs/font_12/syn/12_26.svg"> 
+	<img src="imgs/font_12/syn/12_27.svg"> 
+	<img src="imgs/font_12/syn/12_28.svg"> 
+	<img src="imgs/font_12/syn/12_29.svg"> 
+	<img src="imgs/font_12/syn/12_30.svg">
+	<img src="imgs/font_12/syn/12_31.svg">
+	<img src="imgs/font_12/syn/12_32.svg">
+	<img src="imgs/font_12/syn/12_33.svg"> 
+	<img src="imgs/font_12/syn/12_34.svg"> 
+	<img src="imgs/font_12/syn/12_35.svg"> 
+	<img src="imgs/font_12/syn/12_36.svg"> 
+	<img src="imgs/font_12/syn/12_37.svg">
+	<img src="imgs/font_12/syn/12_38.svg">
+	<img src="imgs/font_12/syn/12_39.svg">
+	<img src="imgs/font_12/syn/12_40.svg"> 
+	<img src="imgs/font_12/syn/12_41.svg"> 
+	<img src="imgs/font_12/syn/12_42.svg"> 
+	<img src="imgs/font_12/syn/12_43.svg"> 
+	<img src="imgs/font_12/syn/12_44.svg">
+	<img src="imgs/font_12/syn/12_45.svg">
+	<img src="imgs/font_12/syn/12_46.svg">
+	<img src="imgs/font_12/syn/12_47.svg"> 
+	<img src="imgs/font_12/syn/12_48.svg"> 
+	<img src="imgs/font_12/syn/12_49.svg">
+	<img src="imgs/font_12/syn/12_49.svg">
+	<img src="imgs/font_12/syn/12_50.svg">
+	<img src="imgs/font_12/syn/12_51.svg">	
 	<br/>
 </div>
 
