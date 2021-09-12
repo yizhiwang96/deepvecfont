@@ -12,14 +12,14 @@ Yizhi Wang and Zhouhui Lian. DeepVecFont: Synthesizing High-quality Vector Fonts
 ### Few-shot generation
 Given a few vector glyphs of a font as reference, our model generates the full vector font:
 Input glyphs:
-
-Synthesized glyphs:
 <div align=center>
 	<img src="imgs/font_02/gt/02_00.svg"> 
 	<img src="imgs/font_02/gt/02_01.svg"> 
 	<img src="imgs/font_02/gt/02_26.svg"> 
 	<img src="imgs/font_02/gt/02_27.svg"> 
-	<br/>
+</div>
+Synthesized glyphs by DeepVecFont:
+<div align=center>
 	<img src="imgs/font_02/syn/02_00.svg"> 
 	<img src="imgs/font_02/syn/02_01.svg"> 
 	<img src="imgs/font_02/syn/02_02.svg"> 
