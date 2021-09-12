@@ -28,9 +28,43 @@ Synthesized glyphs:
 	<img src="imgs/font_02/02_10.svg"> 
 	<img src="imgs/font_02/02_11.svg">
 	<img src="imgs/font_02/02_12.svg">
-	<img src="imgs/font_02/02_13.svg">	
+	<img src="imgs/font_02/02_13.svg">
+	<img src="imgs/font_02/02_14.svg"> 
+	<img src="imgs/font_02/02_15.svg"> 
+	<img src="imgs/font_02/02_16.svg"> 
+	<img src="imgs/font_02/02_17.svg"> 
+	<img src="imgs/font_02/02_18.svg">
+	<img src="imgs/font_02/02_19.svg">
+	<img src="imgs/font_02/02_20.svg">
+	<img src="imgs/font_02/02_21.svg"> 
+	<img src="imgs/font_02/02_22.svg"> 
+	<img src="imgs/font_02/02_23.svg"> 	
 	<br/>
-	<img src="imgs/font_02/02_14.svg">	
+	<img src="imgs/font_02/02_00.svg"> 
+	<img src="imgs/font_02/02_01.svg"> 
+	<img src="imgs/font_02/02_02.svg"> 
+	<img src="imgs/font_02/02_03.svg"> 
+	<img src="imgs/font_02/02_04.svg">
+	<img src="imgs/font_02/02_05.svg">
+	<img src="imgs/font_02/02_06.svg">
+	<img src="imgs/font_02/02_07.svg"> 
+	<img src="imgs/font_02/02_08.svg"> 
+	<img src="imgs/font_02/02_09.svg"> 
+	<img src="imgs/font_02/02_10.svg"> 
+	<img src="imgs/font_02/02_11.svg">
+	<img src="imgs/font_02/02_12.svg">
+	<img src="imgs/font_02/02_13.svg">
+	<img src="imgs/font_02/02_14.svg"> 
+	<img src="imgs/font_02/02_15.svg"> 
+	<img src="imgs/font_02/02_16.svg"> 
+	<img src="imgs/font_02/02_17.svg"> 
+	<img src="imgs/font_02/02_18.svg">
+	<img src="imgs/font_02/02_19.svg">
+	<img src="imgs/font_02/02_20.svg">
+	<img src="imgs/font_02/02_21.svg"> 
+	<img src="imgs/font_02/02_22.svg"> 
+	<img src="imgs/font_02/02_23.svg">	
+	<br/>
 </div>
 
 ## Installation
