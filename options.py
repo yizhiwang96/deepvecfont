@@ -45,7 +45,7 @@ def get_parser_main_model():
     parser.add_argument('--mdn_loss_w', type=float, default=1.0, help='the weight of mdn loss')
     parser.add_argument('--softmax_loss_w', type=float, default=1.0, help='the weight of softmax ce loss')
     # neural rasterizer
-    parser.add_argument('--use_nr', type=bool, default=False, help='whether to use neural rasterization during training')
+    parser.add_argument('--use_nr', type=bool, default=True, help='whether to use neural rasterization during training')
 
     parser.add_argument('--image_size', type=int, default=64, help='image size')
     parser.add_argument('--init_epoch', type=int, default=0, help='init epoch')

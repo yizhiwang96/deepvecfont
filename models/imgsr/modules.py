@@ -58,6 +58,8 @@ class BaseOptions():
         parser.add_argument('--experiment_name', type=str, default='v1.3_lstmenc_hs512')
         parser.add_argument('--test_epoch', type=int, default=125, help='the testing checkpoint')
         parser.add_argument('--model_name', type=str, default='main_model', choices=['main_model', 'neural_raster', 'diff_refinement', 'image_sr'], help='current model_name')
+        parser.add_argument('--mix_temperature', type=float, default=0.0001, help='')
+        parser.add_argument('--gauss_temperature', type=float, default=0.0001, help='')
 
         # basic parameters
         parser.add_argument('--dataroot', default='./data/glyphss_dataset/', help='path to images')

@@ -7,7 +7,6 @@ import torch.nn.functional as F
 from torch.optim import Adam
 from torchvision.utils import save_image
 from tensorboardX import SummaryWriter
-
 from dataloader import get_loader
 from models.image_encoder import ImageEncoder
 from models.image_decoder import ImageDecoder
@@ -18,11 +17,8 @@ from models.svg_encoder import SVGLSTMEncoder
 from models import util_funcs
 from options import get_parser_main_model
 from data_utils.svg_utils import render
-
 from models.imgsr.modules import TrainOptions, create_model
-
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
 
 def test_main_model(opts):
     exp_dir = os.path.join("experiments", opts.experiment_name)
@@ -49,9 +45,7 @@ def test_main_model(opts):
                                  bottleneck_bits=opts.bottleneck_bits, mode=opts.mode, max_sequence_length=opts.max_seq_len,
                                  hidden_size=opts.hidden_size,
                                  num_hidden_layers=opts.num_hidden_layers,
-                                 feature_dim=opts.seq_feature_dim, ff_dropout=opts.ff_dropout, rec_dropout=opts.rec_dropout)
-    
-    #svg_decoder.apply(init_weights)    
+                                 feature_dim=opts.seq_feature_dim, ff_dropout=opts.ff_dropout, rec_dropout=opts.rec_dropout)  
     mdn_top_layer = SVGMDNTop(num_mixture=opts.num_mixture, seq_len=opts.max_seq_len, hidden_size=opts.hidden_size,
                               mode=opts.mode, mix_temperature=opts.mix_temperature,
                               gauss_temperature=opts.gauss_temperature, dont_reduce=opts.dont_reduce_loss)
@@ -121,9 +115,7 @@ def test_main_model(opts):
             with torch.no_grad():
                 imgsr_model.forward()
 
-            output_img_hr = imgsr_model.fake_B   
-            #print(imgsr_model.fake_B.shape)
-            #input()
+            output_img_hr = imgsr_model.fake_B 
             savedir_idx = os.path.join(res_dir,"%04d"%test_idx)
 
             if not os.path.exists(savedir_idx):
@@ -131,6 +123,10 @@ def test_main_model(opts):
                 os.mkdir(os.path.join(savedir_idx,"imgs_64"))
                 os.mkdir(os.path.join(savedir_idx,"imgs_256"))
                 os.mkdir(os.path.join(savedir_idx,"svgs"))
+
+            img_sample_merge = torch.cat((trg_img.data, output_img.data), -2)
+            save_file_merge = os.path.join(savedir_idx,"imgs_64", f"merge_64.png")
+            save_image(img_sample_merge, save_file_merge, nrow=8, normalize=True)    
 
             for char_idx in range(opts.char_categories):
                 img_gt = (1.0 - trg_img[char_idx,...]).data
@@ -147,7 +143,8 @@ def test_main_model(opts):
                 #save_image(img_sample_hr, save_file_hr, nrow=8, normalize=True)
                 save_image(img_sample_hr, save_file_hr, normalize=True) 
             
-            # sampled_output = mdn_top_layer.sample(top_output, outputs)
+            # save the generated svgs and gt svgs
+            syn_svg_merge_f = open(os.path.join(os.path.join(savedir_idx,"svgs"), f"syn_merge.html"), 'w')
             for sample_id, sampled_svg in enumerate(sampled_svg_list):
 
                 svg_dec_out = sampled_svg.clone().detach()
@@ -160,12 +157,14 @@ def test_main_model(opts):
                     try:
                         svg = render(one_seq.cpu().numpy())
                         syn_svg_f.write(svg)
-                        #if i > 0 and i % 13 == 12:
-                        #    syn_svg_f.write('<br>')
+                        syn_svg_merge_f.write(svg)
+                        if i > 0 and i % 13 == 12:
+                            syn_svg_merge_f.write('<br>')
                         
                     except:
                         continue
                     syn_svg_f.close()
+                
                 syn_svg_f.close()
 
             svg_target = gt_trg_seq.clone().detach()
@@ -175,16 +174,16 @@ def test_main_model(opts):
                 gt_svg_f = open(gt_svg_outfile, 'w')
                 gt_svg = render(one_gt_seq.cpu().numpy())
                 gt_svg_f.write(gt_svg)
+                syn_svg_merge_f.write(gt_svg)
                 gt_svg_f.close()
-                #if i > 0 and i % 13 == 12:
-                #    gt_svg_f.write('<br>')
+                if i > 0 and i % 13 == 12:
+                    syn_svg_merge_f.write('<br>')
             gt_svg_f.close()
+            syn_svg_merge_f.close()
                                             
         
-        # val_loss /= len(test_loader)
         val_img_l1_loss /= len(test_loader)
         val_img_pt_loss /= len(test_loader)
-        # val_b_loss /= len(test_loader)
 
         val_msg = (
             f"Epoch: {epoch}/{opts.n_epochs}, "
@@ -193,13 +192,9 @@ def test_main_model(opts):
             f"Val image pt loss: {val_img_pt_loss: .6f}, "
             #f"Val kl loss: {val_b_loss: .6f}"
         )
-
-        val_logfile.write(val_msg + "\n")
         print(val_msg)
                 
-
     logfile.close()
-    val_logfile.close()
 
 def network_forward(data, mean, std, opts, network_moudules):
 

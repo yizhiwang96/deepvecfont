@@ -104,7 +104,6 @@ def train_main_model(opts):
     for epoch in range(opts.init_epoch, opts.n_epochs):
         for idx, data in enumerate(train_loader):
             # network forward for a batch of data
-            
             img_decoder_out, vggpt_loss, kl_loss, svg_losses, trg_img, ref_img, trgsvg_nr_out, synsvg_nr_out =\
                 network_forward(data, mean, std, opts, network_modules)
             if opts.use_nr:
@@ -164,7 +163,6 @@ def train_main_model(opts):
                 #save_image(img_sample_nr, save_file_nr, nrow=8, normalize=True)        
                 
             if opts.val_freq > 0 and batches_done % opts.val_freq == 0:
-                # val_loss = 0.0
                 val_img_l1_loss = 0.0
                 val_img_pt_loss = 0.0
                 val_cmd_softmax_loss = 0.0
@@ -172,7 +170,6 @@ def train_main_model(opts):
                 val_synsvg_nr_rec_loss = 0.0
                 with torch.no_grad():
                     for val_idx, val_data in enumerate(val_loader):
-                        # img_decoder_out, vggpt_loss, kl_loss, svg_losses, trg_img, ref_img, trgsvg_nr_out, synsvg_nr_out
                         val_img_decoder_out, val_vggpt_loss, val_kl_loss, val_svg_losses, val_trg_img, val_ref_img, val_trgsvg_nr_out, val_synsvg_nr_out = network_forward(val_data, mean, std, opts, network_modules)
                         
                         val_img_l1_loss += val_img_decoder_out['img_l1loss']
@@ -181,13 +178,11 @@ def train_main_model(opts):
                         val_coord_mdn_loss += val_svg_losses['mdn_loss']
                         val_synsvg_nr_rec_loss += val_synsvg_nr_out['rec_loss']
 
-                    # val_loss /= len(val_loader)
                     val_img_l1_loss /= len(val_loader)
                     val_img_pt_loss /= len(val_loader)
                     val_cmd_softmax_loss /= len(val_loader) 
                     val_coord_mdn_loss /= len(val_loader)
                     val_synsvg_nr_rec_loss /= len(val_loader)
-                    # val_b_loss /= len(val_loader)
 
                     if opts.tboard:
                         # writer.add_scalar('VAL/loss', val_loss, batches_done)
@@ -204,7 +199,6 @@ def train_main_model(opts):
                         f"Val image pt loss: {val_img_pt_loss: .6f}, "
                         f"Val cmd_softmax_loss loss: {val_cmd_softmax_loss: .6f}, "
                         f"Val coord_mdn_loss loss: {val_coord_mdn_loss: .6f}, "
-                        #f"Val kl loss: {val_b_loss: .6f}"
                     )
 
                     val_logfile.write(val_msg + "\n")
