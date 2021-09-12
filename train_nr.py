@@ -13,7 +13,7 @@ from models.neural_rasterizer import NeuralRasterizer
 from models.vgg_perceptual_loss import VGGPerceptualLoss
 from models.vgg_contextual_loss import VGGContextualLoss
 from models import util_funcs
-from options import (get_parser_basic, get_parser_main_model)
+from options import get_parser_main_model
 from data_utils.svg_utils import render
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -30,15 +30,11 @@ def train_nr_model(opts):
     train_loader = get_loader(opts.data_root, opts.char_categories, opts.max_seq_len, opts.seq_feature_dim, opts.batch_size, opts.mode)
     val_loader = get_loader(opts.data_root, opts.char_categories, opts.max_seq_len, opts.seq_feature_dim, opts.batch_size, 'test')
 
-    # print(opts.rec_dropout)
-    # input()
     neural_rasterizer = NeuralRasterizer(feature_dim=opts.seq_feature_dim, hidden_size=opts.hidden_size, num_hidden_layers=opts.num_hidden_layers, 
                                          ff_dropout_p=opts.ff_dropout, rec_dropout_p=opts.rec_dropout, input_nc = 2 * opts.hidden_size, 
                                          output_nc=1, ngf=16, bottleneck_bits=opts.bottleneck_bits, norm_layer=nn.LayerNorm, n_blocks=6, mode='train')
     
-    
     vggcxlossfunc = VGGContextualLoss()
-
 
     if torch.cuda.is_available() and opts.multi_gpu:
         neural_rasterizer = nn.DataParallel(neural_rasterizer)
@@ -49,7 +45,6 @@ def train_nr_model(opts):
 
     all_parameters = list(neural_rasterizer.parameters()) 
     optimizer = Adam(all_parameters, lr=opts.lr, betas=(opts.beta1, opts.beta2), eps=opts.eps, weight_decay=opts.weight_decay)
-    # optimizer = RMSprop(all_parameters, lr=opts.lr, alpha=0.99, eps=1e-08)
 
     if opts.tboard:
         writer = SummaryWriter(log_dir)
@@ -109,7 +104,6 @@ def train_nr_model(opts):
                 writer.add_image('Images/trg_img', trg_img[0], batches_done)
                 writer.add_image('Images/output_img', output_img[0], batches_done)
 
-
             if opts.sample_freq > 0 and batches_done % opts.sample_freq == 0:
                 img_sample = torch.cat((trg_img.data, output_img.data), -2)
                 save_file = os.path.join(sample_dir, f"train_epoch_{epoch}_batch_{batches_done}.png")
@@ -117,7 +111,6 @@ def train_nr_model(opts):
                 
                 svg_target = gt_trg_seq.clone().detach()
                 svg_target = svg_target * std  + mean
-                #cur_svg_file = os.path.join(res_dir, f"val_epoch_{epoch}_batch_{val_idx}_svg.svg")
                 for i, one_gt_seq in enumerate(svg_target):
                     cur_svg_file = os.path.join(sample_dir, f"train_epoch_{epoch}_batch_{batches_done}_no_{i}_svg.svg")
                     if i == 0:
@@ -127,7 +120,6 @@ def train_nr_model(opts):
                         break
                 
             if opts.val_freq > 0 and batches_done % opts.val_freq == 0:
-                # val_loss = 0.0
                 val_img_l1_loss = 0.0
                 val_img_pt_loss = 0.0
 
@@ -173,17 +165,13 @@ def train_nr_model(opts):
                             break
 
                     if opts.tboard:
-                        # writer.add_scalar('VAL/loss', val_loss, batches_done)
                         writer.add_scalar('VAL/img_l1_loss', val_img_l1_loss, batches_done)
                         writer.add_scalar('VAL/img_pt_loss', val_img_pt_loss, batches_done)
-                        # writer.add_scalar('VAL/b_loss', val_b_loss, batches_done)
 
                     val_msg = (
                         f"Epoch: {epoch}/{opts.n_epochs}, Batch: {idx}/{len(train_loader)}, "
-                        # f"Val loss: {val_loss: .6f}, "
                         f"Val image l1 loss: {val_img_l1_loss: .6f}, "
                         f"Val image pt loss: {val_img_pt_loss: .6f}, "
-                        #f"Val kl loss: {val_b_loss: .6f}"
                     )
 
                     val_logfile.write(val_msg + "\n")
@@ -224,7 +212,6 @@ def test(opts):
 
 
 def main():
-    basic_opts = get_parser_basic().parse_args()
     opts = get_parser_main_model().parse_args()
     opts.experiment_name = opts.experiment_name + '_' + opts.model_name
     os.makedirs("experiments", exist_ok=True)

@@ -7,8 +7,6 @@ from models.lstm_layernorm import LayerNormLSTM
 from torch.nn.utils.rnn import pad_sequence, pack_padded_sequence, pack_sequence,pad_packed_sequence
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-
-
 class NeuralRasterizer(nn.Module):
 
     def __init__(self, feature_dim, hidden_size, num_hidden_layers, ff_dropout_p, rec_dropout_p, input_nc, output_nc, ngf=64, bottleneck_bits=32, norm_layer=nn.LayerNorm, n_blocks=6, mode='train'):
@@ -23,7 +21,6 @@ class NeuralRasterizer(nn.Module):
         """
         assert(n_blocks >= 0)
         super(NeuralRasterizer, self).__init__()
-
         # seq encoder
         self.input_dim = feature_dim
         self.num_hidden_layers = num_hidden_layers
@@ -44,7 +41,7 @@ class NeuralRasterizer(nn.Module):
                        kernel_size=ks_list[0], stride=stride_list[0],
                        padding=ks_list[0] // 2, output_padding=stride_list[0]-1)
         decoder += [conv,norm_layer([int(ngf * mult / 2), 2, 2]),nn.ReLU(True)]
-        for i in range(1, n_upsampling):  # add downsampling layers
+        for i in range(1, n_upsampling):  # add upsampling layers
             mult = 2 ** (n_upsampling - i)
             conv = nn.ConvTranspose2d(ngf * mult, int(ngf * mult / 2), kernel_size=ks_list[i], stride=stride_list[i], padding=ks_list[i] // 2, output_padding=stride_list[i]-1)
             decoder += [conv,norm_layer([int(ngf * mult / 2), 2 ** (i+1) , 2 ** (i+1)]),nn.ReLU(True)]
@@ -54,7 +51,6 @@ class NeuralRasterizer(nn.Module):
         if mode=='test':
             for param in self.parameters():
                 param.requires_grad = False
-
 
     def init_state_input(self, sampled_bottleneck):
         init_state_hidden = []
@@ -71,7 +67,6 @@ class NeuralRasterizer(nn.Module):
         init_state['cell'] = init_state_cell
         return init_state
 
-    
     def forward(self, trg_seq, trg_char, trg_img):
         """Standard forward"""
 

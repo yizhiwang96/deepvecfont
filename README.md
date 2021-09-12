@@ -8,6 +8,13 @@ Yizhi Wang and Zhouhui Lian. DeepVecFont: Synthesizing High-quality Vector Fonts
 	<img src="imgs/teaser.svg"> 
 </div>
 
+## Demo
+### Few-shot generation
+Given a few vector glyphs of a font as reference, our model generates the others:
+<div align=center>
+	<img src="imgs/animation-a.svg"> 
+</div>
+
 ## Installation
 
 ### Requirement
