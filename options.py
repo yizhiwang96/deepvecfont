@@ -17,12 +17,9 @@ def get_parser_main_model():
     parser.add_argument('--in_channel', type=int, default=1, help='input image channel')
     parser.add_argument('--out_channel', type=int, default=1, help='output image channel')
     parser.add_argument('--batch_size', type=int, default=64, help='batch size')
-    # data related
     parser.add_argument('--max_seq_len', type=int, default=51, help='maximum length of sequence')
     parser.add_argument('--seq_feature_dim', type=int, default=10,
                         help='feature dim (like vocab size) of one step of sequence feature')
-    parser.add_argument('--test_epoch', type=int, default=125,
-                        help='the testing checkpoint')
     # experiment related
     parser.add_argument('--mode', type=str, default='train', choices=['train', 'test'])
     parser.add_argument('--multi_gpu', type=bool, default=False)
@@ -60,8 +57,16 @@ def get_parser_main_model():
 
     # MDN related
     parser.add_argument('--num_mixture', type=int, default=50, help='')
-    parser.add_argument('--mix_temperature', type=float, default=0.0001, help='')
-    parser.add_argument('--gauss_temperature', type=float, default=0.0001, help='')
+    #parser.add_argument('--mix_temperature', type=float, default=0.0001, help='')
+    #parser.add_argument('--gauss_temperature', type=float, default=0.0001, help='')
+    parser.add_argument('--mix_temperature', type=float, default=0.01, help='')
+    parser.add_argument('--gauss_temperature', type=float, default=0.01, help='')
     parser.add_argument('--dont_reduce_loss', type=bool, default=False, help='')
     
+    #testing related 
+    parser.add_argument('--test_epoch', type=int, default=125,
+                        help='the testing checkpoint')
+    parser.add_argument('--test_fontid', type=int, default=0,
+                        help='the testing font id')
+                            
     return parser

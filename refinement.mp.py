@@ -13,7 +13,6 @@ from torch.multiprocessing import Pool, Process, set_start_method
 try:
     set_start_method('spawn')
 except RuntimeError:
-    #print('connot spawn')
     pass
 
 gamma = 1.0
@@ -317,7 +316,6 @@ if __name__ == "__main__":
     svg_outpath = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'svgs_refined')
     
     chars_per_process = args.num_chars // args.num_processes
-    
     
     print("stage 1: find the best candidates ...")
     processes = [mp.Process(target=process_s1, args=[pid,chars_per_process,args]) for pid in range(args.num_processes + 1)]

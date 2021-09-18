@@ -72,7 +72,6 @@ Synthesized glyphs by DeepVecFont:
 	<img src="imgs/font_02/syn/02_47.svg"> 
 	<img src="imgs/font_02/syn/02_48.svg"> 
 	<img src="imgs/font_02/syn/02_49.svg">
-	<img src="imgs/font_02/syn/02_49.svg">
 	<img src="imgs/font_02/syn/02_50.svg">
 	<img src="imgs/font_02/syn/02_51.svg">	
 	<br/>
@@ -137,7 +136,6 @@ Synthesized glyphs by DeepVecFont:
 	<img src="imgs/font_12/syn/12_46.svg">
 	<img src="imgs/font_12/syn/12_47.svg"> 
 	<img src="imgs/font_12/syn/12_48.svg"> 
-	<img src="imgs/font_12/syn/12_49.svg">
 	<img src="imgs/font_12/syn/12_49.svg">
 	<img src="imgs/font_12/syn/12_50.svg">
 	<img src="imgs/font_12/syn/12_51.svg">	

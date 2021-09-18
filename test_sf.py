@@ -106,6 +106,7 @@ def test_main_model(opts):
     
     with torch.no_grad():
         for test_idx, test_data in enumerate(test_loader):
+            print("testing font %04d ..."%test_idx)
             img_decoder_out, vggpt_loss, kl_loss, svg_losses, trg_img, ref_img, gt_trg_seq, sampled_svg_list =\
                 network_forward(test_data, mean, std, opts, network_modules)
             
@@ -193,8 +194,6 @@ def test_main_model(opts):
             #f"Val kl loss: {val_b_loss: .6f}"
         )
         print(val_msg)
-                
-    logfile.close()
 
 def network_forward(data, mean, std, opts, network_moudules):
 
