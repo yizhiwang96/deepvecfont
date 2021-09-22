@@ -1,20 +1,17 @@
 import os
 import pickle
-
 import torch
 import torch.utils.data as data
 import torchvision.transforms as T
-# from torchvision.datasets import CelebA
 
 torch.multiprocessing.set_sharing_strategy('file_system')
-
 
 class SVGDataset(data.Dataset):
     def __init__(self, root_path, char_num = 52, transform=None, mode='train'):
         super().__init__()
         self.mode = mode
-        self.pkl_path = os.path.join(root_path, self.mode, f'{mode}_all.pkl')
-        # self.pkl_path = os.path.join(root_path, self.mode, f'{mode}_0001-0010.pkl')
+        # self.pkl_path = os.path.join(root_path, self.mode, f'{mode}_all.pkl')
+        self.pkl_path = os.path.join(root_path, self.mode, f'{mode}_0001-0010.pkl')
         # self.pkl_path = os.path.join(root_path, 'test', f'test_0000-0010.pkl')
         pkl_f = open(self.pkl_path, 'rb')
         print(f"Loading {self.pkl_path} pickle file ...")

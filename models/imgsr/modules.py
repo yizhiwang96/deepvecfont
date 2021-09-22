@@ -55,12 +55,6 @@ class BaseOptions():
 
     def initialize(self, parser):
         """Define the common options that are used in both training and test."""
-        parser.add_argument('--experiment_name', type=str, default='v1.3_lstmenc_hs512')
-        parser.add_argument('--test_epoch', type=int, default=125, help='the testing checkpoint')
-        parser.add_argument('--model_name', type=str, default='main_model', choices=['main_model', 'neural_raster', 'diff_refinement', 'image_sr'], help='current model_name')
-        parser.add_argument('--mix_temperature', type=float, default=0.0001, help='')
-        parser.add_argument('--gauss_temperature', type=float, default=0.0001, help='')
-
         # basic parameters
         parser.add_argument('--dataroot', default='./data/glyphss_dataset/', help='path to images')
         parser.add_argument('--name', type=str, default='image_sr', help='name of the experiment. It decides where to store samples and models')
@@ -239,8 +233,6 @@ def create_dataset(opt):
         >>> from data import create_dataset
         >>> dataset = create_dataset(opt)
     """
-    #data_loader = CustomDatasetDataLoader(opt)
-    #dataset = data_loader.load_data()
     dataset = get_loader(opt.dataroot, opt.char_categories, opt.batch_size, opt.mode)
     return dataset
 

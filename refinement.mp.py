@@ -309,7 +309,7 @@ if __name__ == "__main__":
     parser.add_argument("--num_processes", type=int, default=4)
     parser.add_argument("--num_chars", type=int, default=52)
     parser.add_argument("--fontid", type=str, default='17')
-    parser.add_argument("--experiment_name", type=str, default='v1.0_usenr_true_butnotgumble')
+    parser.add_argument("--experiment_name", type=str, default='dvf')
     parser.add_argument("--candidate_nums", type=str, default='20')
     args = parser.parse_args()
 

@@ -152,7 +152,6 @@ def train_nr_model(opts):
                     val_save_file = os.path.join(sample_dir, f"val_epoch_{epoch}_batch_{batches_done}.png")
                     save_image(val_img_sample, val_save_file, nrow=8, normalize=True)
 
-
                     val_svg_target = val_trg_seq.clone().detach()
                     val_svg_target = val_svg_target * std  + mean
                     #cur_svg_file = os.path.join(res_dir, f"val_epoch_{epoch}_batch_{val_idx}_svg.svg")
@@ -184,13 +183,9 @@ def train_nr_model(opts):
                 torch.save(neural_rasterizer.module.state_dict(), model_file_1)
             else:
                 torch.save(neural_rasterizer.state_dict(), model_file_1)
-
                 
-
     logfile.close()
     val_logfile.close()
-
-
 
 def train(opts):
     if opts.model_name == 'neural_raster':
@@ -200,8 +195,6 @@ def train(opts):
     else:
         raise NotImplementedError
 
-
-
 def test(opts):
     if opts.model_name == 'neural_raster':
         train_nr_model(opts)
@@ -209,7 +202,6 @@ def test(opts):
         test_others(opts)
     else:
         raise NotImplementedError
-
 
 def main():
     opts = get_parser_main_model().parse_args()

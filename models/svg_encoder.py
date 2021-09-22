@@ -1,6 +1,5 @@
 import math
 import random
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -17,27 +16,18 @@ class SVGLSTMEncoder(nn.Module):
         self.mode = mode
         self.bottleneck_bits = bottleneck_bits
         self.char_categories = char_categories
-        # self.sg_bottleneck = sg_bottleneck
         self.command_len = 4
         self.arg_len = 6
         assert self.command_len + self.arg_len == feature_dim
-
         self.ff_dropout = ff_dropout
         self.num_hidden_layers = num_hidden_layers
         self.hidden_size = hidden_size
         self.unbottleneck_dim = self.hidden_size * 2
-
         self.unbottlenecks = nn.ModuleList([nn.Linear(bottleneck_bits, self.unbottleneck_dim) for _ in range(self.num_hidden_layers)])
-
         self.input_dim = feature_dim
         self.pre_lstm_fc = nn.Linear(self.input_dim, self.hidden_size)
-        # self.pre_lstm_ac = nn.Tanh()
-        # if self.ff_dropout:
-        #   self.dropout = nn.Dropout(dropout_p)
         self.ff_dropout_p = float(mode =='train') * ff_dropout
         self.rec_dropout_p = float(mode =='train') * rec_dropout
-        # self.rnn = nn.LSTM(self.input_dim, self.hidden_size, self.num_hidden_layers, dropout=dropout_p)
-        # self.rnn = LayerNormLSTM(self.hidden_size, self.hidden_size, self.num_hidden_layers, bias=True, bidirectional=False, use_ln=False, ff_dropout_p=self.ff_dropout_p, rec_dropout_p=self.rec_dropout_p)
         self.rnn = LayerNormLSTM(self.hidden_size, self.hidden_size, self.num_hidden_layers)
 
 
@@ -57,13 +47,9 @@ class SVGLSTMEncoder(nn.Module):
         return init_state
 
     def forward(self, inpt, hidden, cell):
-        
-        
         if inpt.size(-1) != self.hidden_size:
             inpt = self.pre_lstm_fc(inpt)
             inpt = inpt.unsqueeze(dim=0)  
-        
-
         output, (hidden, cell) = self.rnn(inpt, (hidden, cell))
         decoder_output = {}
         decoder_output['output'] = output

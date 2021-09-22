@@ -1,18 +1,11 @@
 import math
 import random
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.distributions.categorical import Categorical
 from models.lstm_layernorm import LayerNormLSTM
 import models.util_funcs as util_funcs
-
-
-def init_weights(m):
-    for name, param in m.named_parameters():
-        nn.init.uniform_(param.data, -0.08, 0.08)
-
 
 class SVGLSTMDecoder(nn.Module):
     def __init__(self, char_categories=52,
@@ -22,11 +15,9 @@ class SVGLSTMDecoder(nn.Module):
         self.mode = mode
         self.bottleneck_bits = bottleneck_bits
         self.char_categories = char_categories
-        # self.sg_bottleneck = sg_bottleneck
         self.command_len = 4
         self.arg_len = 6
         assert self.command_len + self.arg_len == feature_dim
-
         self.ff_dropout = ff_dropout
         self.num_hidden_layers = num_hidden_layers
         self.hidden_size = hidden_size
@@ -36,14 +27,11 @@ class SVGLSTMDecoder(nn.Module):
         self.pre_lstm_fc = nn.Linear(self.input_dim, self.hidden_size)
         self.ff_dropout_p = float(mode =='train') * ff_dropout
         self.rec_dropout_p = float(mode =='train') * rec_dropout
-        # self.rnn = nn.LSTM(self.input_dim, self.hidden_size, self.num_hidden_layers, dropout=self.ff_dropout_p)
-        # self.rnn = LayerNormLSTM(self.hidden_size, self.hidden_size, self.num_hidden_layers, bias=True, bidirectional=False, use_ln=False, ff_dropout_p=self.ff_dropout_p, rec_dropout_p=self.rec_dropout_p)
         self.rnn = LayerNormLSTM(self.hidden_size, self.hidden_size, self.num_hidden_layers)
         # self.predict_fc = nn.Linear(self.hidden_size, feature_dim)
 
     def init_state_input(self, sampled_bottleneck, trg_char):
-
-        sampled_bottleneck_cls = torch.cat((sampled_bottleneck,trg_char),-1)
+        sampled_bottleneck_cls = torch.cat((sampled_bottleneck, trg_char),-1)
         init_state_hidden = []
         init_state_cell = []
         for i in range(self.num_hidden_layers):
@@ -60,13 +48,9 @@ class SVGLSTMDecoder(nn.Module):
 
 
     def forward(self, inpt, hidden, cell):
-
-        
-        if inpt.size(-1) != self.hidden_size: 
-            #inpt = inpt  # [batch_size, 10]
+        if inpt.size(-1) != self.hidden_size:
             inpt = self.pre_lstm_fc(inpt)
-            inpt = inpt.unsqueeze(dim=0)
-                                    
+            inpt = inpt.unsqueeze(dim=0)                     
         output, (hidden, cell) = self.rnn(inpt, (hidden, cell))
         decoder_output = {}
         decoder_output['output'] = output
@@ -117,6 +101,7 @@ class SVGMDNTop(nn.Module):
             command = command / torch.sum(command, dim=-1, keepdim=True)
             # sample from the given probs
             command = Categorical(probs=command).sample()
+            # command = torch.argmax(command,-1)
             command = F.one_hot(command, self.command_len).to(decoder_output.device).float()
         
         # for coords(augments) Note: (Categorical + gather) is differentiable
@@ -140,7 +125,7 @@ class SVGMDNTop(nn.Module):
         chosen_logstd = torch.gather(out_logstd, 1, out_logmix_tmp).squeeze(1)
         rand_gaussian = (torch.randn(chosen_mean.size(), device=decoder_output.device) * math.sqrt(self.gauss_temperature))
         arguments = chosen_mean + torch.exp(chosen_logstd) * rand_gaussian
-
+        # arguments = chosen_mean
         batch_size = command.size(1)
         arguments = arguments.reshape(-1, batch_size, self.arg_len)  # [seq_len, batch, arg_len]
         # concat with the command we picked

@@ -180,7 +180,7 @@ This will output the synthesized fonts without refinements. Note that `batch_siz
 
 To refinement the vector glyphs, run
 ```
-python refinement.mp.py --experiment_name dvf --fontid 4
+python refinement.mp.py --experiment_name dvf --fontid 4 --candidate_nums 20
 ```
 where the `fontid` denotes the index of testing font.
 
@@ -193,5 +193,5 @@ python train_nr.py --mode train --experiment_name dvf --model_name neural_raster
 ```
 To train the image super-resolution model:
 ```
-python train_sr.py --mode train --experiment_name dvf --model_name image_sr
+python train_sr.py --mode train --name image_sr
 ```

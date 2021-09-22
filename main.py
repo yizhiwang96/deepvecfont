@@ -13,21 +13,18 @@ from models.image_decoder import ImageDecoder
 from models.modality_fusion import ModalityFusion
 from models.vgg_perceptual_loss import VGGPerceptualLoss
 from models.vgg_contextual_loss import VGGContextualLoss
-from models.svg_decoder import SVGLSTMDecoder, init_weights, SVGMDNTop
+from models.svg_decoder import SVGLSTMDecoder, SVGMDNTop
 from models.svg_encoder import SVGLSTMEncoder 
 from models.neural_rasterizer import NeuralRasterizer
 from models import util_funcs
 from options import get_parser_main_model
 from data_utils.svg_utils import render
-
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
 
 def train_main_model(opts):
     exp_dir = os.path.join("experiments", opts.experiment_name)
     sample_dir = os.path.join(exp_dir, "samples")
     ckpt_dir = os.path.join(exp_dir, "checkpoints")
-    # res_dir = os.path.join(exp_dir, "results")
     log_dir = os.path.join(exp_dir, "logs")
 
     logfile = open(os.path.join(log_dir, "train_loss_log.txt"), 'w')
@@ -47,14 +44,12 @@ def train_main_model(opts):
 
     svg_encoder = SVGLSTMEncoder(char_categories=opts.char_categories,
                                  bottleneck_bits=opts.bottleneck_bits, mode=opts.mode, max_sequence_length=opts.max_seq_len,
-                                 hidden_size=opts.hidden_size,
-                                 num_hidden_layers=opts.num_hidden_layers,
+                                 hidden_size=opts.hidden_size, num_hidden_layers=opts.num_hidden_layers,
                                  feature_dim=opts.seq_feature_dim, ff_dropout=opts.ff_dropout, rec_dropout=opts.rec_dropout)
 
     svg_decoder = SVGLSTMDecoder(char_categories=opts.char_categories,
                                  bottleneck_bits=opts.bottleneck_bits, mode=opts.mode, max_sequence_length=opts.max_seq_len,
-                                 hidden_size=opts.hidden_size,
-                                 num_hidden_layers=opts.num_hidden_layers,
+                                 hidden_size=opts.hidden_size, num_hidden_layers=opts.num_hidden_layers,
                                  feature_dim=opts.seq_feature_dim, ff_dropout=opts.ff_dropout, rec_dropout=opts.rec_dropout)
        
     mdn_top_layer = SVGMDNTop(num_mixture=opts.num_mixture, seq_len=opts.max_seq_len, hidden_size=opts.hidden_size,
@@ -90,7 +85,6 @@ def train_main_model(opts):
 
     all_parameters = list(img_encoder.parameters()) + list(img_decoder.parameters()) + list(modality_fusion.parameters()) +\
                      list(svg_encoder.parameters()) + list(svg_decoder.parameters()) + list(mdn_top_layer.parameters())
-    # all_parameters = list(img_encoder.parameters()) + list(img_decoder.parameters()) + list(modality_fusion.parameters())
     optimizer = Adam(all_parameters, lr=opts.lr, betas=(opts.beta1, opts.beta2), eps=opts.eps, weight_decay=opts.weight_decay)
 
     if opts.tboard:
@@ -333,16 +327,6 @@ def train(opts):
         train_main_model(opts)
     elif opts.model_name == 'others':
         train_others(opts)
-    else:
-        raise NotImplementedError
-
-
-
-def test(opts):
-    if opts.model_name == 'main_model':
-        test_image_vae(opts)
-    elif opts.model_name == 'others':
-        test_others(opts)
     else:
         raise NotImplementedError
 
