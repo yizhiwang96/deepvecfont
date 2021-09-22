@@ -147,13 +147,15 @@ Synthesized glyphs by DeepVecFont:
 ### Requirement
 
 - **python 3.9**
-- **Pytorch 1.9.0** (it may work on some lower versions, but not tested)
+- **Pytorch 1.9** (it may work on some lower versions, but not tested)
 
 Please use [Anaconda](https://docs.anaconda.com/anaconda/install/linux/) to build the environment:
 ```shell
 conda create -n dvf python=3.9
 source activate dvf
 ```
+Install pytorch via the [instructions](https://pytorch.org/get-started/locally/).
+
 ### Install diffvg
 
 We utilize diffvg to refine our generated vector glyphs in the testing phase.
