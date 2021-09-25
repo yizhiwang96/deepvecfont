@@ -1,15 +1,140 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50px" height="50px" viewBox="0 0 24 24">
 <style type="text/css">
-.path {
-		stroke-dasharray: 100;
-		animation: dash 30s linear infinite;
+.pen {
+	stroke-dashoffset: 0;
+	animation-duration: 5s;
+	animation-iteration-count: 1000;
+	animation-timing-function: ease;
 }
-@keyframes dash {
-	to {
-		stroke-dashoffset: 1000;
+.path00 {
+		stroke-dasharray: 4;
+		animation-name: dash00 
+}
+@keyframes dash00 {
+	0% {
+		stroke-dashoffset: 4;
+	}
+	2% {
+		stroke-dashoffset: 0;
+	}
+}
+.path01 {
+		stroke-dasharray: 28;
+		animation-name: dash01 
+}
+@keyframes dash01 {
+	0%, 2% {
+		stroke-dashoffset: 28;
+	}
+	16% {
+		stroke-dashoffset: 0;
+	}
+}
+.path02 {
+		stroke-dasharray: 27;
+		animation-name: dash02 
+}
+@keyframes dash02 {
+	0%, 16% {
+		stroke-dashoffset: 27;
+	}
+	30% {
+		stroke-dashoffset: 0;
+	}
+}
+.path03 {
+		stroke-dasharray: 3;
+		animation-name: dash03 
+}
+@keyframes dash03 {
+	0%, 30% {
+		stroke-dashoffset: 3;
+	}
+	32% {
+		stroke-dashoffset: 0;
+	}
+}
+.path04 {
+		stroke-dasharray: 33;
+		animation-name: dash04 
+}
+@keyframes dash04 {
+	0%, 32% {
+		stroke-dashoffset: 33;
+	}
+	49% {
+		stroke-dashoffset: 0;
+	}
+}
+.path05 {
+		stroke-dasharray: 4;
+		animation-name: dash05 
+}
+@keyframes dash05 {
+	0%, 49% {
+		stroke-dashoffset: 4;
+	}
+	51% {
+		stroke-dashoffset: 0;
+	}
+}
+.path06 {
+		stroke-dasharray: 29;
+		animation-name: dash06 
+}
+@keyframes dash06 {
+	0%, 51% {
+		stroke-dashoffset: 29;
+	}
+	66% {
+		stroke-dashoffset: 0;
+	}
+}
+.path07 {
+		stroke-dasharray: 28;
+		animation-name: dash07 
+}
+@keyframes dash07 {
+	0%, 66% {
+		stroke-dashoffset: 28;
+	}
+	81% {
+		stroke-dashoffset: 0;
+	}
+}
+.path08 {
+		stroke-dasharray: 3;
+		animation-name: dash08 
+}
+@keyframes dash08 {
+	0%, 81% {
+		stroke-dashoffset: 3;
+	}
+	83% {
+		stroke-dashoffset: 0;
+	}
+}
+.path09 {
+		stroke-dasharray: 32;
+		animation-name: dash09 
+}
+@keyframes dash09 {
+	0%, 83% {
+		stroke-dashoffset: 32;
+	}
+	100% {
+		stroke-dashoffset: 0;
 	}
 }
 </style>
-<path class="path" d="M 7.961191892623901 6.670923471450806 L 10.353725194931030 6.615485429763794 L 15.863257884979248 19.956160068511963 L 19.206367492675781 6.660472869873047 L 21.176389217376709 6.653882503509521 L 17.029994487762451 22.674177646636963 L 14.625492095947266 22.698346138000488 C 13.501240253448486 19.439696788787842 11.303202867507935 13.349906444549561 9.355750322341919 8.672862052917480 L 5.935323715209961 22.689611434936523 L 4.015867710113525 22.678370475769043 C 5.314018249511719 18.035297870635986 7.106322526931763 10.111646175384521 7.961191892623901 6.670923471450806 " fill="none" stroke="black" stroke-width="0.3">
-</path>
+<path class="pen path00" d="M 7.961191892623901 6.670923471450806 L 10.353725194931030 6.615485429763794 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path01" d="M 10.353725194931030 6.615485429763794 L 15.863257884979248 19.956160068511963 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path02" d="M 15.863257884979248 19.956160068511963 L 19.206367492675781 6.660472869873047 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path03" d="M 19.206367492675781 6.660472869873047 L 21.176389217376709 6.653882503509521 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path04" d="M 21.176389217376709 6.653882503509521 L 17.029994487762451 22.674177646636963 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path05" d="M 17.029994487762451 22.674177646636963 L 14.625492095947266 22.698346138000488 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path06" d="M 14.625492095947266 22.698346138000488 C 13.501240253448486 19.439696788787842 11.303202867507935 13.349906444549561 9.355750322341919 8.672862052917480 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path07" d="M 9.355750322341919 8.672862052917480 L 5.935323715209961 22.689611434936523 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path08" d="M 5.935323715209961 22.689611434936523 L 4.015867710113525 22.678370475769043 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path09" d="M 4.015867710113525 22.678370475769043 C 5.314018249511719 18.035297870635986 7.106322526931763 10.111646175384521 7.961191892623901 6.670923471450806 " fill="none" stroke="black" stroke-width="0.3"></path>
 </svg>

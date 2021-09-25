@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50px" height="50px" viewBox="0 0 24 24">
+<style type="text/css">
+.path {
+		stroke-dasharray: 100;
+		animation: dash 30s linear infinite;
+}
+@keyframes dash {
+	to {
+		stroke-dashoffset: 1000;
+	}
+}
+</style>
+<path class="path" d="M 15.136748313903809 6.639081001281738 L 11.391383886337280 22.684331417083740 L 9.441041707992554 22.690150737762451 L 13.228477478027344 6.783101320266724 L 15.136748313903809 6.639081001281738 " fill="none" stroke="black" stroke-width="0.3">
+</path>
+</svg>

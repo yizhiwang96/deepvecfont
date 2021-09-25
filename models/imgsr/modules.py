@@ -21,17 +21,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from collections import OrderedDict
-#from IPython.display import HTML
 import matplotlib.image as mpimg
 import time # time.time()  # timer for entire epoch
 import torch.utils.data as data
 from PIL import Image
 from abc import ABC, abstractmethod
-#from util import util
 import importlib
 from models.imgsr import networks
-#from util.visualizer import Visualizer
 from dataloader_sr import get_loader
+from options import get_parser_main_model
 from models import util_funcs
 from torchvision.transforms import Resize
 
@@ -55,6 +53,12 @@ class BaseOptions():
 
     def initialize(self, parser):
         """Define the common options that are used in both training and test."""
+        # some parameters from main model
+        parser.add_argument('--experiment_name', type=str, default='dvf')
+        parser.add_argument('--model_name', type=str, default='main_model', choices=['main_model', 'neural_raster'], help='current model_name')
+        parser.add_argument('--test_epoch', type=int, default=125, help='the testing checkpoint')
+        parser.add_argument('--mix_temperature', type=float, default=0.0001, help='')
+        parser.add_argument('--gauss_temperature', type=float, default=0, help='')
         # basic parameters
         parser.add_argument('--dataroot', default='./data/glyphss_dataset/', help='path to images')
         parser.add_argument('--name', type=str, default='image_sr', help='name of the experiment. It decides where to store samples and models')

@@ -12,7 +12,7 @@ from models.image_encoder import ImageEncoder
 from models.image_decoder import ImageDecoder
 from models.modality_fusion import ModalityFusion
 from models.vgg_perceptual_loss import VGGPerceptualLoss
-from models.svg_decoder import SVGLSTMDecoder, init_weights, SVGMDNTop
+from models.svg_decoder import SVGLSTMDecoder, SVGMDNTop
 from models.svg_encoder import SVGLSTMEncoder
 from models import util_funcs
 from options import get_parser_main_model
