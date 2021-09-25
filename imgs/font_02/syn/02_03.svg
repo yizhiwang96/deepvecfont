@@ -11,10 +11,10 @@
 		animation-name: dash00 
 }
 @keyframes dash00 {
-	0% {
+	0.0% {
 		stroke-dashoffset: 10;
 	}
-	7% {
+	7.486688715558086% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -23,10 +23,10 @@
 		animation-name: dash01 
 }
 @keyframes dash01 {
-	0%, 7% {
+	0%, 7.486688715558086% {
 		stroke-dashoffset: 23;
 	}
-	23% {
+	23.834229419259152% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -35,10 +35,10 @@
 		animation-name: dash02 
 }
 @keyframes dash02 {
-	0%, 23% {
+	0%, 23.834229419259152% {
 		stroke-dashoffset: 24;
 	}
-	40% {
+	40.91528816669041% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -47,10 +47,10 @@
 		animation-name: dash03 
 }
 @keyframes dash03 {
-	0%, 40% {
+	0%, 40.91528816669041% {
 		stroke-dashoffset: 9;
 	}
-	47% {
+	47.59721465959104% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -59,22 +59,22 @@
 		animation-name: dash04 
 }
 @keyframes dash04 {
-	0%, 47% {
+	0%, 47.59721465959104% {
 		stroke-dashoffset: 32;
 	}
-	69% {
+	69.94581965441265% {
 		stroke-dashoffset: 0;
 	}
 }
 .path05 {
-		stroke-dasharray: 0;
+		stroke-dasharray: 1;
 		animation-name: dash05 
 }
 @keyframes dash05 {
-	0%, 69% {
-		stroke-dashoffset: 0;
+	0%, 69.94581965441265% {
+		stroke-dashoffset: 1;
 	}
-	69% {
+	69.94581965441265% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -83,10 +83,10 @@
 		animation-name: dash06 
 }
 @keyframes dash06 {
-	0%, 69% {
+	0%, 69.94581965441265% {
 		stroke-dashoffset: 15;
 	}
-	80% {
+	80.81743679794532% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -95,10 +95,10 @@
 		animation-name: dash07 
 }
 @keyframes dash07 {
-	0%, 80% {
+	0%, 80.81743679794532% {
 		stroke-dashoffset: 2;
 	}
-	82% {
+	82.46714465043523% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -107,10 +107,10 @@
 		animation-name: dash08 
 }
 @keyframes dash08 {
-	0%, 82% {
+	0%, 82.46714465043523% {
 		stroke-dashoffset: 16;
 	}
-	93% {
+	93.74441812337648% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -119,10 +119,10 @@
 		animation-name: dash09 
 }
 @keyframes dash09 {
-	0%, 93% {
+	0%, 93.74441812337648% {
 		stroke-dashoffset: 9;
 	}
-	100% {
+	100.0% {
 		stroke-dashoffset: 0;
 	}
 }

@@ -137,21 +137,21 @@ for data_split in {'syn', 'gt'}:
  
         for path_num in range(len(new_paths)):
             fout.write('.path' + '%02d'%path_num + ' {' + '\n')
-            fout.write('\t\t' + 'stroke-dasharray: ' + str(int(new_paths_lengths[path_num]*2)) + ';' + '\n')
+            fout.write('\t\t' + 'stroke-dasharray: ' + str(max(int(new_paths_lengths[path_num]*2),1)) + ';' + '\n')
             fout.write('\t\t' + 'animation-name: dash' + '%02d '%path_num + '\n')
             fout.write('}' + '\n')
 
             fout.write('@keyframes dash' + '%02d'%path_num +' {' + '\n')
             
-            prop = int(100 * np.sum(new_paths_lengths[0:path_num]) / np.sum(new_paths_lengths))
+            prop = float(100 * np.sum(new_paths_lengths[0:path_num]) / np.sum(new_paths_lengths))
             if path_num == 0:
                 fout.write('\t' + str(prop) + '% {' + '\n')
             else:
                 fout.write('\t0%, ' + str(prop) + '% {' + '\n')
-            fout.write('\t\t' + 'stroke-dashoffset: ' + str(int(new_paths_lengths[path_num]*2)) + ';' + '\n')
+            fout.write('\t\t' + 'stroke-dashoffset: ' + str(max(int(new_paths_lengths[path_num]*2),1)) + ';' + '\n')
             fout.write('\t' + '}' + '\n')
 
-            prop = int(100 * np.sum(new_paths_lengths[0:path_num+1]) / np.sum(new_paths_lengths))
+            prop = float(100 * np.sum(new_paths_lengths[0:path_num+1]) / np.sum(new_paths_lengths))
             fout.write('\t' + str(prop) + '% {' + '\n')
             fout.write('\t\t' + 'stroke-dashoffset: 0;' + '\n')
             fout.write('\t' + '}' + '\n')

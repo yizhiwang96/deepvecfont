@@ -11,10 +11,10 @@
 		animation-name: dash00 
 }
 @keyframes dash00 {
-	0% {
+	0.0% {
 		stroke-dashoffset: 8;
 	}
-	7% {
+	7.526505348746497% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -23,10 +23,10 @@
 		animation-name: dash01 
 }
 @keyframes dash01 {
-	0%, 7% {
+	0%, 7.526505348746497% {
 		stroke-dashoffset: 13;
 	}
-	19% {
+	19.19658489364876% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -35,22 +35,22 @@
 		animation-name: dash02 
 }
 @keyframes dash02 {
-	0%, 19% {
+	0%, 19.19658489364876% {
 		stroke-dashoffset: 4;
 	}
-	23% {
+	23.468252006864084% {
 		stroke-dashoffset: 0;
 	}
 }
 .path03 {
-		stroke-dasharray: 0;
+		stroke-dasharray: 1;
 		animation-name: dash03 
 }
 @keyframes dash03 {
-	0%, 23% {
-		stroke-dashoffset: 0;
+	0%, 23.468252006864084% {
+		stroke-dashoffset: 1;
 	}
-	23% {
+	23.636442070523223% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -59,10 +59,10 @@
 		animation-name: dash04 
 }
 @keyframes dash04 {
-	0%, 23% {
+	0%, 23.636442070523223% {
 		stroke-dashoffset: 4;
 	}
-	28% {
+	28.014257277977133% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -71,10 +71,10 @@
 		animation-name: dash05 
 }
 @keyframes dash05 {
-	0%, 28% {
+	0%, 28.014257277977133% {
 		stroke-dashoffset: 12;
 	}
-	39% {
+	39.56518133663109% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -83,10 +83,10 @@
 		animation-name: dash06 
 }
 @keyframes dash06 {
-	0%, 39% {
+	0%, 39.56518133663109% {
 		stroke-dashoffset: 8;
 	}
-	46% {
+	46.818377831931485% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -95,10 +95,10 @@
 		animation-name: dash07 
 }
 @keyframes dash07 {
-	0%, 46% {
+	0%, 46.818377831931485% {
 		stroke-dashoffset: 24;
 	}
-	69% {
+	69.16238980857247% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -107,10 +107,10 @@
 		animation-name: dash08 
 }
 @keyframes dash08 {
-	0%, 69% {
+	0%, 69.16238980857247% {
 		stroke-dashoffset: 9;
 	}
-	77% {
+	77.65598802335901% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -119,10 +119,10 @@
 		animation-name: dash09 
 }
 @keyframes dash09 {
-	0%, 77% {
+	0%, 77.65598802335901% {
 		stroke-dashoffset: 24;
 	}
-	100% {
+	100.0% {
 		stroke-dashoffset: 0;
 	}
 }
