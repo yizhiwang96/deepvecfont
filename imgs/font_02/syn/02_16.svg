@@ -2,7 +2,7 @@
 <style type="text/css">
 .pen {
 	stroke-dashoffset: 0;
-	animation-duration: 5s;
+	animation-duration: 10s;
 	animation-iteration-count: 1000;
 	animation-timing-function: ease;
 }
