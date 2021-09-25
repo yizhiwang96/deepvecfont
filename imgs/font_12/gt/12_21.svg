@@ -11,10 +11,10 @@
 		animation-name: dash00 
 }
 @keyframes dash00 {
-	0% {
+	0.0% {
 		stroke-dashoffset: 3;
 	}
-	2% {
+	2.660813348933468% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -23,10 +23,10 @@
 		animation-name: dash01 
 }
 @keyframes dash01 {
-	0%, 2% {
+	0%, 2.660813348933468% {
 		stroke-dashoffset: 28;
 	}
-	22% {
+	22.390789358271075% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -35,10 +35,10 @@
 		animation-name: dash02 
 }
 @keyframes dash02 {
-	0%, 22% {
+	0%, 22.390789358271075% {
 		stroke-dashoffset: 8;
 	}
-	28% {
+	28.407908189745573% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -47,10 +47,10 @@
 		animation-name: dash03 
 }
 @keyframes dash03 {
-	0%, 28% {
+	0%, 28.407908189745573% {
 		stroke-dashoffset: 5;
 	}
-	31% {
+	31.955659321656864% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -59,10 +59,10 @@
 		animation-name: dash04 
 }
 @keyframes dash04 {
-	0%, 31% {
+	0%, 31.955659321656864% {
 		stroke-dashoffset: 24;
 	}
-	48% {
+	48.851475374974825% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -71,10 +71,10 @@
 		animation-name: dash05 
 }
 @keyframes dash05 {
-	0%, 48% {
+	0%, 48.851475374974825% {
 		stroke-dashoffset: 7;
 	}
-	54% {
+	54.00288735299236% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -83,10 +83,10 @@
 		animation-name: dash06 
 }
 @keyframes dash06 {
-	0%, 54% {
+	0%, 54.00288735299236% {
 		stroke-dashoffset: 3;
 	}
-	56% {
+	56.63085092476785% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -95,10 +95,10 @@
 		animation-name: dash07 
 }
 @keyframes dash07 {
-	0%, 56% {
+	0%, 56.63085092476785% {
 		stroke-dashoffset: 24;
 	}
-	73% {
+	73.52053590771163% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -107,10 +107,10 @@
 		animation-name: dash08 
 }
 @keyframes dash08 {
-	0%, 73% {
+	0%, 73.52053590771163% {
 		stroke-dashoffset: 4;
 	}
-	76% {
+	76.68792040909092% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -119,10 +119,10 @@
 		animation-name: dash09 
 }
 @keyframes dash09 {
-	0%, 76% {
+	0%, 76.68792040909092% {
 		stroke-dashoffset: 28;
 	}
-	96% {
+	96.31557336434753% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -131,10 +131,10 @@
 		animation-name: dash10 
 }
 @keyframes dash10 {
-	0%, 96% {
+	0%, 96.31557336434753% {
 		stroke-dashoffset: 5;
 	}
-	100% {
+	100.0% {
 		stroke-dashoffset: 0;
 	}
 }

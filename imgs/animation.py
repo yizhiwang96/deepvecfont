@@ -105,67 +105,68 @@ def parse_svg_abs(svg_c):
             new_paths.append(cur_path)
     return new_paths, new_paths_lengths
 
-fontid = '02'
-for data_split in {'syn', 'gt'}:
-    input_dir = './font_' + fontid + '_raw/' + data_split + '/'
-    out_dir= 'font_' + fontid + '/' + data_split + '/'
+fontid_list = ['02', '12']
+for fontid in fontid_list:
+    for data_split in {'syn', 'gt'}:
+        input_dir = './font_' + fontid + '_raw/' + data_split + '/'
+        out_dir= 'font_' + fontid + '/' + data_split + '/'
 
-    for idx in range(0,52):
-        svg_f = open(input_dir + "%02d"%(idx) + '.svg')
-        svg_c = svg_f.read()
-        if data_split == 'syn':
-            new_paths, new_paths_lengths = parse_svg_abs(svg_c)
-        else:
-            new_paths, new_paths_lengths = parse_svg_rel(svg_c)
-        if 'fill="currentColor"/>' in svg_c:
-            svg_c = svg_c.replace('fill="currentColor"/>','fill="none" stroke="black" stroke-width="0.3"></path>')
-        d = svg_c.split('path d=')[1]
-        d = 'd=' + d
-        d = d.split('</path>')[0]
-        fout = open(out_dir + fontid + '_%02d'%(idx) + '.svg', 'w')
-        fout.write('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50px" height="50px" viewBox="0 0 24 24">' + '\n')
-        # define style css
-        fout.write('<style type="text/css">' + '\n')
-        fout.write('.pen {' + '\n')
-        fout.write('\t' + 'stroke-dashoffset: 0;' + '\n')
-        fout.write('\t' + 'animation-duration: 5s;' + '\n')
-        fout.write('\t' + 'animation-iteration-count: 1000;' + '\n')
-        fout.write('\t' + 'animation-timing-function: ease;' + '\n')
-        fout.write('}' + '\n')
-
-        length_full = np.sum(new_paths_lengths)
- 
-        for path_num in range(len(new_paths)):
-            fout.write('.path' + '%02d'%path_num + ' {' + '\n')
-            fout.write('\t\t' + 'stroke-dasharray: ' + str(max(int(new_paths_lengths[path_num]*2),1)) + ';' + '\n')
-            fout.write('\t\t' + 'animation-name: dash' + '%02d '%path_num + '\n')
-            fout.write('}' + '\n')
-
-            fout.write('@keyframes dash' + '%02d'%path_num +' {' + '\n')
-            
-            prop = float(100 * np.sum(new_paths_lengths[0:path_num]) / np.sum(new_paths_lengths))
-            if path_num == 0:
-                fout.write('\t' + str(prop) + '% {' + '\n')
+        for idx in range(0,52):
+            svg_f = open(input_dir + "%02d"%(idx) + '.svg')
+            svg_c = svg_f.read()
+            if data_split == 'syn':
+                new_paths, new_paths_lengths = parse_svg_abs(svg_c)
             else:
-                fout.write('\t0%, ' + str(prop) + '% {' + '\n')
-            fout.write('\t\t' + 'stroke-dashoffset: ' + str(max(int(new_paths_lengths[path_num]*2),1)) + ';' + '\n')
-            fout.write('\t' + '}' + '\n')
-
-            prop = float(100 * np.sum(new_paths_lengths[0:path_num+1]) / np.sum(new_paths_lengths))
-            fout.write('\t' + str(prop) + '% {' + '\n')
-            fout.write('\t\t' + 'stroke-dashoffset: 0;' + '\n')
-            fout.write('\t' + '}' + '\n')
+                new_paths, new_paths_lengths = parse_svg_rel(svg_c)
+            if 'fill="currentColor"/>' in svg_c:
+                svg_c = svg_c.replace('fill="currentColor"/>','fill="none" stroke="black" stroke-width="0.3"></path>')
+            d = svg_c.split('path d=')[1]
+            d = 'd=' + d
+            d = d.split('</path>')[0]
+            fout = open(out_dir + fontid + '_%02d'%(idx) + '.svg', 'w')
+            fout.write('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50px" height="50px" viewBox="0 0 24 24">' + '\n')
+            # define style css
+            fout.write('<style type="text/css">' + '\n')
+            fout.write('.pen {' + '\n')
+            fout.write('\t' + 'stroke-dashoffset: 0;' + '\n')
+            fout.write('\t' + 'animation-duration: 5s;' + '\n')
+            fout.write('\t' + 'animation-iteration-count: 1000;' + '\n')
+            fout.write('\t' + 'animation-timing-function: ease;' + '\n')
             fout.write('}' + '\n')
-        fout.write('</style>' + '\n')
 
-        # write paths
-        for path_num in range(len(new_paths)):
-            fout.write('<path class="pen' + ' path' + '%02d'%path_num + '" ')
-            fout.write('d="')
-            fout.write(new_paths[path_num])
-            fout.write('" fill="none" stroke="black" stroke-width="0.3">')
-            #fout.write(d + '\n')
-            fout.write('</path>' + '\n')
+            length_full = np.sum(new_paths_lengths)
+    
+            for path_num in range(len(new_paths)):
+                fout.write('.path' + '%02d'%path_num + ' {' + '\n')
+                fout.write('\t\t' + 'stroke-dasharray: ' + str(max(int(new_paths_lengths[path_num]*2),1)) + ';' + '\n')
+                fout.write('\t\t' + 'animation-name: dash' + '%02d '%path_num + '\n')
+                fout.write('}' + '\n')
 
-        fout.write('</svg>' + '\n')
-        fout.close()
+                fout.write('@keyframes dash' + '%02d'%path_num +' {' + '\n')
+                
+                prop = float(100 * np.sum(new_paths_lengths[0:path_num]) / np.sum(new_paths_lengths))
+                if path_num == 0:
+                    fout.write('\t' + str(prop) + '% {' + '\n')
+                else:
+                    fout.write('\t0%, ' + str(prop) + '% {' + '\n')
+                fout.write('\t\t' + 'stroke-dashoffset: ' + str(max(int(new_paths_lengths[path_num]*2),1)) + ';' + '\n')
+                fout.write('\t' + '}' + '\n')
+
+                prop = float(100 * np.sum(new_paths_lengths[0:path_num+1]) / np.sum(new_paths_lengths))
+                fout.write('\t' + str(prop) + '% {' + '\n')
+                fout.write('\t\t' + 'stroke-dashoffset: 0;' + '\n')
+                fout.write('\t' + '}' + '\n')
+                fout.write('}' + '\n')
+            fout.write('</style>' + '\n')
+
+            # write paths
+            for path_num in range(len(new_paths)):
+                fout.write('<path class="pen' + ' path' + '%02d'%path_num + '" ')
+                fout.write('d="')
+                fout.write(new_paths[path_num])
+                fout.write('" fill="none" stroke="black" stroke-width="0.3">')
+                #fout.write(d + '\n')
+                fout.write('</path>' + '\n')
+
+            fout.write('</svg>' + '\n')
+            fout.close()

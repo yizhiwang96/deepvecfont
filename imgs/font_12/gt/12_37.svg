@@ -11,10 +11,10 @@
 		animation-name: dash00 
 }
 @keyframes dash00 {
-	0% {
+	0.0% {
 		stroke-dashoffset: 25;
 	}
-	34% {
+	34.73812805607335% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -23,10 +23,10 @@
 		animation-name: dash01 
 }
 @keyframes dash01 {
-	0%, 34% {
+	0%, 34.73812805607335% {
 		stroke-dashoffset: 7;
 	}
-	45% {
+	45.33533105557894% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -35,10 +35,10 @@
 		animation-name: dash02 
 }
 @keyframes dash02 {
-	0%, 45% {
+	0%, 45.33533105557894% {
 		stroke-dashoffset: 3;
 	}
-	50% {
+	50.00000182448077% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -47,10 +47,10 @@
 		animation-name: dash03 
 }
 @keyframes dash03 {
-	0%, 50% {
+	0%, 50.00000182448077% {
 		stroke-dashoffset: 25;
 	}
-	84% {
+	84.73812751548802% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -59,10 +59,10 @@
 		animation-name: dash04 
 }
 @keyframes dash04 {
-	0%, 84% {
+	0%, 84.73812751548802% {
 		stroke-dashoffset: 7;
 	}
-	95% {
+	95.33532988376379% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -71,10 +71,10 @@
 		animation-name: dash05 
 }
 @keyframes dash05 {
-	0%, 95% {
+	0%, 95.33532988376379% {
 		stroke-dashoffset: 3;
 	}
-	100% {
+	100.0% {
 		stroke-dashoffset: 0;
 	}
 }

@@ -11,10 +11,10 @@
 		animation-name: dash00 
 }
 @keyframes dash00 {
-	0% {
+	0.0% {
 		stroke-dashoffset: 14;
 	}
-	7% {
+	7.546068889290252% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -23,10 +23,10 @@
 		animation-name: dash01 
 }
 @keyframes dash01 {
-	0%, 7% {
+	0%, 7.546068889290252% {
 		stroke-dashoffset: 18;
 	}
-	17% {
+	17.245913087014095% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -35,10 +35,10 @@
 		animation-name: dash02 
 }
 @keyframes dash02 {
-	0%, 17% {
+	0%, 17.245913087014095% {
 		stroke-dashoffset: 30;
 	}
-	32% {
+	32.84394297506593% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -47,10 +47,10 @@
 		animation-name: dash03 
 }
 @keyframes dash03 {
-	0%, 32% {
+	0%, 32.84394297506593% {
 		stroke-dashoffset: 12;
 	}
-	39% {
+	39.37758846327749% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -59,22 +59,22 @@
 		animation-name: dash04 
 }
 @keyframes dash04 {
-	0%, 39% {
+	0%, 39.37758846327749% {
 		stroke-dashoffset: 33;
 	}
-	56% {
+	56.52622806284925% {
 		stroke-dashoffset: 0;
 	}
 }
 .path05 {
-		stroke-dasharray: 0;
+		stroke-dasharray: 1;
 		animation-name: dash05 
 }
 @keyframes dash05 {
-	0%, 56% {
-		stroke-dashoffset: 0;
+	0%, 56.52622806284925% {
+		stroke-dashoffset: 1;
 	}
-	56% {
+	56.52622806284925% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -83,10 +83,10 @@
 		animation-name: dash06 
 }
 @keyframes dash06 {
-	0%, 56% {
+	0%, 56.52622806284925% {
 		stroke-dashoffset: 26;
 	}
-	70% {
+	70.43709826298564% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -95,10 +95,10 @@
 		animation-name: dash07 
 }
 @keyframes dash07 {
-	0%, 70% {
+	0%, 70.43709826298564% {
 		stroke-dashoffset: 8;
 	}
-	75% {
+	75.0319559639712% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -107,10 +107,10 @@
 		animation-name: dash08 
 }
 @keyframes dash08 {
-	0%, 75% {
+	0%, 75.0319559639712% {
 		stroke-dashoffset: 25;
 	}
-	88% {
+	88.185970214851% {
 		stroke-dashoffset: 0;
 	}
 }
@@ -119,10 +119,10 @@
 		animation-name: dash09 
 }
 @keyframes dash09 {
-	0%, 88% {
+	0%, 88.185970214851% {
 		stroke-dashoffset: 22;
 	}
-	100% {
+	100.0% {
 		stroke-dashoffset: 0;
 	}
 }
