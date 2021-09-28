@@ -142,6 +142,71 @@ Synthesized glyphs by DeepVecFont:
 	<br/>
 </div>
 
+Input glyphs:
+<div align=center>
+	<img src="imgs/font_41/gt/41_00.svg"> 
+	<img src="imgs/font_41/gt/41_01.svg"> 
+	<img src="imgs/font_41/gt/41_26.svg"> 
+	<img src="imgs/font_41/gt/41_27.svg"> 
+</div>
+Synthesized glyphs by DeepVecFont:
+<div align=center>
+	<img src="imgs/font_41/syn/41_00.svg"> 
+	<img src="imgs/font_41/syn/41_01.svg"> 
+	<img src="imgs/font_41/syn/41_02.svg"> 
+	<img src="imgs/font_41/syn/41_03.svg"> 
+	<img src="imgs/font_41/syn/41_04.svg">
+	<img src="imgs/font_41/syn/41_05.svg">
+	<img src="imgs/font_41/syn/41_06.svg">
+	<img src="imgs/font_41/syn/41_07.svg"> 
+	<img src="imgs/font_41/syn/41_08.svg"> 
+	<img src="imgs/font_41/syn/41_09.svg"> 
+	<img src="imgs/font_41/syn/41_10.svg"> 
+	<img src="imgs/font_41/syn/41_11.svg">
+	<img src="imgs/font_41/syn/41_12.svg">
+	<img src="imgs/font_41/syn/41_13.svg">
+	<img src="imgs/font_41/syn/41_14.svg"> 
+	<img src="imgs/font_41/syn/41_15.svg"> 
+	<img src="imgs/font_41/syn/41_16.svg"> 
+	<img src="imgs/font_41/syn/41_17.svg"> 
+	<img src="imgs/font_41/syn/41_18.svg">
+	<img src="imgs/font_41/syn/41_19.svg">
+	<img src="imgs/font_41/syn/41_20.svg">
+	<img src="imgs/font_41/syn/41_21.svg"> 
+	<img src="imgs/font_41/syn/41_22.svg"> 
+	<img src="imgs/font_41/syn/41_23.svg"> 	
+	<img src="imgs/font_41/syn/41_24.svg">
+	<img src="imgs/font_41/syn/41_25.svg">
+	<br/>
+	<img src="imgs/font_41/syn/41_26.svg"> 
+	<img src="imgs/font_41/syn/41_27.svg"> 
+	<img src="imgs/font_41/syn/41_28.svg"> 
+	<img src="imgs/font_41/syn/41_29.svg"> 
+	<img src="imgs/font_41/syn/41_30.svg">
+	<img src="imgs/font_41/syn/41_31.svg">
+	<img src="imgs/font_41/syn/41_32.svg">
+	<img src="imgs/font_41/syn/41_33.svg"> 
+	<img src="imgs/font_41/syn/41_34.svg"> 
+	<img src="imgs/font_41/syn/41_35.svg"> 
+	<img src="imgs/font_41/syn/41_36.svg"> 
+	<img src="imgs/font_41/syn/41_37.svg">
+	<img src="imgs/font_41/syn/41_38.svg">
+	<img src="imgs/font_41/syn/41_39.svg">
+	<img src="imgs/font_41/syn/41_40.svg"> 
+	<img src="imgs/font_41/syn/41_41.svg"> 
+	<img src="imgs/font_41/syn/41_42.svg"> 
+	<img src="imgs/font_41/syn/41_43.svg"> 
+	<img src="imgs/font_41/syn/41_44.svg">
+	<img src="imgs/font_41/syn/41_45.svg">
+	<img src="imgs/font_41/syn/41_46.svg">
+	<img src="imgs/font_41/syn/41_47.svg"> 
+	<img src="imgs/font_41/syn/41_48.svg"> 
+	<img src="imgs/font_41/syn/41_49.svg">
+	<img src="imgs/font_41/syn/41_50.svg">
+	<img src="imgs/font_41/syn/41_51.svg">	
+	<br/>
+</div>
+
 ## Installation
 
 ### Requirement

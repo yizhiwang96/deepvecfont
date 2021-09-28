@@ -1,4 +1,5 @@
 import re
+import os
 import numpy as np
 import bezier
 
@@ -105,12 +106,15 @@ def parse_svg_abs(svg_c):
             new_paths.append(cur_path)
     return new_paths, new_paths_lengths
 
-fontid_list = ['02', '12']
+fontid_list = ['02', '12', '41']
 for fontid in fontid_list:
+    if not os.path.exists('./font_' + fontid):
+        os.mkdir('./font_' + fontid)
     for data_split in {'syn', 'gt'}:
         input_dir = './font_' + fontid + '_raw/' + data_split + '/'
-        out_dir= 'font_' + fontid + '/' + data_split + '/'
-
+        out_dir = 'font_' + fontid + '/' + data_split + '/'
+        if not os.path.exists(out_dir):
+            os.mkdir(out_dir)
         for idx in range(0,52):
             svg_f = open(input_dir + "%02d"%(idx) + '.svg')
             svg_c = svg_f.read()
@@ -130,7 +134,7 @@ for fontid in fontid_list:
             fout.write('.pen {' + '\n')
             fout.write('\t' + 'stroke-dashoffset: 0;' + '\n')
             fout.write('\t' + 'animation-duration: 10s;' + '\n')
-            fout.write('\t' + 'animation-iteration-count: 1000;' + '\n')
+            fout.write('\t' + 'animation-iteration-count: 1;' + '\n')
             fout.write('\t' + 'animation-timing-function: ease;' + '\n')
             fout.write('}' + '\n')
 
