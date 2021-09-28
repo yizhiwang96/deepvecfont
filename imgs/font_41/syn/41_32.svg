@@ -3,7 +3,7 @@
 .pen {
 	stroke-dashoffset: 0;
 	animation-duration: 10s;
-	animation-iteration-count: 1;
+	animation-iteration-count: 1000;
 	animation-timing-function: ease;
 }
 .path00 {

@@ -134,7 +134,7 @@ for fontid in fontid_list:
             fout.write('.pen {' + '\n')
             fout.write('\t' + 'stroke-dashoffset: 0;' + '\n')
             fout.write('\t' + 'animation-duration: 10s;' + '\n')
-            fout.write('\t' + 'animation-iteration-count: 1;' + '\n')
+            fout.write('\t' + 'animation-iteration-count: 1000;' + '\n')
             fout.write('\t' + 'animation-timing-function: ease;' + '\n')
             fout.write('}' + '\n')
 
