@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50px" height="50px" viewBox="0 0 24 24">
+<style type="text/css">
+.pen {
+	stroke-dashoffset: 0;
+	animation-duration: 10s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease;
+}
+.path00 {
+		stroke-dasharray: 8;
+		animation-name: dash00 
+}
+@keyframes dash00 {
+	0.0% {
+		stroke-dashoffset: 8;
+	}
+	10.040983606557377% {
+		stroke-dashoffset: 0;
+	}
+}
+.path01 {
+		stroke-dasharray: 31;
+		animation-name: dash01 
+}
+@keyframes dash01 {
+	0%, 10.040983606557377% {
+		stroke-dashoffset: 31;
+	}
+	50.0% {
+		stroke-dashoffset: 0;
+	}
+}
+.path02 {
+		stroke-dasharray: 8;
+		animation-name: dash02 
+}
+@keyframes dash02 {
+	0%, 50.0% {
+		stroke-dashoffset: 8;
+	}
+	60.040983606557376% {
+		stroke-dashoffset: 0;
+	}
+}
+.path03 {
+		stroke-dasharray: 31;
+		animation-name: dash03 
+}
+@keyframes dash03 {
+	0%, 60.040983606557376% {
+		stroke-dashoffset: 31;
+	}
+	100.0% {
+		stroke-dashoffset: 0;
+	}
+}
+</style>
+<path class="pen path00" d="M 9.990234375 6.670572757720947 L 14.009765625 6.670572757720947 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path01" d="M 14.009765625 6.670572757720947 L 14.009765625 22.666666507720947 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path02" d="M 14.009765625 22.666666507720947 L 9.990234375 22.666666507720947 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path03" d="M 9.990234375 22.666666507720947 L 9.990234375 6.670572757720947 " fill="none" stroke="black" stroke-width="0.3"></path>
+</svg>
