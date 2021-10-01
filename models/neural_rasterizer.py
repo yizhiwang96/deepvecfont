@@ -9,17 +9,14 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 class NeuralRasterizer(nn.Module):
 
-    def __init__(self, feature_dim, hidden_size, num_hidden_layers, ff_dropout_p, rec_dropout_p, input_nc, output_nc, ngf=64, bottleneck_bits=32, norm_layer=nn.LayerNorm, n_blocks=6, mode='train'):
+    def __init__(self, feature_dim, hidden_size, num_hidden_layers, ff_dropout_p, rec_dropout_p, input_nc, output_nc, ngf=64, bottleneck_bits=32, norm_layer=nn.LayerNorm, mode='train'):
         """
         Parameters:
             input_nc (int)      -- the number of channels in input images
             output_nc (int)     -- the number of channels in output images
             ngf (int)           -- the number of filters in the last conv layer
             norm_layer          -- normalization layer
-            udropout (bool)  -- if use dropout layers
-            n_blocks (int)      -- the number of ResNet blocks
         """
-        assert(n_blocks >= 0)
         super(NeuralRasterizer, self).__init__()
         # seq encoder
         self.input_dim = feature_dim
