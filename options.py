@@ -49,10 +49,10 @@ def get_parser_main_model():
     parser.add_argument('--ff_dropout', type=float, default=0.5, help='LSTM feed forward dropout')
     # MDN related
     parser.add_argument('--num_mixture', type=int, default=50, help='')
+    parser.add_argument('--mix_temperature', type=float, default=0.00001, help='')
+    parser.add_argument('--gauss_temperature', type=float, default=0.00001, help='')
     #parser.add_argument('--mix_temperature', type=float, default=0.0001, help='')
-    #parser.add_argument('--gauss_temperature', type=float, default=0.0001, help='')
-    parser.add_argument('--mix_temperature', type=float, default=0.0001, help='')
-    parser.add_argument('--gauss_temperature', type=float, default=0, help='')
+    #parser.add_argument('--gauss_temperature', type=float, default=0.01, help='')
     parser.add_argument('--dont_reduce_loss', type=bool, default=False, help='')
     #testing related 
     parser.add_argument('--test_epoch', type=int, default=125, help='the testing checkpoint')

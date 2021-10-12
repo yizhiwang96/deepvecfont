@@ -1,10 +1,9 @@
+# data loader for training main model
 import os
 import pickle
-
 import torch
 import torch.utils.data as data
 import torchvision.transforms as T
-# from torchvision.datasets import CelebA
 
 torch.multiprocessing.set_sharing_strategy('file_system')
 

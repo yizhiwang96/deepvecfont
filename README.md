@@ -240,14 +240,14 @@ The configurations can be found in `options.py`.
 
 To test our main model, run
 ```
-python test_sf.py --mode test --experiment_name dvf --model_name main_model --test_epoch 625 --batch_size 1
+python test_sf.py --mode test --experiment_name dvf --model_name main_model --test_epoch 1500 --batch_size 1 --mix_temperature 0.0001 --gauss_temperature 0.01
 ```
 This will output the synthesized fonts without refinements. Note that `batch_size` must be set to 1.
 
 
 To refinement the vector glyphs, run
 ```
-python refinement.mp.py --experiment_name dvf --fontid 4 --candidate_nums 20
+python refinement.mp.py --experiment_name dvf --fontid 14 --candidate_nums 20 
 ```
 where the `fontid` denotes the index of testing font.
 

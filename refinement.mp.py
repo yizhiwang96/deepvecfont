@@ -293,7 +293,7 @@ def process_s2(process_id, chars_per_process, args):
     for i in range(process_id * chars_per_process, (process_id + 1) * chars_per_process):
         if i >= args.num_chars:
             break
-        # find the best candidate
+        # refine the best candidate
         args.num_iter = 300
         args.svg = os.path.join(svg_cdt_path, 'syn_%02d_256.svg'%(i))
         args.target = os.path.join(imghr_path, '%02d_256.png'%i)
@@ -331,11 +331,12 @@ if __name__ == "__main__":
         p.start()
     for p in processes:
         p.join()
-
+    
     svg_merge_outpath = os.path.join(svg_outpath, f"syn_svg_merge.html")
     fout = open(svg_merge_outpath, 'w')
     for i in range(0,52):
         svg = open(os.path.join(svg_outpath, 'syn_%02d.svg'%(i)),'r').read()
+        svg = svg.replace('<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="256" height="256">', '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64px" height="64px" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256">')
         fout.write(svg)
         if i > 0 and i % 13 == 12:
             fout.write('<br>')
