@@ -234,7 +234,7 @@ The dataset we utilized is from [SVG-VAE](https://github.com/magenta/magenta/tre
 Download links:
 [Google Drive](https://drive.google.com/drive/folders/1dGOOXK63-QJKXnE7_fD2OCfYJGKsApSg?usp=sharing)
 
-Please Download and put it under ./data/
+Please Download the `vecfont_dataset` dir and put it under `./data/`,
 
 ### Pretrained model
 will be released soon...
