@@ -227,13 +227,16 @@ We utilize diffvg to refine our generated vector glyphs in the testing phase.
 Please go to https://github.com/BachiLi/diffvg see how to install it.
 
 ## Data and Pretrained-model
-# Dataset
+
+### Dataset
 The dataset we utilized is from [SVG-VAE](https://github.com/magenta/magenta/tree/main/magenta/models/svg_vae), ICCV 2019.
+
 Download links:
 [Google Drive](https://drive.google.com/drive/folders/1dGOOXK63-QJKXnE7_fD2OCfYJGKsApSg?usp=sharing)
+
 Please Download and put it under ./data/
 
-# Pretrained model
+### Pretrained model
 will be released soon...
 
 ## Training and Testing
