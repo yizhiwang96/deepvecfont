@@ -4,6 +4,8 @@ This is the official Pytorch implementation of the paper:
 
 Yizhi Wang and Zhouhui Lian. DeepVecFont: Synthesizing High-quality Vector Fonts via Dual-modality Learning. SIGGRAPH 2021 Asia. 2021.
 
+Paper: [arxiv](https://arxiv.org/abs/2110.06688)
+
 <div align=center>
 	<img src="imgs/teaser.svg"> 
 </div>
@@ -236,8 +238,16 @@ Download links:
 
 Please Download the `vecfont_dataset` dir and put it under `./data/`,
 
+The mean and stdev files: [Google Drive](https://drive.google.com/drive/folders/1ZDZQIf2LGXmlKKPtkS3l32P77iNAlBqD?usp=sharing)
+Please Download them and put it under `./data/`,
+
 ### Pretrained model
-will be released soon...
+The Neural Rasterizer: [Google Drive](https://drive.google.com/drive/folders/10Qy7vFn27H2qQfve1Tu7UR3sm3l45cKg?usp=sharing)
+Please Download the `dvf_neural_raster` dir and put it under `./experiments/`,
+
+The Image Super-resolution model: [will be uploaded soon]
+
+The Main model: [will be uploaded soon]
 
 ## Training and Testing
 
