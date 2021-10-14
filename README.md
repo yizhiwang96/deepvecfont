@@ -245,9 +245,9 @@ Please Download them and put it under `./data/`,
 The Neural Rasterizer: [Google Drive](https://drive.google.com/drive/folders/10Qy7vFn27H2qQfve1Tu7UR3sm3l45cKg?usp=sharing)
 Please Download the `dvf_neural_raster` dir and put it under `./experiments/`,
 
-The Image Super-resolution model: [will be uploaded soon]
+The Image Super-resolution model: [will be uploaded soon].
 
-The Main model: [will be uploaded soon]
+The Main model: [will be uploaded soon].
 
 ## Training and Testing
 
