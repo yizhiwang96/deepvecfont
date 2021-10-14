@@ -61,7 +61,7 @@ class BaseOptions():
         parser.add_argument('--gauss_temperature', type=float, default=0, help='')
         # basic parameters
         parser.add_argument('--dataroot', default='./data/glyphss_dataset/', help='path to images')
-        parser.add_argument('--name', type=str, default='image_sr', help='name of the experiment. It decides where to store samples and models')
+        parser.add_argument('--name', type=str, default='image_sr_final', help='name of the experiment. It decides where to store samples and models')
         parser.add_argument('--gpu_ids', type=str, default='0', help='gpu ids: e.g. 0  0,1,2, 0,2. use -1 for CPU')
         parser.add_argument('--checkpoints_dir', type=str, default='./experiments', help='models are saved here')
         # model parameters

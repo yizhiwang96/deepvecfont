@@ -231,23 +231,23 @@ Please go to https://github.com/BachiLi/diffvg see how to install it.
 ## Data and Pretrained-model
 
 ### Dataset
-The dataset we utilized is from [SVG-VAE](https://github.com/magenta/magenta/tree/main/magenta/models/svg_vae), ICCV 2019.
+- **The Vector Font dataset** Download links: [Google Drive](https://drive.google.com/drive/folders/1dGOOXK63-QJKXnE7_fD2OCfYJGKsApSg?usp=sharing)
+Please download the `vecfont_dataset` dir and put it under `./data/`.
+(This dataset is a subset from [SVG-VAE](https://github.com/magenta/magenta/tree/main/magenta/models/svg_vae), ICCV 2019.
+We will release more information about how to create from your own data.)
 
-Download links:
-[Google Drive](https://drive.google.com/drive/folders/1dGOOXK63-QJKXnE7_fD2OCfYJGKsApSg?usp=sharing)
-
-Please Download the `vecfont_dataset` dir and put it under `./data/`,
-
-The mean and stdev files: [Google Drive](https://drive.google.com/drive/folders/1ZDZQIf2LGXmlKKPtkS3l32P77iNAlBqD?usp=sharing)
-Please Download them and put it under `./data/`,
+- **The mean and stdev files** Download links: [Google Drive](https://drive.google.com/drive/folders/1ZDZQIf2LGXmlKKPtkS3l32P77iNAlBqD?usp=sharing)
+Please Download them and put it under `./data/`.
 
 ### Pretrained model
-The Neural Rasterizer: [Google Drive](https://drive.google.com/drive/folders/10Qy7vFn27H2qQfve1Tu7UR3sm3l45cKg?usp=sharing)
-Please Download the `dvf_neural_raster` dir and put it under `./experiments/`,
+- **The Neural Rasterizer** Download links: [Google Drive](https://drive.google.com/drive/folders/10Qy7vFn27H2qQfve1Tu7UR3sm3l45cKg?usp=sharing)
+Please download the `dvf_neural_raster` dir and put it under `./experiments/`.
 
-The Image Super-resolution model: [will be uploaded soon].
+- **The Image Super-resolution model**  Download links: [Google Drive](https://drive.google.com/drive/folders/1D_U4KHbt42u6ZGNNOAOvy5QXjwHj_abX?usp=sharing).
+Please download the `image_sr` dir and put it under `./experiments/`.
+Note that recently we switched from Tensorflow to Pytorch, we may update the models that have better performances.
 
-The Main model: [will be uploaded soon].
+- **The Main model** Download links: [will be uploaded soon].
 
 ## Training and Testing
 
