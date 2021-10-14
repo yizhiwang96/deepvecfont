@@ -232,18 +232,22 @@ Please go to https://github.com/BachiLi/diffvg see how to install it.
 
 ### Dataset
 - **The Vector Font dataset** Download links: [Google Drive](https://drive.google.com/drive/folders/1dGOOXK63-QJKXnE7_fD2OCfYJGKsApSg?usp=sharing)
+
 Please download the `vecfont_dataset` dir and put it under `./data/`.
 (This dataset is a subset from [SVG-VAE](https://github.com/magenta/magenta/tree/main/magenta/models/svg_vae), ICCV 2019.
 We will release more information about how to create from your own data.)
 
 - **The mean and stdev files** Download links: [Google Drive](https://drive.google.com/drive/folders/1ZDZQIf2LGXmlKKPtkS3l32P77iNAlBqD?usp=sharing)
+
 Please Download them and put it under `./data/`.
 
 ### Pretrained model
 - **The Neural Rasterizer** Download links: [Google Drive](https://drive.google.com/drive/folders/10Qy7vFn27H2qQfve1Tu7UR3sm3l45cKg?usp=sharing)
+
 Please download the `dvf_neural_raster` dir and put it under `./experiments/`.
 
 - **The Image Super-resolution model**  Download links: [Google Drive](https://drive.google.com/drive/folders/1D_U4KHbt42u6ZGNNOAOvy5QXjwHj_abX?usp=sharing).
+
 Please download the `image_sr` dir and put it under `./experiments/`.
 Note that recently we switched from Tensorflow to Pytorch, we may update the models that have better performances.
 
