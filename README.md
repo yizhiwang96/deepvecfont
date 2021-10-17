@@ -5,6 +5,7 @@ This is the official Pytorch implementation of the paper:
 Yizhi Wang and Zhouhui Lian. DeepVecFont: Synthesizing High-quality Vector Fonts via Dual-modality Learning. SIGGRAPH Asia. 2021.
 
 Paper: [arxiv](https://arxiv.org/abs/2110.06688)
+Homepage: [DeepVecFont](https://yizhiwang96.github.io/deepvecfont_homepage/)
 
 <div align=center>
 	<img src="imgs/teaser.svg"> 
@@ -285,3 +286,8 @@ To train the image super-resolution model:
 ```
 python train_sr.py --mode train --name image_sr
 ```
+
+## Acknowledgment
+
+- [SVG-VAE](https://github.com/magenta/magenta/tree/main/magenta/models/svg_vae)
+- [SVG-VAE-pytorch](https://github.com/hologerry/svg_vae_pytorch) by [hologerry](https://github.com/hologerry)
