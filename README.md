@@ -2,7 +2,7 @@
 
 This is the official Pytorch implementation of the paper:
 
-Yizhi Wang and Zhouhui Lian. DeepVecFont: Synthesizing High-quality Vector Fonts via Dual-modality Learning. SIGGRAPH 2021 Asia. 2021.
+Yizhi Wang and Zhouhui Lian. DeepVecFont: Synthesizing High-quality Vector Fonts via Dual-modality Learning. SIGGRAPH Asia. 2021.
 
 Paper: [arxiv](https://arxiv.org/abs/2110.06688)
 
@@ -265,14 +265,14 @@ To test our main model, run
 ```
 python test_sf.py --mode test --experiment_name dvf --model_name main_model --test_epoch 1500 --batch_size 1 --mix_temperature 0.0001 --gauss_temperature 0.01
 ```
-This will output the synthesized fonts without refinements. Note that `batch_size` must be set to 1.
+This will output the synthesized fonts without refinements. Note that `batch_size` must be set to 1. The results will be written in `./experiments/dvf/`.
 
 
 To refinement the vector glyphs, run
 ```
 python refinement.mp.py --experiment_name dvf --fontid 14 --candidate_nums 20 
 ```
-where the `fontid` denotes the index of testing font.
+where the `fontid` denotes the index of testing font. The results will be written in `./experiments/dvf/results/0014/svgs_refined/`.
 
 We have pretrained the neural rasterizer and image super-resolution model.
 If you want to train them yourself:
