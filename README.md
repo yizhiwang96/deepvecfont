@@ -265,14 +265,14 @@ To test our main model, run
 ```
 python test_sf.py --mode test --experiment_name dvf --model_name main_model --test_epoch 1500 --batch_size 1 --mix_temperature 0.0001 --gauss_temperature 0.01
 ```
-This will output the synthesized fonts without refinements. Note that `batch_size` must be set to 1. The results will be written in `./experiments/dvf/results/`.
+This will output the synthesized fonts without refinements. Note that `batch_size` must be set to 1. The results will be written in `./experiments/dvf_main_model/results/`.
 
 
 To refinement the vector glyphs, run
 ```
 python refinement.mp.py --experiment_name dvf --fontid 14 --candidate_nums 20 
 ```
-where the `fontid` denotes the index of testing font. The results will be written in `./experiments/dvf/results/0014/svgs_refined/`.
+where the `fontid` denotes the index of testing font. The results will be written in `./experiments/dvf_main_model/results/0014/svgs_refined/`.
 
 We have pretrained the neural rasterizer and image super-resolution model.
 If you want to train them yourself:
