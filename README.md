@@ -291,3 +291,4 @@ python train_sr.py --mode train --name image_sr
 
 - [SVG-VAE](https://github.com/magenta/magenta/tree/main/magenta/models/svg_vae)
 - [SVG-VAE-pytorch](https://github.com/hologerry/svg_vae_pytorch) by [hologerry](https://github.com/hologerry)
+- [Diffvg](https://github.com/BachiLi/diffvg)
