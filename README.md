@@ -273,7 +273,7 @@ To refinement the vector glyphs, run
 ```
 python refinement.mp.py --experiment_name dvf --fontid 14 --candidate_nums 20 
 ```
-where the `fontid` denotes the index of testing font. The results will be written in `./experiments/dvf_main_model/results/0014/svgs_refined/`.
+where the `fontid` denotes the index of testing font. The results will be written in `./experiments/dvf_main_model/results/0014/svgs_refined/`. Set `num_processes` according to your GPU's computation capacity.
 
 We have pretrained the neural rasterizer and image super-resolution model.
 If you want to train them yourself:
