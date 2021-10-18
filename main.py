@@ -60,7 +60,7 @@ def train_main_model(opts):
                                          ff_dropout_p=opts.ff_dropout, rec_dropout_p=opts.rec_dropout, input_nc = 2 * opts.hidden_size, 
                                          output_nc=1, ngf=16, bottleneck_bits=opts.bottleneck_bits, norm_layer=nn.LayerNorm, mode='test')
 
-    neural_rasterizer_fpath = os.path.join("./experiments/dvf_neural_raster/checkpoints/neural_raster_375.nr.pth")
+    neural_rasterizer_fpath = os.path.join("./experiments/dvf_neural_raster/checkpoints/neural_raster_350.nr.pth")
     neural_rasterizer.load_state_dict(torch.load(neural_rasterizer_fpath))
     neural_rasterizer.eval()
 
