@@ -229,7 +229,7 @@ Install pytorch via the [instructions](https://pytorch.org/get-started/locally/)
 We utilize diffvg to refine our generated vector glyphs in the testing phase.
 Please go to https://github.com/BachiLi/diffvg see how to install it.
 
-**Important:** You need first replace the original `diffvg/pydiffvg/parse_svg.py` with [this](./data_utils/save_svg.py) and then install.
+**Important:** You need first replace the original `diffvg/pydiffvg/save_svg.py` with [this](./data_utils/save_svg.py) and then install.
 
 ## Data and Pretrained-model
 
