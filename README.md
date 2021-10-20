@@ -293,7 +293,7 @@ To train the image super-resolution model:
 python train_sr.py --mode train --name image_sr
 ```
 
-## Custom your own dataset
+## Customize your own dataset
 
 - **Prepare ttf/otf files**
 
