@@ -12,6 +12,7 @@ def write_glyph_imgs(opts):
     ttf_names.sort()
     for fontid in range(len(ttf_names)):
         fontname = ttf_names[fontid].split('.')[0]
+        print(fontname)
         g_idx_dict = {}
         ttf_file_path = os.path.join(opts.ttf_path, opts.split, ttf_names[fontid])
 
