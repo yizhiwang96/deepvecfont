@@ -295,28 +295,28 @@ python train_sr.py --mode train --name image_sr
 
 ## Custom your own dataset
 
-### Prepare ttf/otf files
+#### Prepare ttf/otf files
 Put the ttf/otf files in `./data_utils/font_ttfs/train` and `./data_utils/font_ttfs/test`, and organize them as `0000.ttf`, `0001.ttf`, `0002.ttf`...
 
-### Deactivate the conda environment and install Fontforge
+#### Deactivate the conda environment and install Fontforge
 for python > 3.0:
 ```
 conda deactivate
 apt install python3-fontforge
 ```
-### Get SFD files via Fontforge
+#### Get SFD files via Fontforge
 ```
 cd data_utils
 python convert_ttf_to_sfd_mp.py --split train
 python convert_ttf_to_sfd_mp.py --split test
 ```
 
-### Generate glyph images
+#### Generate glyph images
 ```
 python write_glyph_imgs.py --split train
 python write_glyph_imgs.py --split test
 ```
-### package them to pkl files
+#### package them to pkl files
 ```
 python write_data_to_pkl.py --split train
 python write_data_to_pkl.py --split test
