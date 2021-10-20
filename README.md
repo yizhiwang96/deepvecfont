@@ -296,6 +296,7 @@ python train_sr.py --mode train --name image_sr
 ## Custom your own dataset
 
 - **Prepare ttf/otf files**
+
 Put the ttf/otf files in `./data_utils/font_ttfs/train` and `./data_utils/font_ttfs/test`, and organize them as `0000.ttf`, `0001.ttf`, `0002.ttf`...
 
 - **Deactivate the conda environment and install Fontforge**
