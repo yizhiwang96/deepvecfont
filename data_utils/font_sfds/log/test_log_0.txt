@@ -1,0 +1,1 @@
+font 0000, char 16 is not a valid glyph

@@ -1,0 +1,70 @@
+SplineFontDB: 3.2
+FontName: 0000_0000.ttf
+FullName: Untitled35
+FamilyName: Untitled35
+Weight: Regular
+Copyright: Copyright (c) 2021, 
+UComments: "2021-10-20: Created with FontForge (http://fontforge.org)"
+Version: 001.000
+ItalicAngle: 0
+UnderlinePosition: -100
+UnderlineWidth: 50
+Ascent: 800
+Descent: 200
+InvalidEm: 0
+LayerCount: 2
+Layer: 0 0 "Back" 1
+Layer: 1 0 "Fore" 0
+XUID: [1021 412 1318575179 5389187]
+OS2Version: 0
+OS2_WeightWidthSlopeOnly: 0
+OS2_UseTypoMetrics: 1
+CreationTime: 1634731554
+ModificationTime: 1634731554
+OS2TypoAscent: 0
+OS2TypoAOffset: 1
+OS2TypoDescent: 0
+OS2TypoDOffset: 1
+OS2TypoLinegap: 0
+OS2WinAscent: 0
+OS2WinAOffset: 1
+OS2WinDescent: 0
+OS2WinDOffset: 1
+HheadAscent: 0
+HheadAOffset: 1
+HheadDescent: 0
+HheadDOffset: 1
+OS2Vendor: 'PfEd'
+DEI: 91125
+Encoding: ISO8859-1
+UnicodeInterp: none
+NameList: AGL For New Fonts
+DisplaySize: -48
+AntiAlias: 1
+FitToEm: 0
+BeginChars: 256 1
+
+StartChar: i
+Encoding: 105 105 0
+Width: 369
+Flags: HW
+LayerCount: 2
+Fore
+SplineSet
+207 0 m 1
+ 305 391 l 1
+ 59 391 l 1
+ 45 337 l 1
+ 62.3333333333 337 75 335 83 331 c 128
+ 91 327 95 319 95 307 c 1
+ 20 0 l 1
+ 207 0 l 1
+323 466 m 1
+ 351 577 l 1
+ 167 577 l 1
+ 139 466 l 1
+ 323 466 l 1
+EndSplineSet
+EndChar
+EndChars
+EndSplineFont

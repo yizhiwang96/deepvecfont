@@ -7,67 +7,34 @@ import os
 import multiprocessing as mp
 import argparse
 
-
-# need python2, apt install python-fontforge
-
-def get_font_id_split_name(opts):
-    """Verfiying every downloaded fonts, and get font_id, split, font_name"""
-    alphabet_chars = opts.alphabet
-    valid_fonts_urls = open(opts.downloaded_fonts_urls_file, 'r').readlines()
-    font_id_split_name = open(opts.font_id_split_name_file, 'w')
-    fonts_file_path = opts.ttf_path
-
-    font_id = 0
-    for font_line in valid_fonts_urls:
-        font_name = font_line.strip().split(', ')[-1].split('/')[-1]
-        split = font_line.strip().split(', ')[1]
-
-        font_file_path = os.path.join(fonts_file_path, split, font_name)
-        try:
-            # open a font
-            cur_font = fontforge.open(font_file_path)
-        except Exception as e:
-            print('Cannot open', font_name)
-            print(e)
-            continue
-
-        try:
-            # select all the 52 chars
-            for char in alphabet_chars:
-                cur_font.selection.select(char)
-        except Exception as e:
-            print(font_name, 'does not have all chars')
-            print(e)
-            continue
-
-        font_id_split_name.write("{:06d}".format(font_id) + ', ' + split + ', ' + font_name + '\n')
-
-        font_id += 1
-
-    font_id_split_name.close()
-
+# conda deactivate
+# apt install python3-fontforge
 
 def convert_mp(opts):
     """Useing multiprocessing to convert all fonts to sfd files"""
     alphabet_chars = opts.alphabet
-    valid_fonts = open(opts.font_id_split_name_file, 'r').readlines()
-
     fonts_file_path = opts.ttf_path
     sfd_path = opts.sfd_path
-
+    for root, dirs, files in os.walk(os.path.join(opts.ttf_path, opts.split)):
+        ttf_fnames = files
+    #print(ttf_fnames)
+    font_num = len(ttf_fnames)
     process_nums = mp.cpu_count() - 2
-    lines_num = len(valid_fonts)
-    lines_num_per_process = lines_num // process_nums
+    if font_num // process_nums < 1:
+        process_nums = font_num
+        font_num_per_process = min(font_num // process_nums, 1)
+    else:
+        font_num_per_process = font_num // process_nums
 
-    def process(process_id, line_num_p_process):
-        for i in range(process_id * line_num_p_process, (process_id + 1) * line_num_p_process):
-            if i >= lines_num:
+    def process(process_id, font_num_p_process):
+        for i in range(process_id * font_num_p_process, (process_id + 1) * font_num_p_process):
+            if i >= font_num:
                 break
-            font_line = valid_fonts[i]
-            font_id = font_line.strip().split(', ')[0]
-            split = font_line.strip().split(', ')[1]
-            font_name = font_line.strip().split(', ')[-1]
-
+            
+            font_id = ttf_fnames[i].split('.')[0]
+            split = opts.split
+            font_name = ttf_fnames[i]
+            
             font_file_path = os.path.join(fonts_file_path, split, font_name)
             try:
                 cur_font = fontforge.open(font_file_path)
@@ -103,7 +70,7 @@ def convert_mp(opts):
 
             cur_font.close()
 
-    processes = [mp.Process(target=process, args=(pid, lines_num_per_process)) for pid in range(process_nums + 1)]
+    processes = [mp.Process(target=process, args=(pid, font_num_per_process)) for pid in range(process_nums + 1)]
 
     for p in processes:
         p.start()
@@ -114,14 +81,11 @@ def convert_mp(opts):
 def main():
     parser = argparse.ArgumentParser(description="Convert ttf fonts to sfd fonts")
     parser.add_argument("--alphabet", type=str, default='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz')
-    parser.add_argument("--downloaded_fonts_urls_file", type=str, default='svg_vae_data/glyphazzn_urls_downloaded.txt')
-    parser.add_argument("--font_id_split_name_file", type=str, default='svg_vae_data/font_id_split_name.txt')
-    parser.add_argument("--ttf_path", type=str, default='svg_vae_data/ttf_fonts')
-    parser.add_argument('--sfd_path', type=str, default='svg_vae_data/sfd_font_glyphs_mp')
-
+    parser.add_argument("--ttf_path", type=str, default='font_ttfs')
+    parser.add_argument('--sfd_path', type=str, default='font_sfds')
+    parser.add_argument('--split', type=str, default='train')
     opts = parser.parse_args()
 
-    get_font_id_split_name(opts)
     convert_mp(opts)
 
 

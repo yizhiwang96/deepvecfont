@@ -1,0 +1,87 @@
+SplineFontDB: 3.2
+FontName: 00001_00001.ttf
+FullName: Untitled27
+FamilyName: Untitled27
+Weight: Regular
+Copyright: Copyright (c) 2021, 
+UComments: "2021-10-20: Created with FontForge (http://fontforge.org)"
+Version: 001.000
+ItalicAngle: 0
+UnderlinePosition: -100
+UnderlineWidth: 50
+Ascent: 800
+Descent: 200
+InvalidEm: 0
+LayerCount: 2
+Layer: 0 0 "Back" 1
+Layer: 1 0 "Fore" 0
+XUID: [1021 877 -968672716 6959179]
+OS2Version: 0
+OS2_WeightWidthSlopeOnly: 0
+OS2_UseTypoMetrics: 1
+CreationTime: 1634731550
+ModificationTime: 1634731550
+OS2TypoAscent: 0
+OS2TypoAOffset: 1
+OS2TypoDescent: 0
+OS2TypoDOffset: 1
+OS2TypoLinegap: 0
+OS2WinAscent: 0
+OS2WinAOffset: 1
+OS2WinDescent: 0
+OS2WinDOffset: 1
+HheadAscent: 0
+HheadAOffset: 1
+HheadDescent: 0
+HheadDOffset: 1
+OS2Vendor: 'PfEd'
+DEI: 91125
+Encoding: ISO8859-1
+UnicodeInterp: none
+NameList: AGL For New Fonts
+DisplaySize: -48
+AntiAlias: 1
+FitToEm: 0
+BeginChars: 256 1
+
+StartChar: a
+Encoding: 97 97 0
+Width: 1053
+VWidth: 2048
+Flags: HW
+LayerCount: 2
+Fore
+SplineSet
+569 0 m 1
+ 569 754 l 2
+ 569 828 562.333333333 884 549 922 c 0
+ 531 971.333333333 496 1014.33333333 444 1051 c 1
+ 550 1066 l 1
+ 623 1071 l 2
+ 732.333333333 1078.33333333 818.666666667 1046 882 974 c 0
+ 938.666666667 909.333333333 967 811.333333333 967 680 c 2
+ 967 0 l 1
+ 569 0 l 1
+76 844 m 0
+ 76 901.333333333 96.5 950.5 137.5 991.5 c 128
+ 178.5 1032.5 227.666666667 1053 285 1053 c 256
+ 342.333333333 1053 391.5 1032.5 432.5 991.5 c 128
+ 473.5 950.5 494 901.333333333 494 844 c 0
+ 494 785.333333333 473.833333333 735.5 433.5 694.5 c 128
+ 393.166666667 653.5 343.666666667 633 285 633 c 0
+ 227 633 177.666666667 653.666666667 137 695 c 128
+ 96.3333333333 736.333333333 76 786 76 844 c 0
+446 0 m 1
+ 425 -1 l 1
+ 393 -2 l 2
+ 278.333333333 -5.33333333333 187.333333333 20 120 74 c 0
+ 56.6666666667 124.666666667 25 197.666666667 25 293 c 256
+ 25 388.333333333 56.3333333333 461.666666667 119 513 c 0
+ 185 567.666666667 275.666666667 593.333333333 391 590 c 2
+ 425 589 l 1
+ 446 588 l 1
+ 446 0 l 1
+EndSplineSet
+EndChar
+EndChars
+EndSplineFont

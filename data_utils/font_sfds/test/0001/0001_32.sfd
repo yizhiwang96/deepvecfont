@@ -1,0 +1,87 @@
+SplineFontDB: 3.2
+FontName: 0001_0001.ttf
+FullName: Untitled33
+FamilyName: Untitled33
+Weight: Regular
+Copyright: Copyright (c) 2021, 
+UComments: "2021-10-20: Created with FontForge (http://fontforge.org)"
+Version: 001.000
+ItalicAngle: 0
+UnderlinePosition: -100
+UnderlineWidth: 50
+Ascent: 800
+Descent: 200
+InvalidEm: 0
+LayerCount: 2
+Layer: 0 0 "Back" 1
+Layer: 1 0 "Fore" 0
+XUID: [1021 412 1318575179 9035858]
+OS2Version: 0
+OS2_WeightWidthSlopeOnly: 0
+OS2_UseTypoMetrics: 1
+CreationTime: 1634731554
+ModificationTime: 1634731554
+OS2TypoAscent: 0
+OS2TypoAOffset: 1
+OS2TypoDescent: 0
+OS2TypoDOffset: 1
+OS2TypoLinegap: 0
+OS2WinAscent: 0
+OS2WinAOffset: 1
+OS2WinDescent: 0
+OS2WinDOffset: 1
+HheadAscent: 0
+HheadAOffset: 1
+HheadDescent: 0
+HheadDOffset: 1
+OS2Vendor: 'PfEd'
+DEI: 91125
+Encoding: ISO8859-1
+UnicodeInterp: none
+NameList: AGL For New Fonts
+DisplaySize: -48
+AntiAlias: 1
+FitToEm: 0
+BeginChars: 256 1
+
+StartChar: g
+Encoding: 103 103 0
+Width: 1460
+VWidth: 2048
+Flags: HW
+LayerCount: 2
+Fore
+SplineSet
+940 125 m 1
+ 867.333333333 31 758 -16 612 -16 c 0
+ 449.333333333 -16 316 40.3333333333 212 153 c 0
+ 111.333333333 262.333333333 61 399 61 563 c 0
+ 61 727.666666667 111.333333333 864.666666667 212 974 c 0
+ 315.333333333 1086.66666667 448.666666667 1143 612 1143 c 0
+ 762 1143 876.666666667 1090.33333333 956 985 c 1
+ 956 1124 l 1
+ 1386 1124 l 1
+ 1386 829 l 1
+ 1262 829 l 1
+ 1262 55 l 2
+ 1262 -118.333333333 1205.66666667 -250.333333333 1093 -341 c 0
+ 990.333333333 -423.666666667 850 -465 672 -465 c 0
+ 530 -465 409 -436 309 -378 c 0
+ 191 -310.666666667 122 -212 102 -82 c 1
+ 477 -82 l 1
+ 501.666666667 -147.333333333 568 -180 676 -180 c 0
+ 852 -180 940 -98 940 66 c 2
+ 940 125 l 1
+401 563 m 256
+ 401 482.333333333 426.166666667 415.5 476.5 362.5 c 128
+ 526.833333333 309.5 592 283 672 283 c 256
+ 752 283 817 309.666666667 867 363 c 128
+ 917 416.333333333 942 483 942 563 c 0
+ 942 643.666666667 917.166666667 710.666666667 867.5 764 c 128
+ 817.833333333 817.333333333 752.666666667 844 672 844 c 0
+ 592 844 526.833333333 817.333333333 476.5 764 c 128
+ 426.166666667 710.666666667 401 643.666666667 401 563 c 256
+EndSplineSet
+EndChar
+EndChars
+EndSplineFont

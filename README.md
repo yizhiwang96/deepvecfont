@@ -238,7 +238,7 @@ Please go to https://github.com/BachiLi/diffvg see how to install it.
 
 Please download the `vecfont_dataset` dir and put it under `./data/`.
 (This dataset is a subset from [SVG-VAE](https://github.com/magenta/magenta/tree/main/magenta/models/svg_vae), ICCV 2019.
-We will release more information about how to create from your own data.)
+The details about how to create from your own data are shown below.)
 
 - **The Image Super-resolution dataset** 
 
@@ -291,6 +291,35 @@ python train_nr.py --mode train --experiment_name dvf --model_name neural_raster
 To train the image super-resolution model:
 ```
 python train_sr.py --mode train --name image_sr
+```
+
+## Custom your own dataset
+
+### Prepare ttf/otf files
+Put the ttf/otf files in `./data_utils/font_ttfs/train` and `./data_utils/font_ttfs/test`, and organize them as `0000.ttf`, `0001.ttf`, `0002.ttf`...
+
+### Deactivate the conda environment and install Fontforge
+for python > 3.0:
+```
+conda deactivate
+apt install python3-fontforge
+```
+### Get SFD files via Fontforge
+```
+cd data_utils
+python convert_ttf_to_sfd_mp.py --split train
+python convert_ttf_to_sfd_mp.py --split test
+```
+
+### Generate glyph images
+```
+python write_glyph_imgs.py --split train
+python write_glyph_imgs.py --split test
+```
+### package them to pkl files
+```
+python write_data_to_pkl.py --split train
+python write_data_to_pkl.py --split test
 ```
 
 ## Acknowledgment

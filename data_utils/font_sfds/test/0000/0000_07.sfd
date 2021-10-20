@@ -1,0 +1,89 @@
+SplineFontDB: 3.2
+FontName: 0000_0000.ttf
+FullName: Untitled8
+FamilyName: Untitled8
+Weight: Regular
+Copyright: Copyright (c) 2021, 
+UComments: "2021-10-20: Created with FontForge (http://fontforge.org)"
+Version: 001.000
+ItalicAngle: 0
+UnderlinePosition: -100
+UnderlineWidth: 50
+Ascent: 800
+Descent: 200
+InvalidEm: 0
+LayerCount: 2
+Layer: 0 0 "Back" 1
+Layer: 1 0 "Fore" 0
+XUID: [1021 412 1318575179 3752934]
+OS2Version: 0
+OS2_WeightWidthSlopeOnly: 0
+OS2_UseTypoMetrics: 1
+CreationTime: 1634731554
+ModificationTime: 1634731554
+OS2TypoAscent: 0
+OS2TypoAOffset: 1
+OS2TypoDescent: 0
+OS2TypoDOffset: 1
+OS2TypoLinegap: 0
+OS2WinAscent: 0
+OS2WinAOffset: 1
+OS2WinDescent: 0
+OS2WinDOffset: 1
+HheadAscent: 0
+HheadAOffset: 1
+HheadDescent: 0
+HheadDOffset: 1
+OS2Vendor: 'PfEd'
+DEI: 91125
+Encoding: ISO8859-1
+UnicodeInterp: none
+NameList: AGL For New Fonts
+DisplaySize: -48
+AntiAlias: 1
+FitToEm: 0
+BeginChars: 256 1
+
+StartChar: H
+Encoding: 72 72 0
+Width: 794
+Flags: HW
+LayerCount: 2
+Fore
+SplineSet
+618 0 m 1
+ 762 577 l 1
+ 556 577 l 1
+ 517 421 l 2
+ 515.666666667 415 513.5 408 510.5 400 c 128
+ 507.5 392 504 384.333333333 500 377 c 128
+ 496 369.666666667 491.333333333 363.166666667 486 357.5 c 128
+ 480.666666667 351.833333333 475 348.333333333 469 347 c 2
+ 410 347 l 2
+ 399.333333333 347 390.166666667 349 382.5 353 c 128
+ 374.833333333 357 368.333333333 362 363 368 c 128
+ 357.666666667 374 353.666666667 380.5 351 387.5 c 128
+ 348.333333333 394.5 347 401 347 407 c 0
+ 347 409.666666667 347.666666667 414.333333333 349 421 c 2
+ 388 577 l 1
+ 124 577 l 1
+ 108 507 l 1
+ 123.333333333 507 135 505.166666667 143 501.5 c 128
+ 151 497.833333333 155 490 155 478 c 0
+ 155 474.666666667 154.666666667 471 154 467 c 128
+ 153.333333333 463 152.333333333 458.666666667 151 454 c 2
+ 36 0 l 1
+ 244 0 l 1
+ 305 228 l 2
+ 308.333333333 240.666666667 312.333333333 252.333333333 317 263 c 128
+ 321.666666667 273.666666667 331 279 345 279 c 2
+ 411 279 l 2
+ 453.666666667 279 475 266.333333333 475 241 c 0
+ 475 239 474.833333333 237 474.5 235 c 128
+ 474.166666667 233 473.666666667 230.666666667 473 228 c 2
+ 412 0 l 1
+ 618 0 l 1
+EndSplineSet
+EndChar
+EndChars
+EndSplineFont

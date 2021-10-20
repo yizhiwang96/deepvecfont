@@ -1,0 +1,82 @@
+SplineFontDB: 3.2
+FontName: 0001_0001.ttf
+FullName: Untitled7
+FamilyName: Untitled7
+Weight: Regular
+Copyright: Copyright (c) 2021, 
+UComments: "2021-10-20: Created with FontForge (http://fontforge.org)"
+Version: 001.000
+ItalicAngle: 0
+UnderlinePosition: -100
+UnderlineWidth: 50
+Ascent: 800
+Descent: 200
+InvalidEm: 0
+LayerCount: 2
+Layer: 0 0 "Back" 1
+Layer: 1 0 "Fore" 0
+XUID: [1021 412 1318575179 1834691]
+OS2Version: 0
+OS2_WeightWidthSlopeOnly: 0
+OS2_UseTypoMetrics: 1
+CreationTime: 1634731554
+ModificationTime: 1634731554
+OS2TypoAscent: 0
+OS2TypoAOffset: 1
+OS2TypoDescent: 0
+OS2TypoDOffset: 1
+OS2TypoLinegap: 0
+OS2WinAscent: 0
+OS2WinAOffset: 1
+OS2WinDescent: 0
+OS2WinDOffset: 1
+HheadAscent: 0
+HheadAOffset: 1
+HheadDescent: 0
+HheadDOffset: 1
+OS2Vendor: 'PfEd'
+DEI: 91125
+Encoding: ISO8859-1
+UnicodeInterp: none
+NameList: AGL For New Fonts
+DisplaySize: -48
+AntiAlias: 1
+FitToEm: 0
+BeginChars: 256 1
+
+StartChar: G
+Encoding: 71 71 0
+Width: 1620
+VWidth: 2048
+Flags: HW
+LayerCount: 2
+Fore
+SplineSet
+1524 813 m 1
+ 1524 0 l 1
+ 1245 0 l 1
+ 1245 160 l 1
+ 1135.66666667 35.3333333333 989.666666667 -27 807 -27 c 0
+ 591.666666667 -27 411.333333333 49.6666666667 266 203 c 0
+ 163.333333333 311.666666667 98.6666666667 440 72 588 c 0
+ 63.3333333333 636 59 687.666666667 59 743 c 0
+ 59 948.333333333 133 1123.66666667 281 1269 c 0
+ 426.333333333 1411.66666667 602.333333333 1483 809 1483 c 0
+ 982.333333333 1483 1120.33333333 1431 1223 1327 c 1
+ 1223 1456 l 1
+ 1489 1456 l 1
+ 1489 975 l 1
+ 1118 975 l 1
+ 1044 1085.66666667 945 1141 821 1141 c 0
+ 708.333333333 1141 614.333333333 1102.5 539 1025.5 c 128
+ 463.666666667 948.5 426 853.666666667 426 741 c 0
+ 426 630.333333333 461.333333333 533 532 449 c 0
+ 606.666666667 361 698.333333333 317 807 317 c 0
+ 951 317 1059.66666667 385.333333333 1133 522 c 1
+ 717 522 l 1
+ 717 813 l 1
+ 1524 813 l 1
+EndSplineSet
+EndChar
+EndChars
+EndSplineFont
