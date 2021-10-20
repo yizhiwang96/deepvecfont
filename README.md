@@ -300,6 +300,7 @@ python train_sr.py --mode train --name image_sr
 Put the ttf/otf files in `./data_utils/font_ttfs/train` and `./data_utils/font_ttfs/test`, and organize them as `0000.ttf`, `0001.ttf`, `0002.ttf`...
 
 - **Deactivate the conda environment and install Fontforge**
+
 for python > 3.0:
 ```
 conda deactivate
@@ -324,6 +325,7 @@ python write_glyph_imgs.py --split test
 python write_data_to_pkl.py --split train
 python write_data_to_pkl.py --split test
 ```
+Note: we package the image and sequence files all into the pkls, which is memory-consuming when training. It is a better way to write the file paths and read the files from disks/drives when training (TO-DO).
 
 ## Acknowledgment
 
