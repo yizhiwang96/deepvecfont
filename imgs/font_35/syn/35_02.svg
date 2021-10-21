@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50px" height="50px" viewBox="0 0 24 24">
+<style type="text/css">
+.pen {
+	stroke-dashoffset: 0;
+	animation-duration: 10s;
+	animation-iteration-count: 1000;
+	animation-timing-function: ease;
+}
+.path00 {
+		stroke-dasharray: 7;
+		animation-name: dash00 
+}
+@keyframes dash00 {
+	0.0% {
+		stroke-dashoffset: 7;
+	}
+	6.27700385445592% {
+		stroke-dashoffset: 0;
+	}
+}
+.path01 {
+		stroke-dasharray: 7;
+		animation-name: dash01 
+}
+@keyframes dash01 {
+	0%, 6.27700385445592% {
+		stroke-dashoffset: 7;
+	}
+	12.59997906217202% {
+		stroke-dashoffset: 0;
+	}
+}
+.path02 {
+		stroke-dasharray: 4;
+		animation-name: dash02 
+}
+@keyframes dash02 {
+	0%, 12.59997906217202% {
+		stroke-dashoffset: 4;
+	}
+	16.53227219990594% {
+		stroke-dashoffset: 0;
+	}
+}
+.path03 {
+		stroke-dasharray: 15;
+		animation-name: dash03 
+}
+@keyframes dash03 {
+	0%, 16.53227219990594% {
+		stroke-dashoffset: 15;
+	}
+	30.674830304214588% {
+		stroke-dashoffset: 0;
+	}
+}
+.path04 {
+		stroke-dasharray: 8;
+		animation-name: dash04 
+}
+@keyframes dash04 {
+	0%, 30.674830304214588% {
+		stroke-dashoffset: 8;
+	}
+	38.4450523184995% {
+		stroke-dashoffset: 0;
+	}
+}
+.path05 {
+		stroke-dasharray: 4;
+		animation-name: dash05 
+}
+@keyframes dash05 {
+	0%, 38.4450523184995% {
+		stroke-dashoffset: 4;
+	}
+	42.16219389686952% {
+		stroke-dashoffset: 0;
+	}
+}
+.path06 {
+		stroke-dasharray: 7;
+		animation-name: dash06 
+}
+@keyframes dash06 {
+	0%, 42.16219389686952% {
+		stroke-dashoffset: 7;
+	}
+	48.85227262538035% {
+		stroke-dashoffset: 0;
+	}
+}
+.path07 {
+		stroke-dasharray: 7;
+		animation-name: dash07 
+}
+@keyframes dash07 {
+	0%, 48.85227262538035% {
+		stroke-dashoffset: 7;
+	}
+	55.2037688119121% {
+		stroke-dashoffset: 0;
+	}
+}
+.path08 {
+		stroke-dasharray: 22;
+		animation-name: dash08 
+}
+@keyframes dash08 {
+	0%, 55.2037688119121% {
+		stroke-dashoffset: 22;
+	}
+	75.73741926294767% {
+		stroke-dashoffset: 0;
+	}
+}
+.path09 {
+		stroke-dasharray: 27;
+		animation-name: dash09 
+}
+@keyframes dash09 {
+	0%, 75.73741926294767% {
+		stroke-dashoffset: 27;
+	}
+	100.0% {
+		stroke-dashoffset: 0;
+	}
+}
+</style>
+<path class="pen path00" d="M 15.781695842742920 5.532944798469543 C 18.088933467864990 5.966165542602539 18.770801067352295 5.724075078964233 18.607961654663086 6.791965484619141 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path01" d="M 18.607961654663086 6.791965484619141 L 17.613816261291504 10.181156873703003 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path02" d="M 17.613816261291504 10.181156873703003 C 16.484674930572510 10.141064643859863 17.739320755004883 9.817181110382080 15.483015060424805 9.880873203277588 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path03" d="M 15.483015060424805 9.880873203277588 C 13.998390197753906 9.673842430114746 11.640309333801270 12.030208110809326 11.861142396926880 16.039544105529785 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path04" d="M 11.861142396926880 16.039544105529785 C 11.747019767761230 17.525721073150635 13.247623443603516 19.068327426910400 14.476145267486572 18.949944019317627 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path05" d="M 14.476145267486572 18.949944019317627 C 14.783576488494873 19.029491901397705 16.077572822570801 18.562591552734375 16.480886936187744 18.449179172515869 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path06" d="M 16.480886936187744 18.449179172515869 L 16.008287429809570 22.156226634979248 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path07" d="M 16.008287429809570 22.156226634979248 C 15.665379524230957 22.498981475830078 14.164843082427979 22.801420211791992 12.571329116821289 22.865468502044678 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path08" d="M 12.571329116821289 22.865468502044678 C 8.948418617248535 22.466019630432129 6.517241477966309 20.033835411071777 7.217262268066406 14.371667861938477 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path09" d="M 7.217262268066406 14.371667861938477 C 7.705780506134033 9.526242256164551 11.339273929595947 5.240817189216614 15.781695842742920 5.532944798469543 " fill="none" stroke="black" stroke-width="0.3"></path>
+</svg>

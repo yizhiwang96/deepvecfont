@@ -210,6 +210,233 @@ Synthesized glyphs by DeepVecFont:
 	<br/>
 </div>
 
+### Vector font interpolation
+Rendered:
+<div align=center>
+	<img src="imgs/font_35_raw/syn/18.svg"> 
+	<img src="imgs/font_35_raw/syn/08.svg"> 
+	<img src="imgs/font_35_raw/syn/06.svg"> 
+	<img src="imgs/font_35_raw/syn/06.svg">
+	<img src="imgs/font_35_raw/syn/17.svg">
+	<img src="imgs/font_35_raw/syn/00.svg">
+	<img src="imgs/font_35_raw/syn/15.svg"> 
+	<img src="imgs/font_35_raw/syn/07.svg">
+	<img src="imgs/font_35_raw/syn/21.svg"> 
+	<img src="imgs/font_35_raw/syn/30.svg"> 
+	<img src="imgs/font_35_raw/syn/28.svg"> 
+	<img src="imgs/font_35_raw/syn/05.svg"> 
+	<img src="imgs/font_35_raw/syn/40.svg">
+	<img src="imgs/font_35_raw/syn/39.svg"> 
+	<img src="imgs/font_35_raw/syn/45.svg"> 
+	<br/>
+	<img src="imgs/font_35_57_3_raw/syn/18.svg"> 
+	<img src="imgs/font_35_57_3_raw/syn/08.svg"> 
+	<img src="imgs/font_35_57_3_raw/syn/06.svg"> 
+	<img src="imgs/font_35_57_3_raw/syn/06.svg">
+	<img src="imgs/font_35_57_3_raw/syn/17.svg">
+	<img src="imgs/font_35_57_3_raw/syn/00.svg">
+	<img src="imgs/font_35_57_3_raw/syn/15.svg"> 
+	<img src="imgs/font_35_57_3_raw/syn/07.svg">
+	<img src="imgs/font_35_57_3_raw/syn/21.svg"> 
+	<img src="imgs/font_35_57_3_raw/syn/30.svg"> 
+	<img src="imgs/font_35_57_3_raw/syn/28.svg"> 
+	<img src="imgs/font_35_57_3_raw/syn/05.svg"> 
+	<img src="imgs/font_35_57_3_raw/syn/40.svg">
+	<img src="imgs/font_35_57_3_raw/syn/39.svg"> 
+	<img src="imgs/font_35_57_3_raw/syn/45.svg"> 
+	<br/>
+	<img src="imgs/font_35_57_5_raw/syn/18.svg"> 
+	<img src="imgs/font_35_57_5_raw/syn/08.svg"> 
+	<img src="imgs/font_35_57_5_raw/syn/06.svg"> 
+	<img src="imgs/font_35_57_5_raw/syn/06.svg">
+	<img src="imgs/font_35_57_5_raw/syn/17.svg">
+	<img src="imgs/font_35_57_5_raw/syn/00.svg">
+	<img src="imgs/font_35_57_5_raw/syn/15.svg"> 
+	<img src="imgs/font_35_57_5_raw/syn/07.svg"> 
+	<img src="imgs/font_35_57_5_raw/syn/21.svg"> 
+	<img src="imgs/font_35_57_5_raw/syn/30.svg"> 
+	<img src="imgs/font_35_57_5_raw/syn/28.svg"> 
+	<img src="imgs/font_35_57_5_raw/syn/05.svg"> 
+	<img src="imgs/font_35_57_5_raw/syn/40.svg">
+	<img src="imgs/font_35_57_5_raw/syn/39.svg"> 
+	<img src="imgs/font_35_57_5_raw/syn/45.svg"> 
+	<br/>
+	<img src="imgs/font_35_57_7_raw/syn/18.svg"> 
+	<img src="imgs/font_35_57_7_raw/syn/08.svg"> 
+	<img src="imgs/font_35_57_7_raw/syn/06.svg"> 
+	<img src="imgs/font_35_57_7_raw/syn/06.svg">
+	<img src="imgs/font_35_57_7_raw/syn/17.svg">
+	<img src="imgs/font_35_57_7_raw/syn/00.svg">
+	<img src="imgs/font_35_57_7_raw/syn/15.svg"> 
+	<img src="imgs/font_35_57_7_raw/syn/07.svg">
+	<img src="imgs/font_35_57_7_raw/syn/21.svg"> 
+	<img src="imgs/font_35_57_7_raw/syn/30.svg"> 
+	<img src="imgs/font_35_57_7_raw/syn/28.svg"> 
+	<img src="imgs/font_35_57_7_raw/syn/05.svg"> 
+	<img src="imgs/font_35_57_7_raw/syn/40.svg">
+	<img src="imgs/font_35_57_7_raw/syn/39.svg"> 
+	<img src="imgs/font_35_57_7_raw/syn/45.svg"> 
+	<br/>
+	<img src="imgs/font_57_raw/syn/18.svg"> 
+	<img src="imgs/font_57_raw/syn/08.svg"> 
+	<img src="imgs/font_57_raw/syn/06.svg"> 
+	<img src="imgs/font_57_raw/syn/06.svg">
+	<img src="imgs/font_57_raw/syn/17.svg">
+	<img src="imgs/font_57_raw/syn/00.svg">
+	<img src="imgs/font_57_raw/syn/15.svg"> 
+	<img src="imgs/font_57_raw/syn/07.svg">
+	<img src="imgs/font_57_raw/syn/21.svg"> 
+	<img src="imgs/font_57_raw/syn/30.svg"> 
+	<img src="imgs/font_57_raw/syn/28.svg"> 
+	<img src="imgs/font_57_raw/syn/05.svg"> 
+	<img src="imgs/font_57_raw/syn/40.svg">
+	<img src="imgs/font_57_raw/syn/39.svg"> 
+	<img src="imgs/font_57_raw/syn/45.svg"> 
+	<br/>
+</div>
+Outlines:
+<div align=center>
+	<img src="imgs/font_35/syn/35_18.svg"> 
+	<img src="imgs/font_35/syn/35_08.svg"> 
+	<img src="imgs/font_35/syn/35_06.svg"> 
+	<img src="imgs/font_35/syn/35_06.svg">
+	<img src="imgs/font_35/syn/35_17.svg">
+	<img src="imgs/font_35/syn/35_00.svg">
+	<img src="imgs/font_35/syn/35_15.svg"> 
+	<img src="imgs/font_35/syn/35_07.svg">
+	<img src="imgs/font_35/syn/35_21.svg"> 
+	<img src="imgs/font_35/syn/35_30.svg"> 
+	<img src="imgs/font_35/syn/35_28.svg"> 
+	<img src="imgs/font_35/syn/35_05.svg"> 
+	<img src="imgs/font_35/syn/35_40.svg">
+	<img src="imgs/font_35/syn/35_39.svg"> 
+	<img src="imgs/font_35/syn/35_45.svg"> 
+	<br/>
+	<img src="imgs/font_35_57_3/syn/35_57_3_18.svg"> 
+	<img src="imgs/font_35_57_3/syn/35_57_3_08.svg"> 
+	<img src="imgs/font_35_57_3/syn/35_57_3_06.svg"> 
+	<img src="imgs/font_35_57_3/syn/35_57_3_06.svg">
+	<img src="imgs/font_35_57_3/syn/35_57_3_17.svg">
+	<img src="imgs/font_35_57_3/syn/35_57_3_00.svg">
+	<img src="imgs/font_35_57_3/syn/35_57_3_15.svg"> 
+	<img src="imgs/font_35_57_3/syn/35_57_3_07.svg"> 	
+	<img src="imgs/font_35_57_3/syn/35_57_3_21.svg"> 
+	<img src="imgs/font_35_57_3/syn/35_57_3_30.svg"> 
+	<img src="imgs/font_35_57_3/syn/35_57_3_28.svg"> 
+	<img src="imgs/font_35_57_3/syn/35_57_3_05.svg"> 
+	<img src="imgs/font_35_57_3/syn/35_57_3_40.svg">
+	<img src="imgs/font_35_57_3/syn/35_57_3_39.svg"> 
+	<img src="imgs/font_35_57_3/syn/35_57_3_45.svg"> 
+	<br/>
+	<img src="imgs/font_35_57_5/syn/35_57_5_18.svg"> 
+	<img src="imgs/font_35_57_5/syn/35_57_5_08.svg"> 
+	<img src="imgs/font_35_57_5/syn/35_57_5_06.svg"> 
+	<img src="imgs/font_35_57_5/syn/35_57_5_06.svg">
+	<img src="imgs/font_35_57_5/syn/35_57_5_17.svg">
+	<img src="imgs/font_35_57_5/syn/35_57_5_00.svg">
+	<img src="imgs/font_35_57_5/syn/35_57_5_15.svg"> 
+	<img src="imgs/font_35_57_5/syn/35_57_5_07.svg"> 
+	<img src="imgs/font_35_57_5/syn/35_57_5_21.svg"> 
+	<img src="imgs/font_35_57_5/syn/35_57_5_30.svg"> 
+	<img src="imgs/font_35_57_5/syn/35_57_5_28.svg"> 
+	<img src="imgs/font_35_57_5/syn/35_57_5_05.svg"> 
+	<img src="imgs/font_35_57_5/syn/35_57_5_40.svg">
+	<img src="imgs/font_35_57_5/syn/35_57_5_39.svg"> 
+	<img src="imgs/font_35_57_5/syn/35_57_5_45.svg">	
+	<br/>
+	<img src="imgs/font_35_57_7/syn/35_57_7_18.svg"> 
+	<img src="imgs/font_35_57_7/syn/35_57_7_08.svg"> 
+	<img src="imgs/font_35_57_7/syn/35_57_7_06.svg"> 
+	<img src="imgs/font_35_57_7/syn/35_57_7_06.svg">
+	<img src="imgs/font_35_57_7/syn/35_57_7_17.svg">
+	<img src="imgs/font_35_57_7/syn/35_57_7_00.svg">
+	<img src="imgs/font_35_57_7/syn/35_57_7_15.svg"> 
+	<img src="imgs/font_35_57_7/syn/35_57_7_07.svg">
+	<img src="imgs/font_35_57_7/syn/35_57_7_21.svg"> 
+	<img src="imgs/font_35_57_7/syn/35_57_7_30.svg"> 
+	<img src="imgs/font_35_57_7/syn/35_57_7_28.svg"> 
+	<img src="imgs/font_35_57_7/syn/35_57_7_05.svg"> 
+	<img src="imgs/font_35_57_7/syn/35_57_7_40.svg">
+	<img src="imgs/font_35_57_7/syn/35_57_7_39.svg"> 
+	<img src="imgs/font_35_57_7/syn/35_57_7_45.svg"> 
+	<br/>
+	<img src="imgs/font_57/syn/57_18.svg"> 
+	<img src="imgs/font_57/syn/57_08.svg"> 
+	<img src="imgs/font_57/syn/57_06.svg"> 
+	<img src="imgs/font_57/syn/57_06.svg">
+	<img src="imgs/font_57/syn/57_17.svg">
+	<img src="imgs/font_57/syn/57_00.svg">
+	<img src="imgs/font_57/syn/57_15.svg"> 
+	<img src="imgs/font_57/syn/57_07.svg"> 
+	<img src="imgs/font_57/syn/57_21.svg"> 
+	<img src="imgs/font_57/syn/57_30.svg"> 
+	<img src="imgs/font_57/syn/57_28.svg"> 
+	<img src="imgs/font_57/syn/57_05.svg"> 
+	<img src="imgs/font_57/syn/57_40.svg">
+	<img src="imgs/font_57/syn/57_39.svg"> 
+	<img src="imgs/font_57/syn/57_45.svg"> 
+	<br/>
+</div>
+
+### Random generation (New fonts)
+Rendered:
+<div align=center>
+	<img src="imgs/font_18r_raw/syn/00.svg"> 
+	<img src="imgs/font_18r_raw/syn/01.svg"> 
+	<img src="imgs/font_18r_raw/syn/02.svg"> 
+	<img src="imgs/font_18r_raw/syn/03.svg"> 
+	<img src="imgs/font_18r_raw/syn/04.svg">
+	<img src="imgs/font_18r_raw/syn/05.svg">
+	<img src="imgs/font_18r_raw/syn/06.svg">
+	<img src="imgs/font_18r_raw/syn/07.svg"> 
+	<img src="imgs/font_18r_raw/syn/08.svg"> 
+	<img src="imgs/font_18r_raw/syn/09.svg"> 
+	<img src="imgs/font_18r_raw/syn/10.svg"> 
+	<img src="imgs/font_18r_raw/syn/11.svg">
+	<img src="imgs/font_18r_raw/syn/12.svg">
+	<img src="imgs/font_18r_raw/syn/13.svg">
+	<img src="imgs/font_18r_raw/syn/14.svg"> 
+	<img src="imgs/font_18r_raw/syn/15.svg"> 
+	<img src="imgs/font_18r_raw/syn/16.svg"> 
+	<img src="imgs/font_18r_raw/syn/17.svg"> 
+	<img src="imgs/font_18r_raw/syn/18.svg">
+	<img src="imgs/font_18r_raw/syn/19.svg">
+	<img src="imgs/font_18r_raw/syn/20.svg">
+	<img src="imgs/font_18r_raw/syn/21.svg"> 
+	<img src="imgs/font_18r_raw/syn/22.svg"> 
+	<img src="imgs/font_18r_raw/syn/23.svg"> 	
+	<img src="imgs/font_18r_raw/syn/24.svg">
+	<img src="imgs/font_18r_raw/syn/25.svg">
+	<br/>
+	<img src="imgs/font_18r_raw/syn/26.svg"> 
+	<img src="imgs/font_18r_raw/syn/27.svg"> 
+	<img src="imgs/font_18r_raw/syn/28.svg"> 
+	<img src="imgs/font_18r_raw/syn/29.svg"> 
+	<img src="imgs/font_18r_raw/syn/30.svg">
+	<img src="imgs/font_18r_raw/syn/31.svg">
+	<img src="imgs/font_18r_raw/syn/32.svg">
+	<img src="imgs/font_18r_raw/syn/33.svg"> 
+	<img src="imgs/font_18r_raw/syn/34.svg"> 
+	<img src="imgs/font_18r_raw/syn/35.svg"> 
+	<img src="imgs/font_18r_raw/syn/36.svg"> 
+	<img src="imgs/font_18r_raw/syn/37.svg">
+	<img src="imgs/font_18r_raw/syn/38.svg">
+	<img src="imgs/font_18r_raw/syn/39.svg">
+	<img src="imgs/font_18r_raw/syn/40.svg"> 
+	<img src="imgs/font_18r_raw/syn/41.svg"> 
+	<img src="imgs/font_18r_raw/syn/42.svg"> 
+	<img src="imgs/font_18r_raw/syn/43.svg"> 
+	<img src="imgs/font_18r_raw/syn/44.svg">
+	<img src="imgs/font_18r_raw/syn/45.svg">
+	<img src="imgs/font_18r_raw/syn/46.svg">
+	<img src="imgs/font_18r_raw/syn/47.svg"> 
+	<img src="imgs/font_18r_raw/syn/48.svg"> 
+	<img src="imgs/font_18r_raw/syn/49.svg">
+	<img src="imgs/font_18r_raw/syn/50.svg">
+	<img src="imgs/font_18r_raw/syn/51.svg">	
+	<br/>
+</div>
+
 ## Installation
 
 ### Requirement
@@ -332,3 +559,20 @@ Note: we package the image and sequence files all into the pkls, which is memory
 - [SVG-VAE](https://github.com/magenta/magenta/tree/main/magenta/models/svg_vae)
 - [SVG-VAE-pytorch](https://github.com/hologerry/svg_vae_pytorch) by [hologerry](https://github.com/hologerry)
 - [Diffvg](https://github.com/BachiLi/diffvg)
+
+## Citation
+
+If you use this code or find our work is helpful, please consider citing our work:
+```
+@inproceedings{wang2021deepvecfont,
+ author = {Wang, Yizhi and Lian, Zhouhui},
+ title = {DeepVecFont: Synthesizing High-quality Vector Fonts via Dual-modality Learning},
+ journal = {ACM Transactions on Graphics},
+ numpages = {15},
+ volume={40},
+ number={6},
+ month = December,
+ year = {2021},
+ doi={10.1145/3478513.3480488}
+}
+```

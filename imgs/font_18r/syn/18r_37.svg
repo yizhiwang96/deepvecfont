@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50px" height="50px" viewBox="0 0 24 24">
+<style type="text/css">
+.pen {
+	stroke-dashoffset: 0;
+	animation-duration: 10s;
+	animation-iteration-count: 1000;
+	animation-timing-function: ease;
+}
+.path00 {
+		stroke-dasharray: 13;
+		animation-name: dash00 
+}
+@keyframes dash00 {
+	0.0% {
+		stroke-dashoffset: 13;
+	}
+	13.153003849431135% {
+		stroke-dashoffset: 0;
+	}
+}
+.path01 {
+		stroke-dasharray: 9;
+		animation-name: dash01 
+}
+@keyframes dash01 {
+	0%, 13.153003849431135% {
+		stroke-dashoffset: 9;
+	}
+	22.3315066666315% {
+		stroke-dashoffset: 0;
+	}
+}
+.path02 {
+		stroke-dasharray: 8;
+		animation-name: dash02 
+}
+@keyframes dash02 {
+	0%, 22.3315066666315% {
+		stroke-dashoffset: 8;
+	}
+	30.877020960476226% {
+		stroke-dashoffset: 0;
+	}
+}
+.path03 {
+		stroke-dasharray: 9;
+		animation-name: dash03 
+}
+@keyframes dash03 {
+	0%, 30.877020960476226% {
+		stroke-dashoffset: 9;
+	}
+	40.21771334979196% {
+		stroke-dashoffset: 0;
+	}
+}
+.path04 {
+		stroke-dasharray: 13;
+		animation-name: dash04 
+}
+@keyframes dash04 {
+	0%, 40.21771334979196% {
+		stroke-dashoffset: 13;
+	}
+	53.52543702296896% {
+		stroke-dashoffset: 0;
+	}
+}
+.path05 {
+		stroke-dasharray: 13;
+		animation-name: dash05 
+}
+@keyframes dash05 {
+	0%, 53.52543702296896% {
+		stroke-dashoffset: 13;
+	}
+	66.29402213321562% {
+		stroke-dashoffset: 0;
+	}
+}
+.path06 {
+		stroke-dasharray: 19;
+		animation-name: dash06 
+}
+@keyframes dash06 {
+	0%, 66.29402213321562% {
+		stroke-dashoffset: 19;
+	}
+	85.07018666310415% {
+		stroke-dashoffset: 0;
+	}
+}
+.path07 {
+		stroke-dasharray: 3;
+		animation-name: dash07 
+}
+@keyframes dash07 {
+	0%, 85.07018666310415% {
+		stroke-dashoffset: 3;
+	}
+	88.79418902340126% {
+		stroke-dashoffset: 0;
+	}
+}
+.path08 {
+		stroke-dasharray: 11;
+		animation-name: dash08 
+}
+@keyframes dash08 {
+	0%, 88.79418902340126% {
+		stroke-dashoffset: 11;
+	}
+	100.0% {
+		stroke-dashoffset: 0;
+	}
+}
+</style>
+<path class="pen path00" d="M 14.472026824951172 4.907253026962280 C 14.350732326507568 6.305044412612915 14.154858112335205 8.987423658370972 14.093572139739990 11.611983060836792 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path01" d="M 14.093572139739990 11.611983060836792 C 14.179743289947510 14.204516887664795 14.043442726135254 16.536801338195801 14.131427764892578 13.687477111816406 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path02" d="M 14.131427764892578 13.687477111816406 C 14.197222709655762 15.001506328582764 14.131786823272705 16.903824806213379 14.224506855010986 18.049424171447754 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path03" d="M 14.224506855010986 18.049424171447754 C 14.336355686187744 19.090583324432373 14.239814758300781 20.221193790435791 15.197658061981201 22.693772792816162 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path04" d="M 15.197658061981201 22.693772792816162 L 8.402272939682007 22.673612594604492 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path05" d="M 8.402272939682007 22.673612594604492 C 9.950927495956421 21.082281589508057 9.670570850372314 20.229456424713135 9.838806867599487 16.522191524505615 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path06" d="M 9.838806867599487 16.522191524505615 C 9.933662652969360 13.982648849487305 9.981824398040771 11.136724233627319 9.508973121643066 6.950373888015747 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path07" d="M 9.508973121643066 6.950373888015747 C 8.094068290173784 5.887047850499516 8.703820913091027 5.548009962337434 8.788483119400405 5.495176867104288 " fill="none" stroke="black" stroke-width="0.3"></path>
+<path class="pen path08" d="M 8.788483119400405 5.495176867104288 C 9.201090987077668 5.520732815685415 10.754162128169405 5.535984666507611 14.472026824951172 4.907253026962280 " fill="none" stroke="black" stroke-width="0.3"></path>
+</svg>
