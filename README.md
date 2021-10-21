@@ -221,13 +221,6 @@ Rendered:
 	<img src="imgs/font_35_raw/syn/00.svg">
 	<img src="imgs/font_35_raw/syn/15.svg"> 
 	<img src="imgs/font_35_raw/syn/07.svg">
-	<img src="imgs/font_35_raw/syn/21.svg"> 
-	<img src="imgs/font_35_raw/syn/30.svg"> 
-	<img src="imgs/font_35_raw/syn/28.svg"> 
-	<img src="imgs/font_35_raw/syn/05.svg"> 
-	<img src="imgs/font_35_raw/syn/40.svg">
-	<img src="imgs/font_35_raw/syn/39.svg"> 
-	<img src="imgs/font_35_raw/syn/45.svg"> 
 	<br/>
 	<img src="imgs/font_35_57_3_raw/syn/18.svg"> 
 	<img src="imgs/font_35_57_3_raw/syn/08.svg"> 
@@ -236,14 +229,7 @@ Rendered:
 	<img src="imgs/font_35_57_3_raw/syn/17.svg">
 	<img src="imgs/font_35_57_3_raw/syn/00.svg">
 	<img src="imgs/font_35_57_3_raw/syn/15.svg"> 
-	<img src="imgs/font_35_57_3_raw/syn/07.svg">
-	<img src="imgs/font_35_57_3_raw/syn/21.svg"> 
-	<img src="imgs/font_35_57_3_raw/syn/30.svg"> 
-	<img src="imgs/font_35_57_3_raw/syn/28.svg"> 
-	<img src="imgs/font_35_57_3_raw/syn/05.svg"> 
-	<img src="imgs/font_35_57_3_raw/syn/40.svg">
-	<img src="imgs/font_35_57_3_raw/syn/39.svg"> 
-	<img src="imgs/font_35_57_3_raw/syn/45.svg"> 
+	<img src="imgs/font_35_57_3_raw/syn/07.svg"> 
 	<br/>
 	<img src="imgs/font_35_57_5_raw/syn/18.svg"> 
 	<img src="imgs/font_35_57_5_raw/syn/08.svg"> 
@@ -253,13 +239,6 @@ Rendered:
 	<img src="imgs/font_35_57_5_raw/syn/00.svg">
 	<img src="imgs/font_35_57_5_raw/syn/15.svg"> 
 	<img src="imgs/font_35_57_5_raw/syn/07.svg"> 
-	<img src="imgs/font_35_57_5_raw/syn/21.svg"> 
-	<img src="imgs/font_35_57_5_raw/syn/30.svg"> 
-	<img src="imgs/font_35_57_5_raw/syn/28.svg"> 
-	<img src="imgs/font_35_57_5_raw/syn/05.svg"> 
-	<img src="imgs/font_35_57_5_raw/syn/40.svg">
-	<img src="imgs/font_35_57_5_raw/syn/39.svg"> 
-	<img src="imgs/font_35_57_5_raw/syn/45.svg"> 
 	<br/>
 	<img src="imgs/font_35_57_7_raw/syn/18.svg"> 
 	<img src="imgs/font_35_57_7_raw/syn/08.svg"> 
@@ -269,13 +248,6 @@ Rendered:
 	<img src="imgs/font_35_57_7_raw/syn/00.svg">
 	<img src="imgs/font_35_57_7_raw/syn/15.svg"> 
 	<img src="imgs/font_35_57_7_raw/syn/07.svg">
-	<img src="imgs/font_35_57_7_raw/syn/21.svg"> 
-	<img src="imgs/font_35_57_7_raw/syn/30.svg"> 
-	<img src="imgs/font_35_57_7_raw/syn/28.svg"> 
-	<img src="imgs/font_35_57_7_raw/syn/05.svg"> 
-	<img src="imgs/font_35_57_7_raw/syn/40.svg">
-	<img src="imgs/font_35_57_7_raw/syn/39.svg"> 
-	<img src="imgs/font_35_57_7_raw/syn/45.svg"> 
 	<br/>
 	<img src="imgs/font_57_raw/syn/18.svg"> 
 	<img src="imgs/font_57_raw/syn/08.svg"> 
@@ -285,13 +257,6 @@ Rendered:
 	<img src="imgs/font_57_raw/syn/00.svg">
 	<img src="imgs/font_57_raw/syn/15.svg"> 
 	<img src="imgs/font_57_raw/syn/07.svg">
-	<img src="imgs/font_57_raw/syn/21.svg"> 
-	<img src="imgs/font_57_raw/syn/30.svg"> 
-	<img src="imgs/font_57_raw/syn/28.svg"> 
-	<img src="imgs/font_57_raw/syn/05.svg"> 
-	<img src="imgs/font_57_raw/syn/40.svg">
-	<img src="imgs/font_57_raw/syn/39.svg"> 
-	<img src="imgs/font_57_raw/syn/45.svg"> 
 	<br/>
 </div>
 Outlines:
@@ -304,13 +269,6 @@ Outlines:
 	<img src="imgs/font_35/syn/35_00.svg">
 	<img src="imgs/font_35/syn/35_15.svg"> 
 	<img src="imgs/font_35/syn/35_07.svg">
-	<img src="imgs/font_35/syn/35_21.svg"> 
-	<img src="imgs/font_35/syn/35_30.svg"> 
-	<img src="imgs/font_35/syn/35_28.svg"> 
-	<img src="imgs/font_35/syn/35_05.svg"> 
-	<img src="imgs/font_35/syn/35_40.svg">
-	<img src="imgs/font_35/syn/35_39.svg"> 
-	<img src="imgs/font_35/syn/35_45.svg"> 
 	<br/>
 	<img src="imgs/font_35_57_3/syn/35_57_3_18.svg"> 
 	<img src="imgs/font_35_57_3/syn/35_57_3_08.svg"> 
@@ -320,13 +278,6 @@ Outlines:
 	<img src="imgs/font_35_57_3/syn/35_57_3_00.svg">
 	<img src="imgs/font_35_57_3/syn/35_57_3_15.svg"> 
 	<img src="imgs/font_35_57_3/syn/35_57_3_07.svg"> 	
-	<img src="imgs/font_35_57_3/syn/35_57_3_21.svg"> 
-	<img src="imgs/font_35_57_3/syn/35_57_3_30.svg"> 
-	<img src="imgs/font_35_57_3/syn/35_57_3_28.svg"> 
-	<img src="imgs/font_35_57_3/syn/35_57_3_05.svg"> 
-	<img src="imgs/font_35_57_3/syn/35_57_3_40.svg">
-	<img src="imgs/font_35_57_3/syn/35_57_3_39.svg"> 
-	<img src="imgs/font_35_57_3/syn/35_57_3_45.svg"> 
 	<br/>
 	<img src="imgs/font_35_57_5/syn/35_57_5_18.svg"> 
 	<img src="imgs/font_35_57_5/syn/35_57_5_08.svg"> 
@@ -335,14 +286,7 @@ Outlines:
 	<img src="imgs/font_35_57_5/syn/35_57_5_17.svg">
 	<img src="imgs/font_35_57_5/syn/35_57_5_00.svg">
 	<img src="imgs/font_35_57_5/syn/35_57_5_15.svg"> 
-	<img src="imgs/font_35_57_5/syn/35_57_5_07.svg"> 
-	<img src="imgs/font_35_57_5/syn/35_57_5_21.svg"> 
-	<img src="imgs/font_35_57_5/syn/35_57_5_30.svg"> 
-	<img src="imgs/font_35_57_5/syn/35_57_5_28.svg"> 
-	<img src="imgs/font_35_57_5/syn/35_57_5_05.svg"> 
-	<img src="imgs/font_35_57_5/syn/35_57_5_40.svg">
-	<img src="imgs/font_35_57_5/syn/35_57_5_39.svg"> 
-	<img src="imgs/font_35_57_5/syn/35_57_5_45.svg">	
+	<img src="imgs/font_35_57_5/syn/35_57_5_07.svg"> 	
 	<br/>
 	<img src="imgs/font_35_57_7/syn/35_57_7_18.svg"> 
 	<img src="imgs/font_35_57_7/syn/35_57_7_08.svg"> 
@@ -352,13 +296,6 @@ Outlines:
 	<img src="imgs/font_35_57_7/syn/35_57_7_00.svg">
 	<img src="imgs/font_35_57_7/syn/35_57_7_15.svg"> 
 	<img src="imgs/font_35_57_7/syn/35_57_7_07.svg">
-	<img src="imgs/font_35_57_7/syn/35_57_7_21.svg"> 
-	<img src="imgs/font_35_57_7/syn/35_57_7_30.svg"> 
-	<img src="imgs/font_35_57_7/syn/35_57_7_28.svg"> 
-	<img src="imgs/font_35_57_7/syn/35_57_7_05.svg"> 
-	<img src="imgs/font_35_57_7/syn/35_57_7_40.svg">
-	<img src="imgs/font_35_57_7/syn/35_57_7_39.svg"> 
-	<img src="imgs/font_35_57_7/syn/35_57_7_45.svg"> 
 	<br/>
 	<img src="imgs/font_57/syn/57_18.svg"> 
 	<img src="imgs/font_57/syn/57_08.svg"> 
@@ -368,13 +305,6 @@ Outlines:
 	<img src="imgs/font_57/syn/57_00.svg">
 	<img src="imgs/font_57/syn/57_15.svg"> 
 	<img src="imgs/font_57/syn/57_07.svg"> 
-	<img src="imgs/font_57/syn/57_21.svg"> 
-	<img src="imgs/font_57/syn/57_30.svg"> 
-	<img src="imgs/font_57/syn/57_28.svg"> 
-	<img src="imgs/font_57/syn/57_05.svg"> 
-	<img src="imgs/font_57/syn/57_40.svg">
-	<img src="imgs/font_57/syn/57_39.svg"> 
-	<img src="imgs/font_57/syn/57_45.svg"> 
 	<br/>
 </div>
 
@@ -564,7 +494,7 @@ Note: we package the image and sequence files all into the pkls, which is memory
 
 If you use this code or find our work is helpful, please consider citing our work:
 ```
-@inproceedings{wang2021deepvecfont,
+@article{wang2021deepvecfont,
  author = {Wang, Yizhi and Lian, Zhouhui},
  title = {DeepVecFont: Synthesizing High-quality Vector Fonts via Dual-modality Learning},
  journal = {ACM Transactions on Graphics},
