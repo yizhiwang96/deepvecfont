@@ -445,7 +445,7 @@ This dataset is too huge so I suggest to create it by yourself (see the details 
 
 Please Download them and put it under `./data/`.
 
-### Pretrained model
+### Pretrained models
 - **The Neural Rasterizer** Download links: [Google Drive](https://drive.google.com/drive/folders/10Qy7vFn27H2qQfve1Tu7UR3sm3l45cKg?usp=sharing)
 
 Please download the `dvf_neural_raster` dir and put it under `./experiments/`.
@@ -453,11 +453,12 @@ Please download the `dvf_neural_raster` dir and put it under `./experiments/`.
 - **The Image Super-resolution model**  Download links: [Google Drive](https://drive.google.com/drive/folders/1D_U4KHbt42u6ZGNNOAOvy5QXjwHj_abX?usp=sharing).
 
 Please download the `image_sr` dir and put it under `./experiments/`.
-Note that recently we switched from Tensorflow to Pytorch, we may update the models that have better performances.
 
-- **The Main model** Download links: [Google Drive].(https://drive.google.com/drive/folders/1Ykacqk8VPhvVv_XFH47BBvGt8ZlBrpnZ?usp=sharing)
+- **The Main model** Download links: [Google Drive](https://drive.google.com/drive/folders/1Ykacqk8VPhvVv_XFH47BBvGt8ZlBrpnZ?usp=sharing).
 
 Please download the `dvf_main_model` dir and put it under `./experiments/`.
+
+Note that recently we switched from Tensorflow to Pytorch, we may update the models that have better performances.
 
 ## Training and Testing
 
