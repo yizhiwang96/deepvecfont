@@ -42,10 +42,10 @@ def write_glyph_imgs(opts):
             if int(vbox_h) > int(vbox_w):
                 add_to_y = 0
                 add_to_x = abs(int(vbox_h) - int(vbox_w)) / 2
-                add_to_x = add_to_x * (64.0 / norm)
+                add_to_x = add_to_x * (float(opts.img_size) / norm)
             else:
                 add_to_y = abs(int(vbox_h) - int(vbox_w)) / 2
-                add_to_y = add_to_y * (64.0 / norm)
+                add_to_y = add_to_y * (float(opts.img_size) / norm)
                 add_to_x = 0
 
             char = opts.alphabet[charid]

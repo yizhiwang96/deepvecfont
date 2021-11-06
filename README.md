@@ -439,7 +439,7 @@ The details about how to create from your own data are shown below.)
 
 - **The Image Super-resolution dataset** 
 
-This dataset is too huge so I suggest to create it by yourself (more information will be released).
+This dataset is too huge so I suggest to create it by yourself (see the details below about creating your own dataset).
 
 - **The mean and stdev files** Download links: [Google Drive](https://drive.google.com/drive/folders/1ZDZQIf2LGXmlKKPtkS3l32P77iNAlBqD?usp=sharing)
 
@@ -455,7 +455,9 @@ Please download the `dvf_neural_raster` dir and put it under `./experiments/`.
 Please download the `image_sr` dir and put it under `./experiments/`.
 Note that recently we switched from Tensorflow to Pytorch, we may update the models that have better performances.
 
-- **The Main model** Download links: [will be uploaded soon].
+- **The Main model** Download links: [Google Drive].(https://drive.google.com/drive/folders/1Ykacqk8VPhvVv_XFH47BBvGt8ZlBrpnZ?usp=sharing)
+
+Please download the `dvf_main_model` dir and put it under `./experiments/`.
 
 ## Training and Testing
 
