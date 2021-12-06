@@ -525,7 +525,10 @@ python write_glyph_imgs.py --split test
 python write_data_to_pkl.py --split train
 python write_data_to_pkl.py --split test
 ```
-Note: we package the image and sequence files all into the pkls, which is memory-consuming when training. It is a better way to write the file paths and read the files from disks/drives when training (TO-DO).
+Note: 
+(1) We package the image and sequence files all into the pkls, which is memory-consuming when training. It is a better way to write the file paths and read the files from disks/drives when training (TO-DO).
+
+(2) If you use the mean and stddev files calculated from your own data, you need to retrain the neural rasterizer. For English fonts, just use the mean and stddev files we provided.
 
 ## Acknowledgment
 
