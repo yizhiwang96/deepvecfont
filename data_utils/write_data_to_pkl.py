@@ -172,12 +172,13 @@ def cal_mean_stddev(opts):
     mean = np.concatenate((np.zeros([4]), mean[4:]), axis=0)
     stdev = np.concatenate((np.ones([4]), stdev[4:]), axis=0)
     # finally, save the mean and stddev files
-    np.savez(os.path.join(opts.output_path, opts.split, 'mean.npz'), mean)
-    np.savez(os.path.join(opts.output_path, opts.split, 'stdev.npz'), stdev)
+    np.save(os.path.join(opts.output_path, opts.split, 'mean'), mean)
+    np.save(os.path.join(opts.output_path, opts.split, 'stdev'), stdev)
 
-    # save_mean_stddev = svg_utils.mean_to_example(output)
-    # save_mean_stddev_f = open(os.path.join(opts.output_path, opts.split, f'{opts.split}_mean_stddev.pkl'), 'wb')
-    # pickle.dump(save_mean_stddev, save_mean_stddev_f)
+    # rename npy to npz, to match the file names predefined in main.py
+    path_ms = os.path.join(opts.output_path, opts.split)
+    os.rename(os.path.join(path_ms, 'mean.npy'), os.path.join(path_ms, 'mean.npz'))
+    os.rename(os.path.join(path_ms, 'stdev.npy'), os.path.join(path_ms, 'stdev.npz'))
 
 def main():
     parser = argparse.ArgumentParser(description="LMDB creation")
