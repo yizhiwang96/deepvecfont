@@ -83,12 +83,12 @@ def create_db(opts):
                 # use the font whose all glyphs are valid
                 # merge the whole font
                 merged_res = {}
-                if not os.path.exists(os.path.join(cur_font_sfd_dir, 'imgs.npy')):
-                    rendered = np.zeros((52, opts.img_size, opts.img_size), np.uint8)
+                if not os.path.exists(os.path.join(cur_font_sfd_dir, 'imgs_' + str(opts.img_size) + '.npy')):
+                    rendered = np.zeros((opts.num_char, opts.img_size, opts.img_size), np.uint8)
                     rendered[:, :, :] = 255
                     rendered = rendered.tolist()
                 else:
-                    rendered = np.load(os.path.join(cur_font_sfd_dir, 'imgs.npy')).tolist()
+                    rendered = np.load(os.path.join(cur_font_sfd_dir, 'imgs_' + str(opts.img_size) + '.npy')).tolist()
                 sequence = []
                 seq_len = []
                 binaryfp = []
@@ -186,7 +186,8 @@ def main():
     parser.add_argument('--sfd_path', type=str, default='./font_sfds')
     parser.add_argument("--output_path", type=str, default='../data/vecfont_dataset_/',
                         help="Path to write the database to")
-    parser.add_argument('--img_size', type=int, default=64)
+    parser.add_argument('--img_size', type=int, default=64, help="the height and width of glyph images")
+    parser.add_argument('--num_char', type=int, default=52, help="the number of character categories")
     parser.add_argument("--split", type=str, default='train')
     parser.add_argument("--log_dir", type=str, default='./font_sfds/log/')
     parser.add_argument("--num_processes", type=int, default=1, help="number of processes") # the real num will be opts.num_processes + 1
