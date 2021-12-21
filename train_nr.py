@@ -32,7 +32,7 @@ def train_nr_model(opts):
 
     neural_rasterizer = NeuralRasterizer(feature_dim=opts.seq_feature_dim, hidden_size=opts.hidden_size, num_hidden_layers=opts.num_hidden_layers, 
                                          ff_dropout_p=opts.ff_dropout, rec_dropout_p=opts.rec_dropout, input_nc = 2 * opts.hidden_size, 
-                                         output_nc=1, ngf=16, bottleneck_bits=opts.bottleneck_bits, norm_layer=nn.LayerNorm, n_blocks=6, mode='train')
+                                         output_nc=1, ngf=16, bottleneck_bits=opts.bottleneck_bits, norm_layer=nn.LayerNorm, mode='train')
     
     vggcxlossfunc = VGGContextualLoss()
 

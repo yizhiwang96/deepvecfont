@@ -420,6 +420,10 @@ conda create -n dvf python=3.9
 source activate dvf
 ```
 Install pytorch via the [instructions](https://pytorch.org/get-started/locally/).
+- Others
+```shell
+conda install tensorboardX scikit-image
+```
 
 ### Install diffvg
 
