@@ -5,7 +5,7 @@ This is the official Pytorch implementation of the paper:
 Yizhi Wang and Zhouhui Lian. DeepVecFont: Synthesizing High-quality Vector Fonts via Dual-modality Learning. SIGGRAPH Asia. 2021.
 
 Paper: [arxiv](https://arxiv.org/abs/2110.06688)
-Supplementary: [https://yizhiwang96.github.io/deepvecfont_homepage/pdfs/deepvecfont_sm.pdf]
+Supplementary: [Link](https://yizhiwang96.github.io/deepvecfont_homepage/pdfs/deepvecfont_sm.pdf)
 Homepage: [DeepVecFont](https://yizhiwang96.github.io/deepvecfont_homepage/)
 
 <div align=center>
