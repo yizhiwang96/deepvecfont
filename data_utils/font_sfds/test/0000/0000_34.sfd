@@ -3,8 +3,8 @@ FontName: 0000_0000.ttf
 FullName: Untitled35
 FamilyName: Untitled35
 Weight: Regular
-Copyright: Copyright (c) 2021, 
-UComments: "2021-10-20: Created with FontForge (http://fontforge.org)"
+Copyright: Copyright (c) 2022, 
+UComments: "2022-6-25: Created with FontForge (http://fontforge.org)"
 Version: 001.000
 ItalicAngle: 0
 UnderlinePosition: -100
@@ -15,12 +15,12 @@ InvalidEm: 0
 LayerCount: 2
 Layer: 0 0 "Back" 1
 Layer: 1 0 "Fore" 0
-XUID: [1021 412 1318575179 5389187]
+XUID: [1021 162 2050247783 9633014]
 OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
-CreationTime: 1634731554
-ModificationTime: 1634731554
+CreationTime: 1656144971
+ModificationTime: 1656144971
 OS2TypoAscent: 0
 OS2TypoAOffset: 1
 OS2TypoDescent: 0
@@ -46,24 +46,22 @@ BeginChars: 256 1
 
 StartChar: i
 Encoding: 105 105 0
-Width: 369
+Width: 489
+VWidth: 2048
 Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-207 0 m 1
- 305 391 l 1
- 59 391 l 1
- 45 337 l 1
- 62.3333333333 337 75 335 83 331 c 128
- 91 327 95 319 95 307 c 1
- 20 0 l 1
- 207 0 l 1
-323 466 m 1
- 351 577 l 1
- 167 577 l 1
- 139 466 l 1
- 323 466 l 1
+73 1032 m 1
+ 416 1032 l 1
+ 416 0 l 1
+ 73 0 l 1
+ 73 1032 l 1
+73 1382 m 1
+ 416 1382 l 1
+ 416 1128 l 1
+ 73 1128 l 1
+ 73 1382 l 1
 EndSplineSet
 EndChar
 EndChars

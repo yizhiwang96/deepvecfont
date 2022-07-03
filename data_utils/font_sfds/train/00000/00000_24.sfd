@@ -3,8 +3,8 @@ FontName: 00000_00000.ttf
 FullName: Untitled25
 FamilyName: Untitled25
 Weight: Regular
-Copyright: Copyright (c) 2021, 
-UComments: "2021-10-20: Created with FontForge (http://fontforge.org)"
+Copyright: Copyright (c) 2022, 
+UComments: "2022-6-25: Created with FontForge (http://fontforge.org)"
 Version: 001.000
 ItalicAngle: 0
 UnderlinePosition: -100
@@ -15,12 +15,12 @@ InvalidEm: 0
 LayerCount: 2
 Layer: 0 0 "Back" 1
 Layer: 1 0 "Fore" 0
-XUID: [1021 877 -968672716 15491078]
+XUID: [1021 581 1203545934 10657832]
 OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
-CreationTime: 1634731550
-ModificationTime: 1634731550
+CreationTime: 1656145960
+ModificationTime: 1656145960
 OS2TypoAscent: 0
 OS2TypoAOffset: 1
 OS2TypoDescent: 0
@@ -46,22 +46,61 @@ BeginChars: 256 1
 
 StartChar: Y
 Encoding: 89 89 0
-Width: 1042
+Width: 924
 VWidth: 2048
 Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-440 0 m 1
- 440 600 l 1
- -41 1421 l 1
- 145 1421 l 1
- 537 737 l 1
- 926 1421 l 1
- 1094 1421 l 1
- 610 594 l 1
- 610 0 l 1
- 440 0 l 1
+372 212 m 1
+ 415 207 l 1
+ 444.333333333 207 504.333333333 228.666666667 595 272 c 1
+ 670 282 l 1
+ 686 277.333333333 694 272.333333333 694 267 c 1
+ 685.333333333 267 675 248.666666667 663 212 c 1
+ 608 212 l 2
+ 574.666666667 212 558 200.333333333 558 177 c 1
+ 526 180 l 1
+ 500 178 l 1
+ 506 197 l 1
+ 453 167 l 1
+ 477 137 l 1
+ 477 132 l 1
+ 445 132 399.666666667 113.666666667 341 77 c 1
+ 304 97 l 1
+ 264 47 220.666666667 22 174 22 c 0
+ 136 22 86.3333333333 13.6666666667 25 -3 c 1
+ 25 2 l 1
+ 37 22 l 1
+ 19 62 l 1
+ 19 77 l 1
+ 25 77 l 1
+ 39.6666666667 67 56 62 74 62 c 1
+ 74 57 l 1
+ 96.6666666667 59.6666666667 134 78 186 112 c 1
+ 211 117 l 1
+ 217 117 l 1
+ 254 107 l 1
+ 254 112 l 1
+ 240 124.666666667 231.666666667 141.333333333 229 162 c 1
+ 136 162 l 1
+ 124 172 l 1
+ 124 207 l 1
+ 112 207 l 1
+ 86.6666666667 195 63.6666666667 195 43 207 c 1
+ 50 267 l 1
+ 43 272 l 1
+ 50 277 l 1
+ 174 239 264.666666667 202.333333333 322 167 c 1
+ 333.333333333 168.333333333 341.666666667 176.666666667 347 192 c 1
+ 372 212 l 1
+62 127 m 1
+ 74 127 l 1
+ 74 112 l 1
+ 62 102 l 1
+ 43 102 l 1
+ 43 112 l 1
+ 62 127 l 1
 EndSplineSet
 EndChar
 EndChars

@@ -30,17 +30,17 @@ def train_main_model(opts):
     logfile = open(os.path.join(log_dir, "train_loss_log.txt"), 'w')
     val_logfile = open(os.path.join(log_dir, "val_loss_log.txt"), 'w')
 
-    train_loader = get_loader(opts.data_root, opts.char_categories, opts.max_seq_len, opts.seq_feature_dim, opts.batch_size, opts.mode)
-    val_loader = get_loader(opts.data_root, opts.char_categories, opts.max_seq_len, opts.seq_feature_dim, opts.batch_size, 'test')
+    train_loader = get_loader(opts.data_root, opts.image_size, opts.char_categories, opts.max_seq_len, opts.seq_feature_dim, opts.batch_size, opts.read_mode, opts.mode)
+    val_loader = get_loader(opts.data_root, opts.image_size, opts.char_categories, opts.max_seq_len, opts.seq_feature_dim, opts.batch_size, opts.read_mode, 'test')
 
-    img_encoder = ImageEncoder(input_nc = opts.char_categories, output_nc = 1, ngf = 16, norm_layer=nn.LayerNorm)
+    img_encoder = ImageEncoder(img_size=opts.image_size, input_nc=opts.char_categories, output_nc=1, ngf=16, norm_layer=nn.LayerNorm)
 
-    img_decoder = ImageDecoder(input_nc = opts.bottleneck_bits + opts.char_categories, output_nc = 1, ngf = 16, norm_layer=nn.LayerNorm)
+    img_decoder = ImageDecoder(img_size=opts.image_size, input_nc=opts.bottleneck_bits + opts.char_categories, output_nc=1, ngf=16, norm_layer=nn.LayerNorm)
 
     vggptlossfunc = VGGPerceptualLoss()
 
-    modality_fusion = ModalityFusion(img_feat_dim = 16 * opts.image_size, hidden_size = opts.hidden_size, 
-                                     ref_nshot = opts.ref_nshot, bottleneck_bits = opts.bottleneck_bits, mode=opts.mode)
+    modality_fusion = ModalityFusion(img_feat_dim=16 * opts.image_size, hidden_size=opts.hidden_size, 
+                                     ref_nshot=opts.ref_nshot, bottleneck_bits=opts.bottleneck_bits, mode=opts.mode)
 
     svg_encoder = SVGLSTMEncoder(char_categories=opts.char_categories,
                                  bottleneck_bits=opts.bottleneck_bits, mode=opts.mode, max_sequence_length=opts.max_seq_len,
@@ -56,11 +56,11 @@ def train_main_model(opts):
                               mode=opts.mode, mix_temperature=opts.mix_temperature,
                               gauss_temperature=opts.gauss_temperature, dont_reduce=opts.dont_reduce_loss)
 
-    neural_rasterizer = NeuralRasterizer(feature_dim=opts.seq_feature_dim, hidden_size=opts.hidden_size, num_hidden_layers=opts.num_hidden_layers, 
-                                         ff_dropout_p=opts.ff_dropout, rec_dropout_p=opts.rec_dropout, input_nc = 2 * opts.hidden_size, 
+    neural_rasterizer = NeuralRasterizer(img_size=opts.image_size, feature_dim=opts.seq_feature_dim, hidden_size=opts.hidden_size, num_hidden_layers=opts.num_hidden_layers, 
+                                         ff_dropout_p=opts.ff_dropout, rec_dropout_p=opts.rec_dropout, input_nc=2 * opts.hidden_size, 
                                          output_nc=1, ngf=16, bottleneck_bits=opts.bottleneck_bits, norm_layer=nn.LayerNorm, mode='test')
 
-    neural_rasterizer_fpath = os.path.join("./experiments/dvf_neural_raster/checkpoints/neural_raster_350.nr.pth")
+    neural_rasterizer_fpath = os.path.join("./experiments/dvf_neural_raster/checkpoints/neural_raster_" + str(opts.nr_ckpt_num) + ".nr.pth")
     neural_rasterizer.load_state_dict(torch.load(neural_rasterizer_fpath))
     neural_rasterizer.eval()
 
@@ -90,8 +90,8 @@ def train_main_model(opts):
     if opts.tboard:
         writer = SummaryWriter(log_dir)
     
-    mean = np.load('./data/mean.npz')
-    std = np.load('./data/stdev.npz')
+    mean = np.load(os.path.join(opts.data_root, opts.mode, 'mean.npz'))
+    std = np.load(os.path.join(opts.data_root, opts.mode, 'stdev.npz'))
     mean = torch.from_numpy(mean).to(device).to(torch.float32)
     std = torch.from_numpy(std).to(device).to(torch.float32)
     network_modules= [img_encoder, img_decoder, modality_fusion, vggptlossfunc, svg_encoder, svg_decoder, mdn_top_layer, neural_rasterizer]
@@ -142,10 +142,6 @@ def train_main_model(opts):
                     writer.add_image('Images/trgsvg_nr_img', trgsvg_nr_out['gen_imgs'][0], batches_done)
                     writer.add_image('Images/synsvg_nr_img', synsvg_nr_out['gen_imgs'][0], batches_done)
                     writer.add_image('Images/output_img', output_img[0], batches_done)
-                    '''
-                    for img_idx in range(52):
-                        writer.add_image('Images/src_img_' + "%02d"%img_idx, ref_img[0,img_idx:img_idx+1,:,:], batches_done)
-                    '''
 
             if opts.sample_freq > 0 and batches_done % opts.sample_freq == 0:
                 
@@ -165,7 +161,6 @@ def train_main_model(opts):
                 with torch.no_grad():
                     for val_idx, val_data in enumerate(val_loader):
                         val_img_decoder_out, val_vggpt_loss, val_kl_loss, val_svg_losses, val_trg_img, val_ref_img, val_trgsvg_nr_out, val_synsvg_nr_out = network_forward(val_data, mean, std, opts, network_modules)
-                        
                         val_img_l1_loss += val_img_decoder_out['img_l1loss']
                         val_img_pt_loss += val_vggpt_loss['pt_c_loss']
                         val_cmd_softmax_loss += val_svg_losses['softmax_xent_loss']
@@ -184,8 +179,7 @@ def train_main_model(opts):
                         writer.add_scalar('VAL/img_pt_loss', val_img_pt_loss, batches_done)
                         writer.add_scalar('VAL/cmd_softmax_loss', val_cmd_softmax_loss, batches_done)
                         writer.add_scalar('VAL/coord_mdn_loss', val_coord_mdn_loss, batches_done)
-                        writer.add_scalar('VAL/synsvg_nr_rec_loss', val_synsvg_nr_rec_loss, batches_done)                          
-                        # writer.add_scalar('VAL/b_loss', val_b_loss, batches_done)
+                        writer.add_scalar('VAL/synsvg_nr_rec_loss', val_synsvg_nr_rec_loss, batches_done)
 
                     val_msg = (
                         f"Epoch: {epoch}/{opts.n_epochs}, Batch: {idx}/{len(train_loader)}, "
@@ -199,22 +193,21 @@ def train_main_model(opts):
                     print(val_msg)
              
         if epoch % opts.ckpt_freq == 0:
-            model_file_1 = os.path.join(ckpt_dir, f"{opts.model_name}_{epoch}.imgenc.pth")
-            model_file_2 = os.path.join(ckpt_dir, f"{opts.model_name}_{epoch}.imgdec.pth")
-            model_file_3 = os.path.join(ckpt_dir, f"{opts.model_name}_{epoch}.seqenc.pth")
-            model_file_4 = os.path.join(ckpt_dir, f"{opts.model_name}_{epoch}.seqdec.pth")
-            model_file_5 = os.path.join(ckpt_dir, f"{opts.model_name}_{epoch}.modalfuse.pth")
-            model_file_6 = os.path.join(ckpt_dir, f"{opts.model_name}_{epoch}.mdntl.pth")
+            model_modules = [img_encoder, img_decoder, svg_encoder, svg_decoder, modality_fusion, mdn_top_layer]
+            model_file_paths = []
+            model_file_paths.append(os.path.join(ckpt_dir, f"{opts.model_name}_{epoch}.imgenc.pth"))
+            model_file_paths.append(os.path.join(ckpt_dir, f"{opts.model_name}_{epoch}.imgdec.pth"))
+            model_file_paths.append(os.path.join(ckpt_dir, f"{opts.model_name}_{epoch}.seqenc.pth"))
+            model_file_paths.append(os.path.join(ckpt_dir, f"{opts.model_name}_{epoch}.seqdec.pth"))
+            model_file_paths.append(os.path.join(ckpt_dir, f"{opts.model_name}_{epoch}.modalfuse.pth"))
+            model_file_paths.append(os.path.join(ckpt_dir, f"{opts.model_name}_{epoch}.mdntl.pth"))
 
             if torch.cuda.is_available() and opts.multi_gpu:
-                torch.save(img_encoder.module.state_dict(), model_file_1)
+                for idx in range(len(model_modules)):
+                    torch.save(model_modules[idx].module.state_dict(), model_file_paths[idx])
             else:
-                torch.save(img_encoder.state_dict(), model_file_1)
-                torch.save(img_decoder.state_dict(), model_file_2)
-                torch.save(svg_encoder.state_dict(), model_file_3)
-                torch.save(svg_decoder.state_dict(), model_file_4)
-                torch.save(modality_fusion.state_dict(), model_file_5)
-                torch.save(mdn_top_layer.state_dict(), model_file_6)
+                for idx in range(len(model_modules)):
+                    torch.save(model_modules[idx].state_dict(), model_file_paths[idx])
                 
     logfile.close()
     val_logfile.close()
@@ -237,13 +230,13 @@ def network_forward(data, mean, std, opts, network_moudules):
     else:
         ref_cls_upper = torch.randint(0, opts.char_categories // 2, (input_image.size(0), opts.ref_nshot // 2)).to(device) # bs, 1
         ref_cls_lower = torch.randint(opts.char_categories // 2, opts.char_categories, (input_image.size(0), opts.ref_nshot - opts.ref_nshot // 2)).to(device) # bs, 1
-        ref_cls = torch.cat((ref_cls_upper,ref_cls_lower), -1)
+        ref_cls = torch.cat((ref_cls_upper, ref_cls_lower), -1)
     
     # the input reference images 
     trg_cls = torch.randint(0, opts.char_categories, (input_image.size(0), 1)).to(device) # bs, 1
     ref_cls_multihot = torch.zeros(input_image.size(0), opts.char_categories).to(device) # bs, 1
     for ref_id in range(0,opts.ref_nshot):
-        ref_cls_multihot = torch.logical_or(ref_cls_multihot, util_funcs.trgcls_to_onehot(input_clss, ref_cls[:,ref_id:ref_id+1], opts))
+        ref_cls_multihot = torch.logical_or(ref_cls_multihot, util_funcs.trgcls_to_onehot(input_clss, ref_cls[:, ref_id:ref_id+1], opts))
     ref_cls_multihot = ref_cls_multihot.to(torch.float32)
     ref_cls_multihot = ref_cls_multihot.unsqueeze(2)
     ref_cls_multihot = ref_cls_multihot.unsqueeze(3)

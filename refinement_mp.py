@@ -5,8 +5,16 @@ import skimage.io
 import os
 import re
 from shutil import copyfile
+import shutil
 from PIL import Image
 import numpy as np
+import torch.multiprocessing as mp
+from torch.multiprocessing import Pool, Process, set_start_method
+try:
+    set_start_method('spawn')
+except RuntimeError:
+    pass
+
 gamma = 1.0
 
 def cal_alignment_loss(args, save_path):
@@ -105,7 +113,6 @@ def get_svg_glyph_bbox(svg_path):
         # x1,y1,x2,y2,x3,y3,x4,y4 are the absolute coords
         if path_splited[idx] == 'm':
             coords_str = path_splited[idx+1]
-            print(first_move)
             if first_move:
                 x4 = float(coords_str.split(' ')[1])
                 y4 = float(coords_str.split(' ')[2])
@@ -120,7 +127,6 @@ def get_svg_glyph_bbox(svg_path):
             x_max = max(cur_x, x_max)
             y_min = min(cur_y, y_min)
             y_max = max(cur_y, y_max)
-            print(cur_x,cur_y)
         if path_splited[idx] == 'l':
             coords_str = path_splited[idx+1]
             x4 = cur_x + float(coords_str.split(' ')[1])
@@ -131,7 +137,6 @@ def get_svg_glyph_bbox(svg_path):
             x_max = max(cur_x, x_max)
             y_min = min(cur_y, y_min)
             y_max = max(cur_y, y_max)
-            print(cur_x,cur_y)
         if path_splited[idx] == 'c':
             coords_str = path_splited[idx+1]
             x1 = cur_x
@@ -148,20 +153,19 @@ def get_svg_glyph_bbox(svg_path):
             y_max = max(y2, y3, y4, y_max)
             cur_x = x4
             cur_y = y4
-            print(cur_x,cur_y)
     return [x_min,x_max], [y_min,y_max]
 
 def get_img_bbox(img_path):
-    print(img_path)
     img = Image.open(img_path)
     img = 255 - np.array(img)
-    img0 = np.sum(img, axis = 0)
-    img1 = np.sum(img, axis = 1)
+    img0 = np.sum(img, axis=0)
+    img1 = np.sum(img, axis=1)
     y_range = np.where(img1>127.5)[0]
     x_range = np.where(img0>127.5)[0]
-    return [x_range[0],x_range[-1]], [y_range[0],y_range[-1]]
+    return [x_range[0], x_range[-1]], [y_range[0], y_range[-1]]
 
-def svg_bbox_align(svg_path, trgimg_path):
+
+def trans_svg_w_align2img(svg_path, trgimg_path):
 
     svg_xr, svg_yr = get_svg_glyph_bbox(svg_path)
     img_xr, img_yr = get_img_bbox(trgimg_path)
@@ -219,6 +223,80 @@ def svg_bbox_align(svg_path, trgimg_path):
     fout.close()
 
 
+def trans_svg_wo_align2img(svg_path, trgimg_path):
+
+    svg_raw = open(svg_path,'r').read()
+    fout = open(svg_path.split('.svg')[0] + '_256.svg','w')
+    fout.write('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="256px" height="256px" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256">')
+    scalar = 256 / 24
+    coord = '<path' + svg_raw.split('<path')[1]
+    tokens = coord.split(' ')
+    newcoord = ''
+    for k in tokens:
+        if k[0] != '<' and k[0] != 'd' and k[0] != 'm' and k[0] != 'c' and k[0] != 'l' and k[0] != 'f':
+            if k[-1] != '"':
+                newcoord += str(float(k) * scalar)
+                newcoord += ' '
+            else:
+                newcoord += str(float(k[0:len(k)-1]) * scalar)
+                newcoord += '" '
+        else:
+            newcoord += k
+            newcoord += ' '
+
+    fout.write(newcoord)
+    fout.close()
+
+def process_s1(process_id, chars_per_process, args):
+
+    svg_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'svgs')
+    imghr_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'imgs_256')
+    svg_outpath = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'svgs_bestcand')
+    if not os.path.exists(svg_outpath):
+        os.mkdir(svg_outpath)
+
+    for i in range(process_id * chars_per_process, (process_id + 1) * chars_per_process):
+        if i >= args.num_chars:
+            break
+        # find the best candidate
+        minLoss = 10000
+        noMin = 0
+        tempLoss = 0
+        # pick the best candidate
+        for j in range(0, int(args.candidate_nums)):
+            args.no_sample = j
+            args.svg = os.path.join(svg_path, 'syn_%02d_%02d.svg'%(i,j))
+            args.target = os.path.join(imghr_path, '%02d_256.png'%i)
+            if args.init_svgbbox_align2img:
+                trans_svg_w_align2img(args.svg, args.target)
+            else:
+                trans_svg_wo_align2img(args.svg, args.target)
+            args.svg = os.path.join(svg_path, 'syn_%02d_%02d_256.svg'%(i,j))
+            tempLoss = cal_alignment_loss(args, save_path = args.svg.split('.svg')[0] + '_r.svg')
+            if tempLoss < minLoss:
+                noMin = j
+                minLoss = tempLoss
+        # do longer optimization
+        src_path = os.path.join(svg_path, 'syn_%02d_%02d_256.svg'%(i,noMin))
+        trg_path = os.path.join(svg_outpath, 'syn_%02d_256.svg'%(i))
+        shutil.copy(src_path, trg_path)
+ 
+def process_s2(process_id, chars_per_process, args):
+    imghr_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'imgs_256')
+    svg_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'svgs')
+    svg_cdt_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'svgs_bestcand')
+    svg_outpath = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'svgs_refined')
+    if not os.path.exists(svg_outpath):
+        os.mkdir(svg_outpath)
+    
+    for i in range(process_id * chars_per_process, (process_id + 1) * chars_per_process):
+        if i >= args.num_chars:
+            break
+        # refine the best candidate
+        args.num_iter = 300
+        args.svg = os.path.join(svg_cdt_path, 'syn_%02d_256.svg'%(i))
+        args.target = os.path.join(imghr_path, '%02d_256.png'%i)
+        tempLoss = cal_alignment_loss(args, save_path = os.path.join(svg_outpath, 'syn_%02d.svg'%(i)))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -227,49 +305,39 @@ if __name__ == "__main__":
     parser.add_argument("--use_lpips_loss", dest='use_lpips_loss', action='store_true')
     parser.add_argument("--num_iter", type=int, default=40)
     parser.add_argument("--no_sample", type=int, default=0)
-    parser.add_argument("--fontid", type=str, default='0')
-    parser.add_argument("--experiment_name", type=str, default='v1.0_gumbletrain')
+    parser.add_argument("--num_processes", type=int, default=4)
+    parser.add_argument("--num_chars", type=int, default=52)
+    parser.add_argument("--fontid", type=str, default='17')
+    parser.add_argument("--experiment_name", type=str, default='dvf')
     parser.add_argument("--candidate_nums", type=str, default='20')
+    parser.add_argument("--init_svgbbox_align2img", type=bool, default=False)
     args = parser.parse_args()
 
-    svg_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'svgs')
-    imghr_path = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'imgs_256')
-    svg_outpath = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'svgs-refined')
-    if not os.path.exists(svg_outpath):
-        os.mkdir(svg_outpath)
+    svg_outpath = os.path.join('experiments', args.experiment_name + '_main_model/results/', '%04d'%int(args.fontid), 'svgs_refined')
     
+    chars_per_process = args.num_chars // args.num_processes + 1
+    
+    print("stage 1: find the best candidates ...")
+    processes = [mp.Process(target=process_s1, args=[pid, chars_per_process, args]) for pid in range(args.num_processes)]
 
-    for i in range(0,52):#62
-
-        # find the best candidate
-        minLoss = 10000
-        noMin = 0
-        tempLoss = 0
-        # pick the best candidate
-        for j in range(0, int(args.candidate_nums)):
-            print(f'processing_char_{i:02d}_candidate_{j:02d}')
-            args.no_sample = j
-            args.svg = os.path.join(svg_path, 'syn_%02d_%02d.svg'%(i,j))
-            args.target = os.path.join(imghr_path, '%02d_256.png'%i)
-            #svg_aligned = align(args.svg, args.target)
-            svg_bbox_align(args.svg, args.target)
-            args.svg = os.path.join(svg_path, 'syn_%02d_%02d_256.svg'%(i,j))
-            #svg_init_aligned = os.path.join(svg_path, 'syn_%02d_'%i, '%02d'%j, '.svg')
-            tempLoss = cal_alignment_loss(args, save_path = args.svg.split('.svg')[0] + '_r.svg')
-            #print(f'finished_char_{i:02d}_candidate_{j:02d}')
-            if tempLoss < minLoss:
-                noMin = j
-                minLoss = tempLoss
-        # do longer optimization
-        args.num_iter = 300
-        args.svg = os.path.join(svg_path, 'syn_%02d_%02d_256_r.svg'%(i,noMin))
-        tempLoss = cal_alignment_loss(args, save_path = os.path.join(svg_outpath, 'syn_%02d.svg'%(i)))
-
+    for p in processes:
+        p.start()
+    for p in processes:
+        p.join()
+          
+    print("stage 2: further refine these candidates ...")
+    processes = [mp.Process(target=process_s2, args=[pid,chars_per_process, args]) for pid in range(args.num_processes)]
+    for p in processes:
+        p.start()
+    for p in processes:
+        p.join()
+    
     svg_merge_outpath = os.path.join(svg_outpath, f"syn_svg_merge.html")
     fout = open(svg_merge_outpath, 'w')
-    for i in range(0,52):
-        svg = open(os.path.join(svg_outpath, 'syn_%02d.svg'%(i)),'r')
-        f.write(svg)
+    for i in range(0, 52):
+        svg = open(os.path.join(svg_outpath, 'syn_%02d.svg'%(i)),'r').read()
+        svg = svg.replace('<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="256" height="256">', '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64px" height="64px" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256">')
+        fout.write(svg)
         if i > 0 and i % 13 == 12:
             fout.write('<br>')
     fout.close()

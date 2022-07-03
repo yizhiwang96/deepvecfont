@@ -1,1 +1,11 @@
-font 0000, char 16 is not a valid glyph
+font 0020, char 16 is not a valid glyph
+font 0022, char 00's sfd is not a valid path
+font 0023, char 01's sfd is not a valid path
+font 0027, char 16's sfd is not a valid path
+font 0029, char 18's sfd is not a valid path
+font 0032, char 22's sfd is not a valid path
+font 0033, char 00's sfd is not a valid path
+font 0034, char 00's sfd is not a valid path
+font 0036, char 00's sfd is not a valid path
+font 0037, char 00's sfd is not a valid path
+font 0038, char 01's sfd is not a valid path

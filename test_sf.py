@@ -25,15 +25,15 @@ def test_main_model(opts):
     ckpt_dir = os.path.join(exp_dir, "checkpoints")
     res_dir = os.path.join(exp_dir, "results")
 
-    test_loader = get_loader(opts.data_root, opts.char_categories, opts.max_seq_len, opts.seq_feature_dim, opts.batch_size, 'test')
+    test_loader = get_loader(opts.data_root, opts.image_size, opts.char_categories, opts.max_seq_len, opts.seq_feature_dim, opts.batch_size, opts.read_mode, 'test')
 
-    img_encoder = ImageEncoder(input_nc = opts.char_categories, output_nc = 1, ngf = 16, norm_layer=nn.LayerNorm)
+    img_encoder = ImageEncoder(img_size=opts.image_size, input_nc=opts.char_categories, output_nc=1, ngf=16, norm_layer=nn.LayerNorm)
 
-    img_decoder = ImageDecoder(input_nc = opts.bottleneck_bits + opts.char_categories, output_nc = 1, ngf = 16, norm_layer=nn.LayerNorm)
+    img_decoder = ImageDecoder(img_size=opts.image_size, input_nc=opts.bottleneck_bits + opts.char_categories, output_nc=1, ngf=16, norm_layer=nn.LayerNorm)
     
     vggptlossfunc = VGGPerceptualLoss()
 
-    modality_fusion = ModalityFusion(img_feat_dim = 16 * opts.image_size, hidden_size = opts.hidden_size, ref_nshot = opts.ref_nshot, bottleneck_bits = opts.bottleneck_bits, mode=opts.mode)
+    modality_fusion = ModalityFusion(img_feat_dim=16 * opts.image_size, hidden_size=opts.hidden_size, ref_nshot=opts.ref_nshot, bottleneck_bits=opts.bottleneck_bits, mode=opts.mode)
 
     svg_encoder = SVGLSTMEncoder(char_categories=opts.char_categories,
                                  bottleneck_bits=opts.bottleneck_bits, mode=opts.mode, max_sequence_length=opts.max_seq_len,
@@ -90,8 +90,8 @@ def test_main_model(opts):
 
     val_img_l1_loss = 0.0
     val_img_pt_loss = 0.0
-    mean = np.load('./data/mean.npz')
-    std = np.load('./data/stdev.npz')
+    mean = np.load(os.path.join(opts.data_root, 'train', 'mean.npz'))
+    std = np.load(os.path.join(opts.data_root, 'train', 'stdev.npz'))
 
     mean = torch.from_numpy(mean).to(device).to(torch.float32)
     std = torch.from_numpy(std).to(device).to(torch.float32)
@@ -118,30 +118,30 @@ def test_main_model(opts):
                 imgsr_model.forward()
 
             output_img_hr = imgsr_model.fake_B 
-            savedir_idx = os.path.join(res_dir,"%04d"%test_idx)
+            savedir_idx = os.path.join(res_dir, "%04d"%test_idx)
 
             if not os.path.exists(savedir_idx):
                 os.mkdir(savedir_idx)
-                os.mkdir(os.path.join(savedir_idx,"imgs_64"))
-                os.mkdir(os.path.join(savedir_idx,"imgs_256"))
-                os.mkdir(os.path.join(savedir_idx,"svgs"))
+                os.mkdir(os.path.join(savedir_idx, "imgs_" + str(opts.image_size)))
+                os.mkdir(os.path.join(savedir_idx, "imgs_" + str(opts.image_size_sr)))
+                os.mkdir(os.path.join(savedir_idx, "svgs"))
 
             img_sample_merge = torch.cat((trg_img.data, output_img.data), -2)
-            save_file_merge = os.path.join(savedir_idx,"imgs_64", f"merge_64.png")
+            save_file_merge = os.path.join(savedir_idx, "imgs_" + str(opts.image_size), f"merge_" + str(opts.image_size) + ".png")
             save_image(img_sample_merge, save_file_merge, nrow=8, normalize=True)    
 
             for char_idx in range(opts.char_categories):
                 img_gt = (1.0 - trg_img[char_idx,...]).data
-                save_file_gt = os.path.join(savedir_idx,"imgs_64", f"{char_idx:02d}_gt.png")
+                save_file_gt = os.path.join(savedir_idx, "imgs_" + str(opts.image_size), f"{char_idx:02d}_gt.png")
                 save_image(img_gt, save_file_gt, normalize=True)
 
                 img_sample = (1.0 - output_img[char_idx,...]).data
-                save_file = os.path.join(savedir_idx,"imgs_64", f"{char_idx:02d}_64.png")
+                save_file = os.path.join(savedir_idx,"imgs_" + str(opts.image_size), f"{char_idx:02d}_" + str(opts.image_size) + ".png")
                 #save_image(img_sample, save_file, nrow=8, normalize=True)
                 save_image(img_sample, save_file, normalize=True)
                 
                 img_sample_hr = output_img_hr[char_idx,...].data
-                save_file_hr = os.path.join(savedir_idx,"imgs_256", f"{char_idx:02d}_256.png")
+                save_file_hr = os.path.join(savedir_idx,"imgs_" + str(opts.image_size_sr), f"{char_idx:02d}_" + str(opts.image_size_sr) + ".png")
                 #save_image(img_sample_hr, save_file_hr, nrow=8, normalize=True)
                 save_image(img_sample_hr, save_file_hr, normalize=True) 
             

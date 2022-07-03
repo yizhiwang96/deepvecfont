@@ -1,10 +1,10 @@
 SplineFontDB: 3.2
 FontName: 00001_00001.ttf
-FullName: Untitled43
-FamilyName: Untitled43
+FullName: Untitled95
+FamilyName: Untitled95
 Weight: Regular
-Copyright: Copyright (c) 2021, 
-UComments: "2021-10-20: Created with FontForge (http://fontforge.org)"
+Copyright: Copyright (c) 2022, 
+UComments: "2022-6-25: Created with FontForge (http://fontforge.org)"
 Version: 001.000
 ItalicAngle: 0
 UnderlinePosition: -100
@@ -15,12 +15,12 @@ InvalidEm: 0
 LayerCount: 2
 Layer: 0 0 "Back" 1
 Layer: 1 0 "Fore" 0
-XUID: [1021 877 -968672716 11186692]
+XUID: [1021 581 1203545934 1114157]
 OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
-CreationTime: 1634731550
-ModificationTime: 1634731550
+CreationTime: 1656145960
+ModificationTime: 1656145960
 OS2TypoAscent: 0
 OS2TypoAOffset: 1
 OS2TypoDescent: 0
@@ -46,23 +46,34 @@ BeginChars: 256 1
 
 StartChar: q
 Encoding: 113 113 0
-Width: 1067
+Width: 1081
 VWidth: 2048
 Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-602 -418 m 1
- 602 1053 l 1
- 1010 1053 l 1
- 1010 -418 l 1
- 602 -418 l 1
-487 0 m 1
- 339.666666667 12.6666666667 226 66.6666666667 146 162 c 0
- 68 254 29 374.666666667 29 524 c 0
- 29 676 67.3333333333 797.666666667 144 889 c 0
- 223.333333333 982.333333333 337.666666667 1037 487 1053 c 1
- 487 0 l 1
+942 1067 m 1
+ 942 -365 l 1
+ 791 -365 l 1
+ 791 190 l 1
+ 718.333333333 48 613.666666667 -23 477 -23 c 0
+ 343 -23 239 36.6666666667 165 156 c 0
+ 101.666666667 256.666666667 70 378 70 520 c 0
+ 70 686 108.666666667 820.333333333 186 923 c 128
+ 263.333333333 1025.66666667 363 1077 485 1077 c 0
+ 611 1077 717 1011 803 879 c 1
+ 866 1067 l 1
+ 942 1067 l 1
+791 623 m 2
+ 791 714.333333333 768 789 722 847 c 0
+ 672 910.333333333 602.666666667 942 514 942 c 0
+ 418 942 346 894 298 798 c 0
+ 260.666666667 723.333333333 242 632.666666667 242 526 c 0
+ 242 418 260.666666667 327.666666667 298 255 c 0
+ 345.333333333 161.666666667 418 115 516 115 c 0
+ 604 115 673.333333333 151 724 223 c 0
+ 768.666666667 287 791 365 791 457 c 2
+ 791 623 l 2
 EndSplineSet
 EndChar
 EndChars

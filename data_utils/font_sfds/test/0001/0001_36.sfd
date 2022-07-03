@@ -1,10 +1,10 @@
 SplineFontDB: 3.2
 FontName: 0001_0001.ttf
-FullName: Untitled37
-FamilyName: Untitled37
+FullName: Untitled89
+FamilyName: Untitled89
 Weight: Regular
-Copyright: Copyright (c) 2021, 
-UComments: "2021-10-20: Created with FontForge (http://fontforge.org)"
+Copyright: Copyright (c) 2022, 
+UComments: "2022-6-25: Created with FontForge (http://fontforge.org)"
 Version: 001.000
 ItalicAngle: 0
 UnderlinePosition: -100
@@ -15,12 +15,12 @@ InvalidEm: 0
 LayerCount: 2
 Layer: 0 0 "Back" 1
 Layer: 1 0 "Fore" 0
-XUID: [1021 412 1318575179 1151543]
+XUID: [1021 162 2050247783 13043099]
 OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
-CreationTime: 1634731554
-ModificationTime: 1634731554
+CreationTime: 1656144971
+ModificationTime: 1656144971
 OS2TypoAscent: 0
 OS2TypoAOffset: 1
 OS2TypoDescent: 0
@@ -46,34 +46,24 @@ BeginChars: 256 1
 
 StartChar: k
 Encoding: 107 107 0
-Width: 1284
-VWidth: 2048
+Width: 974
+VWidth: 1428
 Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-209 297 m 1
- 209 1161 l 1
- 72 1161 l 1
- 72 1456 l 1
- 524 1456 l 1
- 524 608 l 1
- 756 848 l 1
- 629 848 l 1
- 629 1124 l 1
- 1202 1124 l 1
- 1202 829 l 1
- 1081 829 l 1
- 852 588 l 1
- 1077 297 l 1
- 1237 297 l 1
- 1237 0 l 1
- 920 0 l 1
- 524 504 l 1
- 524 0 l 1
- 66 0 l 1
- 66 297 l 1
- 209 297 l 1
+717 583 m 1
+ 965 0 l 1
+ 638 0 l 1
+ 400 548 l 1
+ 400 0 l 1
+ 86 0 l 1
+ 86 1365 l 1
+ 400 1365 l 1
+ 400 619 l 1
+ 581 1038 l 1
+ 915 1038 l 1
+ 717 583 l 1
 EndSplineSet
 EndChar
 EndChars

@@ -3,13 +3,14 @@ import torch.nn as nn
 import torch.nn.functional as F
 import functools
 import numpy as np
+import math
 from models.lstm_layernorm import LayerNormLSTM
 from torch.nn.utils.rnn import pad_sequence, pack_padded_sequence, pack_sequence,pad_packed_sequence
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 class NeuralRasterizer(nn.Module):
 
-    def __init__(self, feature_dim, hidden_size, num_hidden_layers, ff_dropout_p, rec_dropout_p, input_nc, output_nc, ngf=64, bottleneck_bits=32, norm_layer=nn.LayerNorm, mode='train'):
+    def __init__(self, img_size, feature_dim, hidden_size, num_hidden_layers, ff_dropout_p, rec_dropout_p, input_nc, output_nc, ngf=64, bottleneck_bits=32, norm_layer=nn.LayerNorm, mode='train'):
         """
         Parameters:
             input_nc (int)      -- the number of channels in input images
@@ -29,9 +30,9 @@ class NeuralRasterizer(nn.Module):
         self.lstm = LayerNormLSTM(self.input_dim, self.hidden_size, self.num_hidden_layers)
         self.pre_lstm_fc = nn.Linear(self.input_dim, self.hidden_size)
         # image decoder
-        n_upsampling = 6
-        ks_list = [3, 3, 5, 5, 5, 5]
-        stride_list = [2, 2, 2, 2, 2, 2]
+        n_upsampling = int(math.log(img_size, 2))
+        ks_list = [3] * (n_upsampling // 3) + [5] * (n_upsampling - n_upsampling // 3)
+        stride_list = [2] * n_upsampling
         decoder = []
         mult = 2 ** (n_upsampling)
         conv = nn.ConvTranspose2d(input_nc, int(ngf * mult / 2),
@@ -66,13 +67,6 @@ class NeuralRasterizer(nn.Module):
 
     def forward(self, trg_seq, trg_char, trg_img):
         """Standard forward"""
-
-        outputs = torch.zeros(trg_seq.size(0), trg_seq.size(1), self.hidden_size).to(device)
-        seq_len = trg_seq.size(0)
-        '''
-        if trg_seq.size(-1) != self.hidden_size:
-            trg_seq = self.pre_lstm_fc(trg_seq)
-        '''
         output, (hidden, cell) = self.lstm(trg_seq, None)
         seq_feat = torch.cat((cell[-1,:,:],hidden[-1,:,:]),-1)
         dec_input = seq_feat

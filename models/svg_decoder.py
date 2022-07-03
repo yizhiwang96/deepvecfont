@@ -116,7 +116,7 @@ class SVGMDNTop(nn.Module):
         out_logmix_max = torch.max(out_logmix, dim=-1, keepdim=True)[0]
         out_logmix = torch.exp(out_logmix - out_logmix_max)
         out_logmix = out_logmix / torch.sum(out_logmix, dim=-1, keepdim=True)
-        # out_logmix = torch.argmax(out_logmix,-1)
+        # out_logmix = torch.argmax(out_logmix, -1)
         out_logmix = Categorical(probs=out_logmix).sample()
         # [seq_len*batch*arg_len]
         out_logmix_tmp = out_logmix.unsqueeze(1)

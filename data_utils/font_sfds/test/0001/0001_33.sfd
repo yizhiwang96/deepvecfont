@@ -1,10 +1,10 @@
 SplineFontDB: 3.2
 FontName: 0001_0001.ttf
-FullName: Untitled34
-FamilyName: Untitled34
+FullName: Untitled86
+FamilyName: Untitled86
 Weight: Regular
-Copyright: Copyright (c) 2021, 
-UComments: "2021-10-20: Created with FontForge (http://fontforge.org)"
+Copyright: Copyright (c) 2022, 
+UComments: "2022-6-25: Created with FontForge (http://fontforge.org)"
 Version: 001.000
 ItalicAngle: 0
 UnderlinePosition: -100
@@ -15,12 +15,12 @@ InvalidEm: 0
 LayerCount: 2
 Layer: 0 0 "Back" 1
 Layer: 1 0 "Fore" 0
-XUID: [1021 412 1318575179 6612311]
+XUID: [1021 162 2050247783 318989]
 OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
-CreationTime: 1634731554
-ModificationTime: 1634731554
+CreationTime: 1656144971
+ModificationTime: 1656144971
 OS2TypoAscent: 0
 OS2TypoAOffset: 1
 OS2TypoDescent: 0
@@ -46,36 +46,29 @@ BeginChars: 256 1
 
 StartChar: h
 Encoding: 104 104 0
-Width: 1407
-VWidth: 2048
+Width: 963
+VWidth: 1428
 Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-209 297 m 1
- 209 1161 l 1
- 72 1161 l 1
- 72 1456 l 1
- 524 1456 l 1
- 524 991 l 1
- 598 1092.33333333 702 1143 836 1143 c 0
- 965.333333333 1143 1063.33333333 1103 1130 1023 c 0
- 1192 948.333333333 1223 845 1223 713 c 2
- 1223 297 l 1
- 1366 297 l 1
- 1366 0 l 1
- 897 0 l 1
- 897 618 l 2
- 897 694 886.666666667 749 866 783 c 0
- 839.333333333 827.666666667 791 850 721 850 c 0
- 656.333333333 850 606.666666667 826.666666667 572 780 c 0
- 540 738.666666667 524 684.666666667 524 618 c 2
- 524 297 l 1
- 653 297 l 1
- 653 0 l 1
- 66 0 l 1
- 66 297 l 1
- 209 297 l 1
+86 1365 m 1
+ 400 1365 l 1
+ 400 928 l 1
+ 474 1013.33333333 557 1056 649 1056 c 0
+ 733.666666667 1056 794.333333333 1026.33333333 831 967 c 0
+ 852.333333333 933.666666667 865 897.666666667 869 859 c 0
+ 874.333333333 811 877 748.333333333 877 671 c 2
+ 877 0 l 1
+ 563 0 l 1
+ 563 671 l 2
+ 563 722.333333333 557.333333333 756.333333333 546 773 c 0
+ 532 793 510.666666667 803 482 803 c 256
+ 453.333333333 803 432 793 418 773 c 0
+ 406 755 400 721 400 671 c 2
+ 400 0 l 1
+ 86 0 l 1
+ 86 1365 l 1
 EndSplineSet
 EndChar
 EndChars

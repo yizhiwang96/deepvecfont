@@ -3,8 +3,8 @@ FontName: 0000_0000.ttf
 FullName: Untitled48
 FamilyName: Untitled48
 Weight: Regular
-Copyright: Copyright (c) 2021, 
-UComments: "2021-10-20: Created with FontForge (http://fontforge.org)"
+Copyright: Copyright (c) 2022, 
+UComments: "2022-6-25: Created with FontForge (http://fontforge.org)"
 Version: 001.000
 ItalicAngle: 0
 UnderlinePosition: -100
@@ -15,12 +15,12 @@ InvalidEm: 0
 LayerCount: 2
 Layer: 0 0 "Back" 1
 Layer: 1 0 "Fore" 0
-XUID: [1021 412 1318575179 2815175]
+XUID: [1021 162 2050247783 15715695]
 OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
-CreationTime: 1634731554
-ModificationTime: 1634731554
+CreationTime: 1656144971
+ModificationTime: 1656144971
 OS2TypoAscent: 0
 OS2TypoAOffset: 1
 OS2TypoDescent: 0
@@ -46,30 +46,23 @@ BeginChars: 256 1
 
 StartChar: v
 Encoding: 118 118 0
-Width: 556
+Width: 889
+VWidth: 2048
 Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-541 391 m 1
- 387 391 l 1
- 375 337 l 1
- 387.666666667 337 396.833333333 335.333333333 402.5 332 c 128
- 408.166666667 328.666666667 411 322.333333333 411 313 c 0
- 411 310.333333333 410.333333333 305.666666667 409 299 c 2
- 349 200 l 2
- 343.666666667 192 337.166666667 183.5 329.5 174.5 c 128
- 321.833333333 165.5 313 161 303 161 c 0
- 291.666666667 161 283.166666667 165.666666667 277.5 175 c 128
- 271.833333333 184.333333333 269 193.333333333 269 202 c 2
- 253 391 l 1
- 48 391 l 1
- 36 337 l 1
- 51.3333333333 337 62.5 334.333333333 69.5 329 c 128
- 76.5 323.666666667 80.6666666667 314.666666667 82 302 c 2
- 100 0 l 1
- 292 0 l 1
- 541 391 l 1
+-11 1032 m 1
+ 347 1032 l 1
+ 429 483 l 2
+ 443.666666667 383 450.333333333 315.666666667 449 281 c 1
+ 457 281 l 1
+ 462.333333333 359.666666667 469.666666667 428.666666667 479 488 c 2
+ 556 1032 l 1
+ 901 1032 l 1
+ 647 0 l 1
+ 243 0 l 1
+ -11 1032 l 1
 EndSplineSet
 EndChar
 EndChars

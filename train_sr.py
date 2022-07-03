@@ -35,7 +35,7 @@ if __name__ == '__main__':
             total_iters += opt.batch_size
             epoch_iter += opt.batch_size
 
-            model.set_input(data['rendered'],data['rendered_256'])         # unpack data from dataset and apply preprocessing
+            model.set_input(data['rendered_lr'], data['rendered_hr'])         # unpack data from dataset and apply preprocessing
             model.optimize_parameters()   # calculate loss functions, get gradients, update network weights              
 
             iter_data_time = time.time()         
@@ -46,7 +46,7 @@ if __name__ == '__main__':
             l1loss_test = 0.0
             with torch.no_grad():
                 for i, data in enumerate(dataset_test):
-                    model.set_input(data['rendered'],data['rendered_256'])
+                    model.set_input(data['rendered_lr'], data['rendered_hr'])
                     model.forward()
                     l1loss_test += criterionL1(model.real_B, model.fake_B)
                 l1loss_test = l1loss_test / len(dataset_test)

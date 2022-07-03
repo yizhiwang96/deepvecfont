@@ -2,16 +2,16 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import functools
-
+import math
 
 class ImageEncoder(nn.Module):
 
-    def __init__(self, input_nc, output_nc, ngf=64, norm_layer=nn.LayerNorm):
+    def __init__(self, img_size, input_nc, output_nc, ngf=64, norm_layer=nn.LayerNorm):
 
         super(ImageEncoder, self).__init__()
-        n_downsampling = 6
-        ks_list = [5, 5, 5, 5, 3, 3]
-        stride_list = [2, 2, 2, 2, 2, 2]
+        n_downsampling = int(math.log(img_size, 2))
+        ks_list = [5] * (n_downsampling - n_downsampling // 3) + [3] * (n_downsampling // 3)
+        stride_list = [2] * n_downsampling
         encoder = [nn.Conv2d(input_nc, ngf, kernel_size=7, padding=7 // 2, bias=True, padding_mode='replicate'),
                    norm_layer([ngf, 2 ** n_downsampling, 2 ** n_downsampling]),
                    nn.ReLU(True)]

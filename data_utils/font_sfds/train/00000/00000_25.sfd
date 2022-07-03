@@ -3,8 +3,8 @@ FontName: 00000_00000.ttf
 FullName: Untitled26
 FamilyName: Untitled26
 Weight: Regular
-Copyright: Copyright (c) 2021, 
-UComments: "2021-10-20: Created with FontForge (http://fontforge.org)"
+Copyright: Copyright (c) 2022, 
+UComments: "2022-6-25: Created with FontForge (http://fontforge.org)"
 Version: 001.000
 ItalicAngle: 0
 UnderlinePosition: -100
@@ -15,12 +15,12 @@ InvalidEm: 0
 LayerCount: 2
 Layer: 0 0 "Back" 1
 Layer: 1 0 "Fore" 0
-XUID: [1021 877 -968672716 9106103]
+XUID: [1021 581 1203545934 9946019]
 OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
-CreationTime: 1634731550
-ModificationTime: 1634731550
+CreationTime: 1656145960
+ModificationTime: 1656145960
 OS2TypoAscent: 0
 OS2TypoAOffset: 1
 OS2TypoDescent: 0
@@ -46,23 +46,68 @@ BeginChars: 256 1
 
 StartChar: Z
 Encoding: 90 90 0
-Width: 1053
+Width: 924
 VWidth: 2048
 Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-31 0 m 1
- 31 147 l 1
- 815 1284 l 1
- 68 1284 l 1
- 68 1421 l 1
- 1018 1421 l 1
- 1018 1300 l 1
- 219 147 l 1
- 1038 147 l 1
- 1038 0 l 1
- 31 0 l 1
+651 545 m 1
+ 657 545 l 1
+ 670 535 l 1
+ 651 520 l 1
+ 645 520 l 1
+ 632 530 l 1
+ 651 545 l 1
+482 326 m 1
+ 353 270 l 1
+ 366 220 l 1
+ 316 230 l 1
+ 143 215 l 1
+ 83 215 39.3333333333 230 12 260 c 1
+ 12 278.666666667 103 290.333333333 285 295 c 1
+ 482 326 l 1
+663 285 m 1
+ 670 280 l 1
+ 670 260 l 2
+ 670 233.333333333 620.333333333 210 521 190 c 1
+ 502 170 l 1
+ 502 165 l 1
+ 508 130 l 1
+ 427.333333333 118.666666667 382 108.666666667 372 100 c 2
+ 366 95 l 1
+ 366 70 l 2
+ 366 58.6666666667 401 52 471 50 c 1
+ 620 55 l 1
+ 669.333333333 51 694 44.3333333333 694 35 c 1
+ 639 -5 l 1
+ 632 -5 l 1
+ 422 0 l 1
+ 380.666666667 -7.33333333333 347.333333333 -15.6666666667 322 -25 c 1
+ 322 55 l 2
+ 322 69 314 80.6666666667 298 90 c 1
+ 275.333333333 90 236 66.6666666667 180 20 c 1
+ 124 30 l 1
+ 103.333333333 30 93 15 93 -15 c 1
+ 99 -20 l 1
+ 93 -25 l 1
+ 87 -25 l 1
+ 25 20 l 1
+ 0 20 l 1
+ 0 30 l 1
+ 347 180 l 1
+ 502 220 l 1
+ 502 225 l 1
+ 490 240 l 1
+ 490 245 l 1
+ 544.666666667 271.666666667 602.333333333 285 663 285 c 1
+651 -140 m 1
+ 663 -150 l 1
+ 663 -160 l 1
+ 651 -170 l 1
+ 639 -160 l 1
+ 639 -150 l 1
+ 651 -140 l 1
 EndSplineSet
 EndChar
 EndChars

@@ -3,8 +3,8 @@ FontName: 0000_0000.ttf
 FullName: Untitled38
 FamilyName: Untitled38
 Weight: Regular
-Copyright: Copyright (c) 2021, 
-UComments: "2021-10-20: Created with FontForge (http://fontforge.org)"
+Copyright: Copyright (c) 2022, 
+UComments: "2022-6-25: Created with FontForge (http://fontforge.org)"
 Version: 001.000
 ItalicAngle: 0
 UnderlinePosition: -100
@@ -15,12 +15,12 @@ InvalidEm: 0
 LayerCount: 2
 Layer: 0 0 "Back" 1
 Layer: 1 0 "Fore" 0
-XUID: [1021 412 1318575179 7223878]
+XUID: [1021 162 2050247783 11414301]
 OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
-CreationTime: 1634731554
-ModificationTime: 1634731554
+CreationTime: 1656144971
+ModificationTime: 1656144971
 OS2TypoAscent: 0
 OS2TypoAOffset: 1
 OS2TypoDescent: 0
@@ -46,19 +46,17 @@ BeginChars: 256 1
 
 StartChar: l
 Encoding: 108 108 0
-Width: 379
+Width: 489
+VWidth: 2048
 Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-216 0 m 1
- 360 577 l 1
- 106 577 l 1
- 94 532 l 1
- 128.666666667 532 146 518.666666667 146 492 c 0
- 146 489.333333333 145.333333333 484.666666667 144 478 c 2
- 25 0 l 1
- 216 0 l 1
+73 1365 m 1
+ 416 1365 l 1
+ 416 0 l 1
+ 73 0 l 1
+ 73 1365 l 1
 EndSplineSet
 EndChar
 EndChars

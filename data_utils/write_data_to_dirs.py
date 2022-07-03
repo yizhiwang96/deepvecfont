@@ -15,18 +15,19 @@ import svg_utils
 '''
 
 def create_db(opts):
-    print("Process sfd to pkl files ....")
+    print("Process sfd to npy files in dirs....")
     all_font_ids = sorted(os.listdir(os.path.join(opts.sfd_path, opts.split)))
     num_fonts = len(all_font_ids)
+    num_fonts_w = len(str(num_fonts))
     print(f"Number {opts.split} fonts before processing", num_fonts)
     num_processes = mp.cpu_count() - 2
     fonts_per_process = num_fonts // num_processes + 1
     num_chars = len(opts.charset)
+    num_chars_w = len(str(num_chars))
 
     def process(process_id):
-        cur_process_processed_font_glyphs = []
+
         cur_process_log_file = open(os.path.join(opts.log_dir, f'{opts.split}_log_{process_id}.txt'), 'w')
-        cur_process_pkl_file = open(os.path.join(opts.output_path, opts.split, f'{opts.split}_{process_id:04d}-{num_processes+1:04d}.pkl'), 'wb')
         for i in range(process_id * fonts_per_process, (process_id + 1) * fonts_per_process):
             if i >= num_fonts:
                 break
@@ -36,12 +37,12 @@ def create_db(opts):
 
             # a whole font as an entry
             for char_id in range(num_chars):
-                if not os.path.exists(os.path.join(cur_font_sfd_dir, '{}_{:02d}.sfd'.format(font_id, char_id))):
+                if not os.path.exists(os.path.join(cur_font_sfd_dir, '{}_{num:0{width}}.sfd'.format(font_id, num=char_id, width=num_chars_w))):
                     break
 
-                char_desp_f = open(os.path.join(cur_font_sfd_dir, '{}_{:02d}.txt'.format(font_id, char_id)), 'r')
+                char_desp_f = open(os.path.join(cur_font_sfd_dir, '{}_{num:0{width}}.txt'.format(font_id, num=char_id, width=num_chars_w)), 'r')
                 char_desp = char_desp_f.readlines()
-                sfd_f = open(os.path.join(cur_font_sfd_dir, '{}_{:02d}.sfd'.format(font_id, char_id)), 'r')
+                sfd_f = open(os.path.join(cur_font_sfd_dir, '{}_{num:0{width}}.sfd'.format(font_id, num=char_id, width=num_chars_w)), 'r')
                 sfd = sfd_f.read()
 
                 uni = int(char_desp[0].strip())
@@ -85,11 +86,9 @@ def create_db(opts):
                 # merge the whole font
                 merged_res = {}
                 if not os.path.exists(os.path.join(cur_font_sfd_dir, 'imgs_' + str(opts.img_size) + '.npy')):
-                    rendered = np.zeros((num_chars, opts.img_size, opts.img_size), np.uint8)
-                    rendered[:, :, :] = 255
-                    rendered = rendered.tolist()
+                    continue
                 else:
-                    rendered = np.load(os.path.join(cur_font_sfd_dir, 'imgs_' + str(opts.img_size) + '.npy')).tolist()
+                    rendered = np.load(os.path.join(cur_font_sfd_dir, 'imgs_' + str(opts.img_size) + '.npy'))
                 sequence = []
                 seq_len = []
                 binaryfp = []
@@ -100,16 +99,14 @@ def create_db(opts):
                     seq_len.append(example['seq_len'])
                     char_class.append(example['class'])
                     binaryfp = example['binary_fp']
+                if not os.path.exists(os.path.join(opts.output_path, opts.split, '{num:0{width}}'.format(num=i, width=num_fonts_w))):
+                    os.mkdir(os.path.join(opts.output_path, opts.split, '{num:0{width}}'.format(num=i, width=num_fonts_w)))
 
-                merged_res['rendered'] = rendered
-                merged_res['seq_len'] = seq_len
-                merged_res['sequence'] = sequence
-                merged_res['class'] = char_class
-                merged_res['binary_fp'] = binaryfp
-                cur_process_processed_font_glyphs += [merged_res]
-
-        pickle.dump(cur_process_processed_font_glyphs, cur_process_pkl_file)
-        cur_process_pkl_file.close()
+                np.save(os.path.join(opts.output_path, opts.split, '{num:0{width}}'.format(num=i, width=num_fonts_w), 'sequence.npy'), np.array(sequence))
+                np.save(os.path.join(opts.output_path, opts.split, '{num:0{width}}'.format(num=i, width=num_fonts_w), 'seq_len.npy'), np.array(seq_len))
+                np.save(os.path.join(opts.output_path, opts.split, '{num:0{width}}'.format(num=i, width=num_fonts_w), 'class.npy'), np.array(char_class))
+                np.save(os.path.join(opts.output_path, opts.split, '{num:0{width}}'.format(num=i, width=num_fonts_w), 'font_id.npy'), np.array(binaryfp))
+                np.save(os.path.join(opts.output_path, opts.split, '{num:0{width}}'.format(num=i, width=num_fonts_w), 'rendered_' + str(opts.img_size) + '.npy'), rendered)
 
     processes = [mp.Process(target=process, args=[pid]) for pid in range(num_processes)]
 
@@ -121,25 +118,15 @@ def create_db(opts):
     print("Finished processing all sfd files, logs (invalid glyphs and paths) are saved to", opts.log_dir)
 
 
-def combine_perprocess_pkl_db(opts):
-    print("Combine all pkl files ....")
-    num_processes = mp.cpu_count() - 2
-    all_glyphs = []
-    all_glyphs_pkl_file = open(os.path.join(opts.output_path, opts.split, f'{opts.split}_all.pkl'), 'wb')
-    for process_id in range(num_processes):
-        cur_process_pkl_file = open(os.path.join(opts.output_path, opts.split, f'{opts.split}_{process_id:04d}-{num_processes+1:04d}.pkl'), 'rb')
-        cur_process_glyphs = pickle.load(cur_process_pkl_file)
-        all_glyphs += cur_process_glyphs
-    pickle.dump(all_glyphs, all_glyphs_pkl_file)
-    all_glyphs_pkl_file.close()
-    return len(all_glyphs)
-
-
 def cal_mean_stddev(opts):
     print("Calculating all glyphs' mean stddev ....")
-    all_fonts_f = open(os.path.join(opts.output_path, opts.split, f'{opts.split}_all.pkl'), 'rb')
-    all_fonts = pickle.load(all_fonts_f)
-    num_fonts = len(all_fonts)
+    font_paths = []
+    dir_path = os.path.join(opts.output_path, opts.split)
+    for root, dirs, files in os.walk(dir_path):
+        for dir_name in dirs:
+            font_paths.append(os.path.join(dir_path, dir_name))
+    font_paths.sort()
+    num_fonts = len(font_paths)
     num_processes = mp.cpu_count() - 2
     fonts_per_process = num_fonts // num_processes + 1
     num_chars = len(opts.charset) 
@@ -153,11 +140,11 @@ def cal_mean_stddev(opts):
         for i in range(process_id * fonts_per_process, (process_id + 1) * fonts_per_process):
             if i >= num_fonts:
                 break
-            cur_font = all_fonts[i]
+            cur_font_path = font_paths[i]
             for charid in range(num_chars):
                 cur_font_char = {}
-                cur_font_char['seq_len'] = cur_font['seq_len'][charid]
-                cur_font_char['sequence'] = cur_font['sequence'][charid]
+                cur_font_char['seq_len'] = np.load(os.path.join(cur_font_path, 'seq_len.npy')).tolist()[charid]
+                cur_font_char['sequence'] = np.load(os.path.join(cur_font_path, 'sequence.npy')).tolist()[charid]
                 cur_sum_count = mean_stddev_accum.add_input(cur_sum_count, cur_font_char)
         return_dict[process_id] = cur_sum_count
     processes = [mp.Process(target=process, args=[pid, return_dict]) for pid in range(num_processes)]
@@ -186,14 +173,14 @@ def main():
     parser = argparse.ArgumentParser(description="LMDB creation")
     parser.add_argument("--charset", type=str, default='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz')
     parser.add_argument("--ttf_path", type=str, default='font_ttfs')
-    parser.add_argument('--sfd_path', type=str, default='./font_sfds')
-    parser.add_argument("--output_path", type=str, default='../data/vecfont_dataset_/',
+    parser.add_argument('--sfd_path', type=str, default='font_sfds')
+    parser.add_argument("--output_path", type=str, default='../data/vecfont_dataset_dirs_/',
                         help="Path to write the database to")
-    parser.add_argument('--img_size', type=int, default=64, help="the height and width of glyph images")
+    parser.add_argument('--img_size', type=int, default=128, help="the height and width of glyph images")
     parser.add_argument("--split", type=str, default='train')
     parser.add_argument("--log_dir", type=str, default='./font_sfds/log/')
-    parser.add_argument("--phase", type=int, default=0, choices=[0, 1, 2, 3],
-                        help="0 all, 1 create db, 2 combine_pkl_files, 3 cal stddev")
+    parser.add_argument("--phase", type=int, default=0, choices=[0, 1, 2],
+                        help="0 all, 1 create db, 2 cal stddev")
 
     opts = parser.parse_args()
     assert os.path.exists(opts.sfd_path), "specified sfd glyphs path does not exist"
@@ -207,12 +194,8 @@ def main():
 
     if opts.phase <= 1:
         create_db(opts)
-    
-    if opts.phase <= 2:
-        number_saved_glyphs = combine_perprocess_pkl_db(opts)
-        print(f"Number {opts.split} fonts after processing", number_saved_glyphs)
 
-    if opts.phase <= 3 and opts.split == 'train':
+    if opts.phase <= 2 and opts.split == 'train':
         cal_mean_stddev(opts)
 
     

@@ -60,12 +60,16 @@ class BaseOptions():
         parser.add_argument('--mix_temperature', type=float, default=0.0001, help='')
         parser.add_argument('--gauss_temperature', type=float, default=0, help='')
         # basic parameters
-        parser.add_argument('--dataroot', default='./data/glyphss_dataset/', help='path to images')
+        parser.add_argument('--dataroot', default='./data/vecfont_dataset_dirs_sr/', help='path to images')
         parser.add_argument('--name', type=str, default='image_sr', help='name of the experiment. It decides where to store samples and models')
         parser.add_argument('--gpu_ids', type=str, default='0', help='gpu ids: e.g. 0  0,1,2, 0,2. use -1 for CPU')
         parser.add_argument('--checkpoints_dir', type=str, default='./experiments', help='models are saved here')
         # model parameters
         #parser.add_argument('--model', type=str, default='cycle_gan', help='chooses which model to use. [cycle_gan | pix2pix | test | colorization]')
+        parser.add_argument('--img_lr', type=int, default=128, help='the low resoluion of images')
+        parser.add_argument('--img_hr', type=int, default=256, help='the high resoluion of images')
+        parser.add_argument('--read_mode', type=str, default='dirs', choices=['dirs', 'pkl'], 
+                            help='how to read the data, *dirs* consumes much less memory')
         parser.add_argument('--char_categories', type=int, default=52, help='char_categories')
         parser.add_argument('--input_nc', type=int, default=1, help='# of input image channels: 3 for RGB and 1 for grayscale')
         parser.add_argument('--output_nc', type=int, default=1, help='# of output image channels: 3 for RGB and 1 for grayscale')
@@ -83,7 +87,7 @@ class BaseOptions():
         parser.add_argument('--direction', type=str, default='BtoA', help='AtoB or BtoA')
         parser.add_argument('--serial_batches', action='store_true', help='if true, takes images in order to make batches, otherwise takes them randomly')
         parser.add_argument('--num_threads', default=4, type=int, help='# threads for loading data')
-        parser.add_argument('--batch_size', type=int, default=2, help='input batch size')
+        parser.add_argument('--batch_size', type=int, default=16, help='input batch size')
         parser.add_argument('--image_size', type=int, default=256, help='image_size')
         parser.add_argument('--load_size', type=int, default=256, help='scale images to this size')
         parser.add_argument('--crop_size', type=int, default=256, help='then crop to this size')
@@ -237,8 +241,8 @@ def create_dataset(opt):
         >>> from data import create_dataset
         >>> dataset = create_dataset(opt)
     """
-    dataset_train = get_loader(opt.dataroot, opt.char_categories, opt.batch_size, 'train')
-    dataset_test = get_loader(opt.dataroot, opt.char_categories, opt.batch_size, 'test')
+    dataset_train = get_loader(opt.dataroot, opt.char_categories, opt.batch_size, opt.read_mode, opt.img_lr, opt.img_hr, 'train')
+    dataset_test = get_loader(opt.dataroot, opt.char_categories, opt.batch_size, opt.read_mode, opt.img_lr, opt.img_hr, 'test')
     return dataset_train, dataset_test
 
 
@@ -578,9 +582,11 @@ class Pix2PixModel(BaseModel):
             self.optimizer_D = torch.optim.Adam(self.netD.parameters(), lr=opt.lr, betas=(opt.beta1, 0.9))
             self.optimizers.append(self.optimizer_G)
             self.optimizers.append(self.optimizer_D)
-            
 
-    def set_input(self, data_64, data_256):
+        self.img_lr = opt.img_lr
+        self.img_hr = opt.img_hr
+
+    def set_input(self, data_lr, data_hr):
         """Unpack input data from the dataloader and perform necessary pre-processing steps.
 
         Parameters:
@@ -588,8 +594,8 @@ class Pix2PixModel(BaseModel):
 
         The option 'direction' can be used to swap images in domain A and domain B.
         """
-        imgset_lr = data_64.to(self.device) # bs, opts.char_categories, opts.image_size, opts.image_size
-        imgset_hr = data_256.to(self.device) # bs, opts.char_categories, opts.image_size, opts.image_size
+        imgset_lr = data_lr.to(self.device) # bs, opts.char_categories, opts.image_size, opts.image_size
+        imgset_hr = data_hr.to(self.device) # bs, opts.char_categories, opts.image_size, opts.image_size
 
         def select_imgs(images_of_onefont, selected_cls, image_size):
             # given selected char classes, return selected imgs
@@ -603,9 +609,9 @@ class Pix2PixModel(BaseModel):
             return selected_img
 
         char_cls = torch.randint(0, self.opt.char_categories, (imgset_hr.size(0), 1)).to(self.device) # bs, 1
-        img_lr = select_imgs(imgset_lr, char_cls, 64)
-        img_hr = select_imgs(imgset_hr, char_cls, 256)
-        rs_func = Resize((256,256), interpolation=2)
+        img_lr = select_imgs(imgset_lr, char_cls, self.img_lr)
+        img_hr = select_imgs(imgset_hr, char_cls, self.img_hr)
+        rs_func = Resize((self.img_hr, self.img_hr), interpolation=2)
         img_lr_rs = rs_func(img_lr)
 
         AtoB = self.opt.direction == 'AtoB'
@@ -616,9 +622,9 @@ class Pix2PixModel(BaseModel):
         #self.real_B = input['B' if AtoB else 'A'].to(self.device)
         #self.image_paths = input['A_paths' if AtoB else 'B_paths']
 
-    def set_test_input(self, data_64):
-        rs_func = Resize((256,256), interpolation=2)
-        img_lr_rs = rs_func(data_64)
+    def set_test_input(self, data_lr):
+        rs_func = Resize((self.img_hr, self.img_hr), interpolation=2)
+        img_lr_rs = rs_func(data_lr)
         self.real_A = img_lr_rs
         self.real_B = img_lr_rs
 

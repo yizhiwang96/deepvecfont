@@ -3,8 +3,8 @@ FontName: 00000_00000.ttf
 FullName: Untitled35
 FamilyName: Untitled35
 Weight: Regular
-Copyright: Copyright (c) 2021, 
-UComments: "2021-10-20: Created with FontForge (http://fontforge.org)"
+Copyright: Copyright (c) 2022, 
+UComments: "2022-6-25: Created with FontForge (http://fontforge.org)"
 Version: 001.000
 ItalicAngle: 0
 UnderlinePosition: -100
@@ -15,12 +15,12 @@ InvalidEm: 0
 LayerCount: 2
 Layer: 0 0 "Back" 1
 Layer: 1 0 "Fore" 0
-XUID: [1021 877 -968672716 4457924]
+XUID: [1021 581 1203545934 3852878]
 OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
-CreationTime: 1634731550
-ModificationTime: 1634731550
+CreationTime: 1656145960
+ModificationTime: 1656145960
 OS2TypoAscent: 0
 OS2TypoAOffset: 1
 OS2TypoDescent: 0
@@ -46,22 +46,55 @@ BeginChars: 256 1
 
 StartChar: i
 Encoding: 105 105 0
-Width: 451
+Width: 924
 VWidth: 2048
 Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-147 0 m 1
- 147 1053 l 1
- 303 1053 l 1
- 303 0 l 1
- 147 0 l 1
-147 1266 m 1
- 147 1421 l 1
- 303 1421 l 1
- 303 1266 l 1
- 147 1266 l 1
+349 357 m 1
+ 356 357 l 1
+ 390.666666667 333.666666667 432 322 480 322 c 1
+ 616 337 l 1
+ 641 292 l 1
+ 641 280 605.666666667 270 535 262 c 1
+ 349 272 l 1
+ 349 257 l 1
+ 343 257 l 1
+ 374 182 l 1
+ 374 157 l 2
+ 374 145.666666667 368 134 356 122 c 1
+ 384 92 423 77 473 77 c 1
+ 641 97 l 1
+ 653 77 l 1
+ 653 13.6666666667 647 -18 635 -18 c 2
+ 622 -18 l 1
+ 560 32 l 1
+ 467 7 l 1
+ 325 32 l 1
+ 287 -13 l 1
+ 279 -13 275 0.333333333333 275 27 c 1
+ 256 32 l 1
+ 126 22 l 1
+ 70 32 l 1
+ 52 7 l 1
+ 31.3333333333 11 21 39.3333333333 21 92 c 1
+ 27 97 l 1
+ 33 97 l 1
+ 54.3333333333 87 75 82 95 82 c 2
+ 250 87 l 1
+ 300 82 l 1
+ 294 182 l 1
+ 294 192 l 1
+ 299.333333333 205.333333333 315.666666667 212 343 212 c 1
+ 305.666666667 248.666666667 258.333333333 267 201 267 c 2
+ 89 262 l 1
+ 77 262 l 1
+ 2 267 l 1
+ 2 272 l 2
+ 2 302.666666667 33 322.666666667 95 332 c 1
+ 281 327 l 2
+ 298.333333333 327 321 337 349 357 c 1
 EndSplineSet
 EndChar
 EndChars
