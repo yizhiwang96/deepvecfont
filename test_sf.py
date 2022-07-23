@@ -24,7 +24,9 @@ def test_main_model(opts):
     exp_dir = os.path.join("experiments", opts.experiment_name)
     ckpt_dir = os.path.join(exp_dir, "checkpoints")
     res_dir = os.path.join(exp_dir, "results")
-
+    if not os.path.exists(res_dir):
+        os.mkdir(res_dir)
+    
     test_loader = get_loader(opts.data_root, opts.image_size, opts.char_categories, opts.max_seq_len, opts.seq_feature_dim, opts.batch_size, opts.read_mode, 'test')
 
     img_encoder = ImageEncoder(img_size=opts.image_size, input_nc=opts.char_categories, output_nc=1, ngf=16, norm_layer=nn.LayerNorm)
