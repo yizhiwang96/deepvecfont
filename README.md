@@ -447,7 +447,7 @@ There are two modes to access the dataset:
 - **pkl files:** (Download links: [Google Drive](https://drive.google.com/drive/folders/1dGOOXK63-QJKXnE7_fD2OCfYJGKsApSg?usp=sharing))
 Using pkl files (that combine all fonts) consumes a lot of memory, but you don't need to generate a large number of single files.
 Please download the `vecfont_dataset_pkls` dir and put it under `./data/`.
-If you use this mode, set `read_mode` = `pkl`, in `options.py`.
+If you use this mode, set `read_mode` = `pkl`, in `options.py`. If you use the uploaded data, set `image_size` to `64`.
 - **dirs:**
 Generate directories for each data entry, which consumes much less memory.
 You need to first download the ttf/otf files from [Google Drive](https://drive.google.com/file/d/1D-KxfDqpz1tOSY5VxfsU7o0HlKd0GuJI/view?usp=sharing) and extract it to `data_utils`.
@@ -517,7 +517,7 @@ for python > 3.0:
 conda deactivate
 apt install python3-fontforge
 ```
-
+It works in Ubuntu 20.04.1, other lower versions may fail in `import fontforge`.
 - **Get SFD files via Fontforge**
 ```
 cd data_utils
