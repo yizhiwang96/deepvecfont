@@ -18,7 +18,7 @@ Homepage: [DeepVecFont](https://yizhiwang96.github.io/deepvecfont_homepage/)
 - DeepVecFont now better supports training images with resolution of 128 * 128, which should give better results. (the default image size now is 128 * 128, switch back to 64 by setting `image_size` in `options.py` to `64`.)
 - [To Do] adding Chinese vector font support (will be available soon)
 ### 2023-06-01
-Check how [Christina](https://christinalj.com/) uses DeepVecFont in her undergraduate thesis project! [Video](https://www.youtube.com/watch?v=ar_kMCQ4DTI&t=403s&ab_channel=christinaissleepy), [Blog](https://christinalj.com/crystal-type)
+Check how [Christina](https://christinalj.com/) uses DeepVecFont in her art-design project! [Video](https://www.youtube.com/watch?v=ar_kMCQ4DTI&t=403s&ab_channel=christinaissleepy), [Blog](https://christinalj.com/crystal-type)
 ## Demo
 ### Few-shot generation
 Given a few vector glyphs of a font as reference, our model generates the full **vector** font:
