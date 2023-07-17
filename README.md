@@ -16,7 +16,7 @@ Homepage: [DeepVecFont](https://yizhiwang96.github.io/deepvecfont_homepage/)
 ### 2022-07-03
 - DeepVecFont can now read data from single files when training, which significantly reduces memory consuming.
 - DeepVecFont now better supports training images with resolution of 128 * 128, which should give better results. (the default image size now is 128 * 128, switch back to 64 by setting `image_size` in `options.py` to `64`.)
-- [To Do] adding Chinese vector font support (will be available soon)
+- Added Chinese vector font support (please check [DeepVecFont-v2](https://github.com/yizhiwang96/deepvecfont-v2))
 ### 2023-06-01
 Check how [Christina](https://christinalj.com/) uses DeepVecFont in her art-design project! [Video](https://www.youtube.com/watch?v=ar_kMCQ4DTI&t=403s&ab_channel=christinaissleepy), [Blog](https://christinalj.com/crystal-type)
 ## Demo
